@@ -1,0 +1,35 @@
+[project]
+name = "padserver"
+version = "0.1.0"
+description = "Turn phones on a browser page into virtual gamepads for an emulator"
+requires-python = ">=3.10"
+dependencies = ["aiohttp>=3.9"]
+
+[project.optional-dependencies]
+uinput = ["evdev>=1.6"]
+vigem = ["vgamepad>=0.1.0"]
+dev = ["pytest>=7", "pytest-asyncio>=0.23", "ruff>=0.4"]
+
+[project.scripts]
+padserver = "padserver.__main__:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["padserver*"]
+
+[tool.setuptools.package-data]
+padserver = ["static/*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

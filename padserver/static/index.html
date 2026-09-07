@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0b0d12">
+<title>MvC2 Pad</title>
+<link rel="stylesheet" href="/static/pad.css">
+</head>
+<body>
+<div id="hud">
+  <span id="player" class="badge">connecting</span>
+  <span id="ping" class="badge dim">-- ms</span>
+  <button id="menu" class="hudbtn" data-btn="SELECT">MENU</button>
+  <button id="start" class="hudbtn" data-btn="START">START</button>
+</div>
+
+<div id="pad">
+  <div id="dpad" class="zone">
+    <div class="dpad-cross"></div>
+    <div class="dpad-arrow up">&#9650;</div>
+    <div class="dpad-arrow down">&#9660;</div>
+    <div class="dpad-arrow left">&#9664;</div>
+    <div class="dpad-arrow right">&#9654;</div>
+    <div id="dpad-dot"></div>
+  </div>
+
+  <div id="buttons">
+    <div class="btn" data-btn="LP"><span>LP</span></div>
+    <div class="btn" data-btn="HP"><span>HP</span></div>
+    <div class="btn assist" data-btn="A1"><span>A1</span></div>
+    <div class="btn" data-btn="LK"><span>LK</span></div>
+    <div class="btn" data-btn="HK"><span>HK</span></div>
+    <div class="btn assist" data-btn="A2"><span>A2</span></div>
+  </div>
+</div>
+
+<div id="overlay">
+  <div class="card">
+    <h1>MvC2 Pad</h1>
+    <p id="overlay-text">Turn your phone sideways and tap to start.</p>
+    <button id="go">Tap to start</button>
+    <p class="fine">Left side is the d-pad. Right side is LP / HP / A1 over LK / HK / A2.</p>
+  </div>
+</div>
+
+<script src="/static/pad.js"></script>
+</body>
+</html>

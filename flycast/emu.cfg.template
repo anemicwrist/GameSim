@@ -1,0 +1,41 @@
+# Settings merged into Flycast's emu.cfg by scripts/configure_flycast.py.
+# Only these keys are touched; anything else already in your emu.cfg is kept.
+# Key names come from core/cfg/option.cpp in the Flycast source.
+
+[input]
+# Maple port A and B both hold a standard Dreamcast controller, so player 2
+# exists as soon as the game boots. 0 = MDT_SegaController, 1 = MDT_SegaVMU.
+device1 = 0
+device2 = 0
+device1.1 = 1
+device2.1 = 1
+# Pin each virtual pad to a Dreamcast port. Flycast names an SDL joystick
+# "sdl_joystick_<instance id>"; instance ids are handed out in the order the
+# devices are opened, so the pad padserver creates first becomes port A.
+# This is why padserver creates both pads before Flycast starts.
+maple_sdl_joystick_0 = 0
+maple_sdl_joystick_1 = 1
+
+[window]
+fullscreen = yes
+width = 1280
+height = 720
+
+[config]
+# NTSC / USA / English, VGA cable off (composite) so the 640x480 mode matches
+# the Orgo desktop's 1280x720 viewer.
+Dreamcast.Cable = 3
+Dreamcast.Region = 1
+Dreamcast.Broadcast = 0
+Dreamcast.Language = 1
+# OpenGL renderer at native resolution. Raise rend.Resolution only if the probe
+# showed a real GPU.
+pvr.rend = 0
+rend.Resolution = 480
+rend.ThreadedRendering = yes
+rend.WideScreen = no
+# The DSP is expensive and MvC2 does not need it.
+aica.DSPEnabled = no
+
+[audio]
+backend = auto
