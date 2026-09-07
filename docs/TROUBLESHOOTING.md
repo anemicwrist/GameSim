@@ -23,21 +23,57 @@ Reloading on the original phone reclaims its own slot, because the page
 remembers a token in `localStorage` and the server hands a returning token back
 its previous player number.
 
-## no /dev/uinput
+## no /dev/uinput, or "nodriver"
+
+Ask the one question that matters, which is not whether the node exists but
+whether it works:
 
 ```bash
-sudo modprobe uinput
-ls -l /dev/uinput
+python3 scripts/uinput_check.py
 ```
 
-If the module loads, `scripts/install_deps.sh` makes it permanently available
-and writable by the `input` group. You must log out and back in for the group to
-apply; `newgrp input` works in the current shell.
+`/dev/uinput` is an ordinary character device. Root can conjure one anywhere
+with `mknod /dev/uinput c 10 223`, driver or not, so `ls` proves nothing and
+neither does creating it by hand. The check opens the device and creates a real
+gamepad, then reports one of four verdicts.
 
-If `modprobe` fails and `scripts/probe.sh` reports no `uinput.ko` in the
-kernel's modules, this kernel cannot create virtual input devices at all. The
-approach does not work on that machine. Plan B in `docs/ARCHITECTURE.md` runs
-the same server on your Windows PC instead.
+| Verdict | Meaning | What to do |
+|---|---|---|
+| `ok` | virtual gamepads work | nothing; the uinput backend is used |
+| `nodriver` | node opens to nothing; the kernel has no uinput | use the xtest backend (automatic) |
+| `denied` | driver is there, access refused | `scripts/install_deps.sh`, then log out and back in |
+| `nonode` | no node and it could not be created | re-run as root, or use xtest |
+
+**`nodriver` is normal on a cloud desktop** and is not a failure. There is no
+`modprobe` and no `/lib/modules` in most containers, so the module cannot be
+loaded and nothing you do will produce one. `scripts/run.sh` detects this and
+switches to the xtest backend, which drives the emulator with synthetic key
+presses and needs no kernel device. That path uses RetroArch rather than
+standalone Flycast, because standalone Flycast cannot split one keyboard
+between two Dreamcast ports.
+
+To force one or the other:
+
+```bash
+PADSERVER_BACKEND=xtest  bash scripts/run.sh
+PADSERVER_BACKEND=uinput bash scripts/run.sh
+```
+
+## xtest: the pads connect but nothing happens in the game
+
+The key presses are going somewhere other than the emulator. XTEST delivers to
+whatever window has focus, so the emulator window must be focused, and it must
+be on the same display the server is using.
+
+```bash
+echo "$DISPLAY"                      # server and emulator must agree
+python3 scripts/configure_retroarch.py --dry-run   # what should be bound
+```
+
+Check that RetroArch actually took the bindings: Settings > Input > Port 1 and
+Port 2 Controls. If Port 2 is unbound, `input_max_users` was not applied; re-run
+`scripts/configure_retroarch.py` while RetroArch is closed, because it rewrites
+its config on exit and will overwrite changes made while it is running.
 
 ## The pads exist but Flycast shows no controllers
 

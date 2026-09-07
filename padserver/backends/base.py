@@ -40,8 +40,14 @@ def make_backend(kind: str):
         from padserver.backends.uinput import UinputBackend
 
         return UinputBackend()
+    if kind == "xtest":
+        from padserver.backends.xtest import XtestBackend
+
+        return XtestBackend()
     if kind == "vigem":
         from padserver.backends.vigem import VigemBackend
 
         return VigemBackend()
-    raise ValueError(f"unknown backend: {kind!r} (expected fake, uinput or vigem)")
+    raise ValueError(
+        f"unknown backend: {kind!r} (expected fake, uinput, xtest or vigem)"
+    )

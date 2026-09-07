@@ -39,8 +39,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument(
         "--backend",
         default="uinput",
-        choices=["uinput", "vigem", "fake"],
-        help="how to create the gamepads (default: uinput, i.e. Linux)",
+        choices=["uinput", "xtest", "vigem", "fake"],
+        help=(
+            "how to deliver input (default: uinput). Use xtest on hosts where "
+            "/dev/uinput has no driver behind it, such as most containers; run "
+            "scripts/uinput_check.py to find out which applies"
+        ),
     )
     p.add_argument("--players", type=int, default=2, help="number of pads (default: 2)")
     p.add_argument(

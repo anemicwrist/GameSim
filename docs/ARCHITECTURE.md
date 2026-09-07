@@ -4,12 +4,13 @@
 
 **padserver** (`padserver/`) is an aiohttp server. It creates the virtual
 gamepads at startup, serves the touch page to the phones, and applies each
-WebSocket input message to a pad. It has three backends: `uinput` for Linux,
-`vigem` for Windows, and `fake` for tests.
+WebSocket input message to a pad. It has four backends: `uinput` and `xtest`
+for Linux, `vigem` for Windows, and `fake` for tests.
 
-**Flycast** is the Dreamcast emulator, installed from Flathub. It is not
-modified. `scripts/configure_flycast.py` merges a handful of settings into its
-`emu.cfg`, and `scripts/run.sh` launches it.
+**The emulator** is Flycast, installed from Flathub, either standalone or as a
+libretro core inside RetroArch. It is not modified;
+`scripts/configure_flycast.py` and `scripts/configure_retroarch.py` merge a
+handful of settings into its config, and `scripts/run.sh` launches it.
 
 **Docs and scripts** cover everything that is a one-time human step:
 provisioning, network, casting.
@@ -48,6 +49,29 @@ enforces that: pad server first, wait for both device nodes, then the emulator.
 
 A phone connecting later just claims a slot that already owns a pad.
 
+## Why there are two input backends
+
+`uinput` is the better path and the one to use where it exists. It creates real
+kernel input devices, so the emulator sees ordinary gamepads and each player is
+genuinely a separate device.
+
+It needs a `uinput` driver in the kernel, though, and containers usually have
+none: no `modprobe`, no `/lib/modules`, nothing to load. Cloud desktops are
+containers. So `xtest` exists as the fallback, injecting key events into X11,
+which needs no kernel device and no privileges beyond access to the display.
+
+The catch is that two players then share one keyboard, and **standalone Flycast
+cannot bind one keyboard to two Dreamcast ports**
+([flyinghead/flycast#68](https://github.com/flyinghead/flycast/issues/68)).
+RetroArch can, through `input_player1_*` and `input_player2_*`, so the xtest
+path runs the Flycast core inside RetroArch instead.
+
+Both halves of that arrangement read their key assignments from
+`padserver/keymap.py`: the backend presses those keys, and
+`scripts/configure_retroarch.py` generates the emulator's bindings from the same
+table. They cannot drift apart, and the tests assert the two players' keys never
+overlap.
+
 ## Latency budget
 
 Nothing here is free. Rough one-way numbers for the Orgo layout:
@@ -56,8 +80,8 @@ Nothing here is free. Rough one-way numbers for the Orgo layout:
 |---|---|
 | touch to WebSocket send | 10-20 ms (one browser frame) |
 | phone to cloud VM over the internet | 10-60 ms, depends on your ISP and the VM region |
-| uinput to SDL to Flycast | under 2 ms |
-| emulator frame | 16 ms |
+| uinput or xtest to the emulator | under 2 ms |
+| emulator frame | 16 ms with a GPU; considerably more without one |
 | VM framebuffer to VNC to the Windows PC | 40-120 ms, and well under 60 fps |
 | Windows PC casting to the TV | 60-200 ms depending on the cast method |
 
@@ -69,6 +93,12 @@ screen mirroring.
 
 The pad page shows its own round trip time in the top bar. That number covers
 only the phone-to-server hop, which is usually the smallest term.
+
+One caveat that dwarfs the table: on a host with no GPU, every frame is drawn by
+the CPU through llvmpipe, and the emulator frame stops being a 16 ms constant.
+If the game only manages 25 fps, that single row becomes 40 ms and the game
+feels wrong regardless of the network. `scripts/benchmark.sh` measures this, and
+it is worth measuring before trusting any of the numbers above.
 
 ## Plan B: run it all on the Windows PC
 

@@ -19,20 +19,16 @@ line "display server"
 echo "DISPLAY=${DISPLAY:-<unset>}  WAYLAND_DISPLAY=${WAYLAND_DISPLAY:-<unset>}  XDG_SESSION_TYPE=${XDG_SESSION_TYPE:-<unset>}"
 have xrandr && xrandr 2>/dev/null | sed -n '1,4p'
 
-line "uinput (needed for the virtual gamepads)"
-if [ -e /dev/uinput ]; then
-  ls -l /dev/uinput
-  if [ -w /dev/uinput ]; then
-    echo "writable by $(id -un): yes"
-  else
-    echo "writable by $(id -un): NO (see scripts/install_deps.sh)"
-  fi
+line "input backend"
+# Whether /dev/uinput exists says nothing useful: it is an ordinary character
+# device that `mknod` can create anywhere, driver or not. The only real test is
+# to open it and create a device, which is what this does. It reports "nodriver"
+# on hosts that then need the xtest backend instead.
+[ -e /dev/uinput ] && ls -l /dev/uinput || echo "/dev/uinput: absent"
+if [ -x "$(dirname "$0")/uinput_check.py" ] || [ -f "$(dirname "$0")/uinput_check.py" ]; then
+  python3 "$(dirname "$0")/uinput_check.py" --no-create || true
 else
-  echo "/dev/uinput MISSING"
-  echo "try: sudo modprobe uinput"
-  grep -c uinput /proc/modules 2>/dev/null | sed 's/^/uinput module loaded: /'
-  ls /lib/modules/"$(uname -r)"/kernel/drivers/input/misc/uinput.ko* 2>/dev/null \
-    || echo "no uinput.ko in this kernel's modules"
+  echo "uinput_check.py not found next to this script"
 fi
 echo "groups: $(id -nG)"
 
