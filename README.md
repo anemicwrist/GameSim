@@ -33,10 +33,17 @@ single-digit milliseconds and the game has sound.
 ## Quick start
 
 ```powershell
-git clone https://github.com/anemicwrist/GameSim.git
+git clone -b claude/mvc2-emulator-setup-74e5ig https://github.com/anemicwrist/GameSim.git
 cd GameSim
 powershell -ExecutionPolicy Bypass -File scripts\setup_windows.ps1
 ```
+
+The `-b` matters: the work lives on that branch, and `main` holds only this
+README. A plain `git clone` gives you an empty folder.
+
+No git on the machine? Download the branch as a zip instead, unpack it, and
+`cd` into the unpacked folder:
+<https://github.com/anemicwrist/GameSim/archive/refs/heads/claude/mvc2-emulator-setup-74e5ig.zip>
 
 That works out what your machine allows and tells you which emulator to install.
 Put your game dump in the `games` folder, then:

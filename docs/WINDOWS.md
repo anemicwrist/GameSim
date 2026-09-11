@@ -36,7 +36,7 @@ which is the easier route on a managed machine.
 ### 2. This repository
 
 ```powershell
-git clone https://github.com/anemicwrist/GameSim.git
+git clone -b claude/mvc2-emulator-setup-74e5ig https://github.com/anemicwrist/GameSim.git
 cd GameSim
 powershell -ExecutionPolicy Bypass -File scripts\setup_windows.ps1
 ```
