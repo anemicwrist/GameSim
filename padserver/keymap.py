@@ -59,8 +59,7 @@ def keys_for_player(index: int) -> dict[str, str]:
     """Key map for a zero-based player index."""
     if not 0 <= index < MAX_PLAYERS:
         raise ValueError(
-            f"no key map for player index {index}; "
-            f"the xtest backend supports {MAX_PLAYERS} players"
+            f"no key map for player index {index}; the xtest backend supports {MAX_PLAYERS} players"
         )
     return dict(PLAYER_KEYS[index])
 

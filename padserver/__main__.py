@@ -39,11 +39,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument(
         "--backend",
         default="uinput",
-        choices=["uinput", "xtest", "vigem", "fake"],
+        choices=["uinput", "xtest", "vigem", "winkey", "fake"],
         help=(
-            "how to deliver input (default: uinput). Use xtest on hosts where "
-            "/dev/uinput has no driver behind it, such as most containers; run "
-            "scripts/uinput_check.py to find out which applies"
+            "how to deliver input (default: uinput). Linux: uinput, or xtest "
+            "where /dev/uinput has no driver behind it (most containers) - run "
+            "scripts/uinput_check.py to find out. Windows: vigem, or winkey "
+            "where you cannot install the ViGEmBus driver"
         ),
     )
     p.add_argument("--players", type=int, default=2, help="number of pads (default: 2)")

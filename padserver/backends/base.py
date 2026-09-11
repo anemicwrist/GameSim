@@ -48,6 +48,8 @@ def make_backend(kind: str):
         from padserver.backends.vigem import VigemBackend
 
         return VigemBackend()
-    raise ValueError(
-        f"unknown backend: {kind!r} (expected fake, uinput, xtest or vigem)"
-    )
+    if kind == "winkey":
+        from padserver.backends.winkey import WinkeyBackend
+
+        return WinkeyBackend()
+    raise ValueError(f"unknown backend: {kind!r} (expected fake, uinput, xtest, vigem or winkey)")

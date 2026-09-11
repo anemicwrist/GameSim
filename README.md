@@ -1,103 +1,77 @@
 # GameSim
 
-Play Marvel vs Capcom 2 on a cloud Linux desktop, with two Android phones as the
+Play Marvel vs Capcom 2 with two friends, using two Android phones as the
 controllers and your TV as the screen.
 
 ```
-[Phone 1] ─┐   wifi → internet (Tailscale, or a Cloudflare tunnel)
-[Phone 2] ─┴──────────────►  Orgo Linux computer
-                               padserver  (this repo)
-                                 └─ two virtual pads, or two sets of keys
-                                      └─ Flycast  →  Marvel vs Capcom 2
-                               desktop → VNC
-                                            │
-   [TV] ◄── cast ── [Windows PC: Orgo viewer in the browser] ◄┘
+[Phone 1] ─┐  your own wifi
+[Phone 2] ─┴──→  Windows PC
+                   padserver  (this repo)
+                     └─ two virtual pads, or two sets of keys
+                          └─ Flycast  →  Marvel vs Capcom 2
+                   └────────── HDMI or screen mirroring ──────────→ [TV]
 ```
 
 The phones load a web page. No app to install, nothing to pair. The page turns
-touch input into two independent controllers that the emulator sees plugged
-into Dreamcast ports A and B.
+touch input into two independent controllers that the emulator sees plugged into
+Dreamcast ports A and B.
 
-## Two ways in, picked automatically
-
-How the phones' input reaches the emulator depends on what the host allows.
-`scripts/uinput_check.py` decides, and the setup scripts follow its verdict.
-
-| | **uinput** | **xtest** |
-|---|---|---|
-| What it makes | two virtual Xbox 360 gamepads | two disjoint sets of key presses |
-| Needs | a real `uinput` driver in the kernel | an X display |
-| Emulator | Flycast, standalone | Flycast core inside RetroArch |
-| Where it works | a normal Linux desktop | anywhere, containers included |
-
-Most cloud desktops, the Orgo one included, have no `uinput` driver, so **xtest
-is the usual answer there**. Note that `/dev/uinput` existing proves nothing:
-it is an ordinary character device that `mknod` will create with nothing behind
-it, which is why the check opens it instead of looking for it. RetroArch is
-needed for that path because standalone Flycast cannot split one keyboard
-between two Dreamcast ports.
+Everything runs on your own machine and your own network, so inputs arrive in
+single-digit milliseconds and the game has sound.
 
 ## You need to supply
 
-- An Orgo Linux computer. Take the largest tier you can: the emulator is the
-  hungry part. If a GPU is offered, take it. Without one everything is drawn by
-  the CPU, and `scripts/benchmark.sh` will tell you whether that is fast enough
-  before you build anything on top of it.
+- **A Windows PC.** Anything with Intel Iris Xe or better runs this at a locked
+  60 fps. Integrated graphics are fine; a Dreamcast emulator is not demanding by
+  modern standards.
 - **Your own Marvel vs Capcom 2 Dreamcast dump.** This repo contains no game
   data and will not fetch any. See [docs/GAME_FILES.md](docs/GAME_FILES.md).
-- Two Android phones with Chrome, on any network.
-- A Windows PC with Chrome or Edge to view the desktop and cast it to the TV.
+- **Two Android phones** with Chrome, on the same wifi.
+- **A way to get the picture to the TV**: an HDMI cable, a USB-C-to-HDMI adapter,
+  or wireless screen mirroring. See [docs/CASTING.md](docs/CASTING.md).
 
-## Setup, once
+## Quick start
 
-Run these on the Orgo computer (`orgo ssh <name>`, or its terminal app).
-
-```bash
-git clone https://github.com/anemicwrist/GameSim.git && cd GameSim
-bash scripts/probe.sh              # what this machine can and cannot do
-bash scripts/install_deps.sh       # python env, and picks the input backend
-bash scripts/benchmark.sh          # can it render fast enough? see below
-bash scripts/install_tailscale.sh  # private path from the phones (recommended)
+```powershell
+git clone https://github.com/anemicwrist/GameSim.git
+cd GameSim
+powershell -ExecutionPolicy Bypass -File scripts\setup_windows.ps1
 ```
 
-`install_deps.sh` prints which backend this host will use. Then install the
-emulator that goes with it:
+That works out what your machine allows and tells you which emulator to install.
+Put your game dump in the `games` folder, then:
 
-```bash
-bash scripts/install_flycast.sh    # if it said 'uinput'
-bash scripts/install_retroarch.sh  # if it said 'xtest'
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\run.ps1
 ```
 
-If it said `uinput`, log out and back in so your `input` group membership takes
-effect. Either way, put your game file under `~/games/`.
+It prints a URL. Open it in Chrome on each phone, tap **Tap to start**, and the
+badge shows PLAYER 1 or PLAYER 2. Press START on both to reach character select.
 
-## Will it actually run fast enough?
+Full walkthrough, including machines where you are not an administrator:
+[docs/WINDOWS.md](docs/WINDOWS.md).
 
-On a host with no GPU this is the question that decides everything, so answer it
-before wiring up phones and a TV. `scripts/benchmark.sh` measures the machine,
-and once you have the game file the frame counter is already switched on:
+## Two ways in, picked automatically
 
-```bash
-bash scripts/run.sh /path/to/mvc2.gdi
-```
+How the phones' input reaches the emulator depends on what the host allows. The
+setup scripts decide; you do not have to.
 
-Marvel vs Capcom 2 runs at 60 fps natively. In a real match, 55-60 means the
-plan works; 40-55 is playable but visibly slow; under 30 means run the emulator
-on your own machine instead and use this repo's pad server against that.
+| | Virtual gamepads | Synthetic keys |
+|---|---|---|
+| Windows | `vigem`, needs the ViGEmBus driver and admin rights | `winkey`, needs nothing |
+| Linux | `uinput`, needs a real uinput driver | `xtest`, needs an X display |
+| Emulator | Flycast, standalone | RetroArch with the Flycast core |
+| Each player is | a genuinely separate device | half of one shared keyboard |
 
-## Every session
+The gamepad backends are better and are used wherever possible. The key-based
+ones exist because a managed Windows machine may forbid installing a driver, and
+because most Linux containers have no uinput driver at all. They need RetroArch
+rather than standalone Flycast, which cannot bind one keyboard to two Dreamcast
+ports.
 
-```bash
-bash scripts/run.sh
-```
-
-It starts the pad server, waits for both virtual pads, applies the Flycast
-settings and launches the game fullscreen. It prints the URL for the phones.
-Open that URL in Chrome on each phone, tap **Tap to start**, and the badge shows
-PLAYER 1 or PLAYER 2. Press START on both to get to character select.
-
-On the Windows PC, open the Orgo desktop viewer fullscreen and cast the tab to
-the TV. See [docs/CASTING.md](docs/CASTING.md).
+The two players' key assignments live in `padserver/keymap.py`, and
+`scripts/configure_retroarch.py` generates the emulator's bindings from that
+same module, so they cannot drift apart.
 
 ## Controls
 
@@ -112,44 +86,75 @@ The right-hand buttons are the arcade layout.
 | HK | B | heavy kick |
 | A2 | R trigger | assist 2 |
 | START | Start | start / pause |
-| MENU | Back | opens the Flycast menu |
+| MENU | Back | opens the emulator menu |
+
+## Running it in the cloud instead
+
+The same repo runs on a Linux box, including a cloud desktop such as Orgo, with
+the phones reaching it over Tailscale or a tunnel. That is the right choice when
+you are away from the TV, and the wrong one when you are sitting in front of it:
+a cloud desktop with no GPU renders in software, its VNC stream carries no
+audio, and every input crosses the internet twice.
+
+Treat it as the portable option, not the main one. See
+[docs/ORGO_SETUP.md](docs/ORGO_SETUP.md), and run `scripts/benchmark.sh` there
+before trusting it with an evening.
+
+Orgo also earns its keep as **storage**: it has persistent disk, so your game
+dump can live there and be pulled down when needed rather than sitting on a
+work-owned laptop.
 
 ## Documentation
 
 | File | What it covers |
 |---|---|
+| [docs/WINDOWS.md](docs/WINDOWS.md) | the main path, start to finish, admin rights or not |
+| [docs/CASTING.md](docs/CASTING.md) | getting the picture to the TV, wired and wireless |
+| [docs/GAME_FILES.md](docs/GAME_FILES.md) | which files you need and how to move them around |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | how the pieces fit, and the latency budget |
-| [docs/ORGO_SETUP.md](docs/ORGO_SETUP.md) | provisioning and reaching the Orgo computer |
-| [docs/GAME_FILES.md](docs/GAME_FILES.md) | which files you need and how to get them onto the VM |
 | [docs/NETWORK.md](docs/NETWORK.md) | Tailscale, and the Cloudflare tunnel fallback |
-| [docs/CASTING.md](docs/CASTING.md) | desktop to TV, and the audio caveat |
+| [docs/ORGO_SETUP.md](docs/ORGO_SETUP.md) | the cloud option: provisioning and setup |
 | [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) | when a pad, the video or the game does not show up |
 
 ## Scripts
 
+**Windows**
+
 | Script | What it does |
 |---|---|
-| `scripts/probe.sh` | reports what this machine can do; safe to re-run any time |
+| `scripts/setup_windows.ps1` | venv, dependencies, firewall, and picks the backend |
+| `scripts/run.ps1` | starts the server and launches the game |
+
+**Linux / cloud**
+
+| Script | What it does |
+|---|---|
+| `scripts/probe.sh` | reports what a machine can do; safe to re-run any time |
 | `scripts/uinput_check.py` | decides which input backend is possible, by actually trying |
 | `scripts/benchmark.sh` | measures whether the graphics are fast enough to bother |
 | `scripts/install_deps.sh` | python environment, and installs for the backend it finds |
 | `scripts/install_flycast.sh` | Flycast from Flathub (uinput path) |
 | `scripts/install_retroarch.sh` | RetroArch and the Flycast core (xtest path) |
-| `scripts/configure_retroarch.py` | generates two-player key bindings from `padserver/keymap.py` |
 | `scripts/install_tailscale.sh` | private network path from the phones |
 | `scripts/run.sh` | starts the server and launches the game |
+
+**Either**
+
+| Script | What it does |
+|---|---|
+| `scripts/configure_retroarch.py` | generates two-player key bindings from `padserver/keymap.py` |
+| `scripts/configure_flycast.py` | merges settings into Flycast's `emu.cfg` |
 
 ## Development
 
 ```bash
 pip install -e ".[dev]"
-python -m pytest          # no kernel devices needed
+python -m pytest          # no kernel devices, no display, no Windows needed
 python -m ruff check .
-python -m padserver --backend fake --port 8080   # try the page on a desktop browser
-python scripts/uinput_check.py                   # which backend does this host allow?
+python -m padserver --backend fake --port 8080   # try the page in a browser
 python scripts/configure_retroarch.py --dry-run  # the generated key bindings
 ```
 
 `--backend fake` creates no devices, so the page and the protocol can be
-exercised anywhere, including on a machine with no `/dev/uinput`. The tests
-stub X11 and never touch a kernel device, so they run in CI unchanged.
+exercised anywhere. The tests stub Xlib, `vgamepad` and the Win32 API, so all
+four real backends are covered from Linux CI with no special hardware.

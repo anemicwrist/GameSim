@@ -26,3 +26,27 @@ jobs:
         run: python -m pytest -q
       - name: Shell scripts parse
         run: for f in scripts/*.sh; do bash -n "$f"; done
+
+  powershell:
+    # The Windows scripts cannot be syntax-checked on the machine they are
+    # written on, so check them somewhere that has PowerShell.
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PowerShell scripts parse
+        shell: pwsh
+        run: |
+          $failed = $false
+          Get-ChildItem scripts/*.ps1 | ForEach-Object {
+            $errors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile(
+              $_.FullName, [ref]$null, [ref]$errors) | Out-Null
+            if ($errors) {
+              $failed = $true
+              Write-Host "FAIL $($_.Name)"
+              $errors | ForEach-Object { Write-Host "  $_" }
+            } else {
+              Write-Host "ok   $($_.Name)"
+            }
+          }
+          if ($failed) { exit 1 }
