@@ -11,3 +11,6 @@ bios/
 *.cdi
 *.bin
 *.log
+
+# downloaded on demand by scripts/run.ps1 -Tunnel
+cloudflared.exe

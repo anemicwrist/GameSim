@@ -19,7 +19,8 @@ param(
     [string]$Token = '',
     [ValidateSet('auto', 'vigem', 'winkey')]
     [string]$Backend = 'auto',
-    [string]$Emulator
+    [string]$Emulator,
+    [switch]$Tunnel
 )
 
 $ErrorActionPreference = 'Stop'
@@ -31,6 +32,14 @@ function Fail($text) { Write-Host "error: $text" -ForegroundColor Red; exit 1 }
 $venvPython = Join-Path $RepoDir '.venv\Scripts\python.exe'
 if (-not (Test-Path $venvPython)) {
     Fail 'no virtual environment. Run scripts\setup_windows.ps1 first.'
+}
+
+# A tunnel address is public: anyone who has it could otherwise play your
+# player 2. Require a shared secret, and invent one if none was given.
+if ($Tunnel -and -not $Token) {
+    $Token = -join ((48..57) + (97..122) | Get-Random -Count 10 |
+        ForEach-Object { [char]$_ })
+    Write-Host "generated a URL secret for the tunnel: $Token" -ForegroundColor Yellow
 }
 
 if ($Emulator -and -not (Test-Path $Emulator)) {
@@ -88,18 +97,82 @@ try {
 
     # --- where the phones should point ---------------------------------------
     $suffix = if ($Token) { "?k=$Token" } else { '' }
-    Write-Host ''
-    Write-Host 'Phones open:' -ForegroundColor Green
-    Get-NetIPAddress -AddressFamily IPv4 -ErrorAction SilentlyContinue |
-        Where-Object {
-            $_.IPAddress -notlike '127.*' -and $_.IPAddress -notlike '169.254.*'
-        } |
-        ForEach-Object { Write-Host "  http://$($_.IPAddress):$Port/$suffix" }
-    if (Get-Command tailscale -ErrorAction SilentlyContinue) {
-        $ts = & tailscale ip -4 2>$null | Select-Object -First 1
-        if ($ts) { Write-Host "  http://${ts}:$Port/$suffix   (tailscale)" }
+
+    if ($Tunnel) {
+        # cloudflared dials out, so this works behind a firewall that refuses
+        # inbound connections and needs no administrator rights. It is a single
+        # executable: nothing is installed and nothing is left on the machine
+        # except the file itself, inside this repo.
+        $cloudflared = Join-Path $RepoDir 'cloudflared.exe'
+        if (-not (Test-Path $cloudflared)) {
+            $onPath = Get-Command cloudflared -ErrorAction SilentlyContinue
+            if ($onPath) {
+                $cloudflared = $onPath.Source
+            } else {
+                Write-Step 'fetching cloudflared (one file, nothing installed)'
+                $url = 'https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe'
+                try {
+                    Invoke-WebRequest -Uri $url -OutFile $cloudflared -UseBasicParsing
+                } catch {
+                    Fail @"
+could not download cloudflared.
+
+Get it manually from https://github.com/cloudflare/cloudflared/releases
+and save it as: $cloudflared
+"@
+                }
+            }
+        }
+
+        Write-Step 'opening the tunnel'
+        $tunnelLog = Join-Path $env:TEMP "gamesim-tunnel-$PID.log"
+        $tunnelProcess = Start-Process -FilePath $cloudflared `
+            -ArgumentList @('tunnel', '--url', "http://localhost:$Port") `
+            -PassThru -NoNewWindow -RedirectStandardError $tunnelLog
+
+        $publicUrl = $null
+        foreach ($attempt in 1..60) {
+            Start-Sleep -Milliseconds 500
+            if (Test-Path $tunnelLog) {
+                $match = Select-String -Path $tunnelLog -Pattern 'https://[-\w]+\.trycloudflare\.com' `
+                    -ErrorAction SilentlyContinue | Select-Object -First 1
+                if ($match) {
+                    $publicUrl = $match.Matches[0].Value
+                    break
+                }
+            }
+            if ($tunnelProcess.HasExited) { break }
+        }
+
+        Write-Host ''
+        if ($publicUrl) {
+            Write-Host 'Phones open:' -ForegroundColor Green
+            Write-Host "  $publicUrl/$suffix"
+            Write-Host ''
+            Write-Host '  (this address is public but unguessable, and the secret above'
+            Write-Host '   is required; it stops working when you close the game)'
+        } else {
+            Write-Host 'The tunnel did not report an address.' -ForegroundColor Yellow
+            Write-Host "  see $tunnelLog"
+        }
+        Write-Host ''
+    } else {
+        Write-Host ''
+        Write-Host 'Phones open:' -ForegroundColor Green
+        Get-NetIPAddress -AddressFamily IPv4 -ErrorAction SilentlyContinue |
+            Where-Object {
+                $_.IPAddress -notlike '127.*' -and $_.IPAddress -notlike '169.254.*'
+            } |
+            ForEach-Object { Write-Host "  http://$($_.IPAddress):$Port/$suffix" }
+        if (Get-Command tailscale -ErrorAction SilentlyContinue) {
+            $ts = & tailscale ip -4 2>$null | Select-Object -First 1
+            if ($ts) { Write-Host "  http://${ts}:$Port/$suffix   (tailscale)" }
+        }
+        Write-Host ''
+        Write-Host '  (if the phones cannot reach these, the firewall is blocking them:'
+        Write-Host '   re-run with -Tunnel, which needs no firewall change)'
+        Write-Host ''
     }
-    Write-Host ''
 
     # --- the emulator --------------------------------------------------------
     if (-not $Emulator) {
@@ -155,6 +228,10 @@ In RetroArch: Online Updater > Core Downloader > Sega Dreamcast (Flycast)
             -ArgumentList @('-L', "`"$($core.FullName)`"", '-f', "`"$Game`"") -Wait
     }
 } finally {
+    if ($tunnelProcess -and -not $tunnelProcess.HasExited) {
+        Write-Step 'closing the tunnel'
+        Stop-Process -Id $tunnelProcess.Id -Force -ErrorAction SilentlyContinue
+    }
     if ($padProcess -and -not $padProcess.HasExited) {
         Write-Step 'stopping padserver'
         Stop-Process -Id $padProcess.Id -Force -ErrorAction SilentlyContinue

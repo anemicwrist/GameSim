@@ -57,8 +57,16 @@ Whichever the setup script named:
   then in RetroArch go to **Online Updater → Core Downloader → Sega Dreamcast
   (Flycast)**
 
-Both offer portable or no-install builds, which avoid needing administrator
-rights and keep the machine clean.
+**Without administrator rights, take the portable build.** RetroArch offers a
+`.7z` archive on its download page that you unpack anywhere and run in place,
+with no installer and no elevation; Flycast ships as a plain `.exe`. Unpack it
+somewhere you can write, such as your user folder or next to this repository.
+`run.ps1` searches common locations, and you can always point it straight at the
+executable:
+
+```powershell
+scripts\run.ps1 -Emulator C:\Users\you\retroarch\retroarch.exe
+```
 
 ### 4. ViGEmBus, only if you want the better backend
 
@@ -88,6 +96,7 @@ Useful options:
 
 ```powershell
 scripts\run.ps1 -Game C:\dumps\mvc2.gdi      # a specific game
+scripts\run.ps1 -Tunnel                       # when the firewall blocks the phones
 scripts\run.ps1 -Port 9000                    # a different port
 scripts\run.ps1 -Token hunter2                # require ?k=hunter2 in the URL
 scripts\run.ps1 -Backend winkey               # force a backend
@@ -106,16 +115,27 @@ administrator rights, and `setup_windows.ps1` will say so if it could not.
 Try it first anyway. Windows often prompts to allow Python the first time it
 listens, and on a network marked Private it frequently works with no rule.
 
-If the phones genuinely cannot connect, use a tunnel. It makes an **outbound**
-connection, so no inbound rule and no administrator rights are needed:
+`setup_windows.ps1` inspects the firewall and tells you whether it expects the
+phones to be refused. It cannot test this by connecting to the machine itself,
+because a connection from the machine to its own address is not filtered the way
+one from a phone is, so it reads the firewall's configuration instead.
+
+If the phones genuinely cannot connect, use the tunnel:
 
 ```powershell
-cloudflared tunnel --url http://localhost:8080
+powershell -ExecutionPolicy Bypass -File scripts\run.ps1 -Tunnel
 ```
 
-That prints an HTTPS address the phones can open from anywhere. The cost is
-that input now travels out to Cloudflare and back rather than straight across
-your wifi, which adds latency. Use it only if the direct route is blocked.
+This dials **outbound** from the tablet, so no inbound rule and no administrator
+rights are needed. It fetches `cloudflared.exe` into the repository folder on
+first use: a single file, nothing installed, removed when you delete the folder.
+
+It prints an HTTPS address the phones can open, and because that address is
+public it also generates a secret and requires it in the URL. The address stops
+working when you close the game.
+
+The cost is latency: input now travels out to Cloudflare and back rather than
+straight across your wifi. Use it only when the direct route is blocked.
 
 ## Removing it cleanly
 
@@ -123,7 +143,8 @@ Relevant if this is a work machine. Almost everything lives in the repository
 folder, so deleting it removes almost all of it. In full:
 
 1. **Delete the repository folder.** This removes the code, the virtual
-   environment, the Python packages and your game files in one go.
+   environment, the Python packages, `cloudflared.exe` if you used the tunnel,
+   and your game files in one go.
 2. **Remove the firewall rule**, if one was added:
    ```powershell
    Remove-NetFirewallRule -DisplayName "GameSim padserver"

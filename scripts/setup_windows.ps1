@@ -101,25 +101,71 @@ if ($Backend -eq 'vigem') {
 }
 
 # --- firewall ----------------------------------------------------------------
-Write-Step "allowing the phones to reach port $Port"
+# Testing this from the machine itself proves nothing: a connection to your own
+# address is not filtered the way one from a phone is. So inspect the firewall's
+# actual configuration and report what it implies, rather than guessing.
+Write-Step "can the phones reach port $Port?"
 $ruleName = 'GameSim padserver'
+$needsTunnel = $false
+
 $existing = Get-NetFirewallRule -DisplayName $ruleName -ErrorAction SilentlyContinue
 if ($existing) {
-    Write-Host '    firewall rule already present'
+    Write-Host '    a rule for this app is already present'
 } elseif ($isAdmin) {
     New-NetFirewallRule -DisplayName $ruleName -Direction Inbound `
         -LocalPort $Port -Protocol TCP -Action Allow -Profile Private | Out-Null
     Write-Host '    firewall rule added for private networks'
 } else {
-    Write-Warn "cannot add a firewall rule without administrator rights."
-    Write-Host '    Try it anyway: Windows often prompts to allow Python the first time,'
-    Write-Host '    and on a private network it may work with no rule at all.'
-    Write-Host ''
-    Write-Host '    If the phones cannot connect, use a tunnel instead. It makes an'
-    Write-Host '    OUTBOUND connection, so it needs no firewall change at all:'
-    Write-Host '      cloudflared tunnel --url http://localhost:' -NoNewline
-    Write-Host $Port
-    Write-Host '    See docs/WINDOWS.md, "when the firewall is locked down".'
+    # No rule and no way to add one. Work out whether that actually blocks us.
+    $activeProfiles = @(Get-NetConnectionProfile -ErrorAction SilentlyContinue |
+        Select-Object -ExpandProperty NetworkCategory -Unique)
+    if ($activeProfiles.Count -eq 0) { $activeProfiles = @('Unknown') }
+    Write-Host "    active network type: $($activeProfiles -join ', ')"
+
+    $blocking = @()
+    foreach ($category in $activeProfiles) {
+        $profileName = switch ("$category") {
+            'DomainAuthenticated' { 'Domain' }
+            'Private'             { 'Private' }
+            'Public'              { 'Public' }
+            default               { $null }
+        }
+        if (-not $profileName) { continue }
+        $fw = Get-NetFirewallProfile -Name $profileName -ErrorAction SilentlyContinue
+        if ($fw -and $fw.Enabled -and $fw.DefaultInboundAction -ne 'Allow') {
+            $blocking += $profileName
+        }
+    }
+
+    # An existing broad rule for this Python may already let it through.
+    $pythonRule = Get-NetFirewallApplicationFilter -ErrorAction SilentlyContinue |
+        Where-Object { $_.Program -and $_.Program -like '*python*' } |
+        ForEach-Object { $_ | Get-NetFirewallRule -ErrorAction SilentlyContinue } |
+        Where-Object { $_.Direction -eq 'Inbound' -and $_.Action -eq 'Allow' -and $_.Enabled } |
+        Select-Object -First 1
+
+    if ($pythonRule) {
+        Write-Host '    an existing inbound rule already allows a Python interpreter;'
+        Write-Host '    the phones may well connect. Try it before anything else.'
+    } elseif ($blocking.Count -gt 0) {
+        $needsTunnel = $true
+        Write-Warn "the $($blocking -join ' and ') firewall blocks inbound connections,"
+        Write-Host '    there is no rule allowing this port, and adding one needs'
+        Write-Host '    administrator rights. Your phones will probably be refused.'
+    } else {
+        Write-Host '    inbound does not appear to be blocked; the phones should connect.'
+    }
+
+    if ($needsTunnel) {
+        Write-Host ''
+        Write-Host '    Use a tunnel instead. It dials OUT from this machine, so it needs'
+        Write-Host '    no firewall change and no administrator rights:'
+        Write-Host ''
+        Write-Host '      scripts\run.ps1 -Tunnel' -ForegroundColor Green
+        Write-Host ''
+        Write-Host '    That fetches cloudflared (a single .exe, nothing installed) and'
+        Write-Host '    prints an address the phones can open. See docs/WINDOWS.md.'
+    }
 }
 
 # --- emulator config ---------------------------------------------------------
