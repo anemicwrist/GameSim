@@ -50,6 +50,8 @@ if (-not $python) {
 }
 $version = & ([scriptblock]::Create("$python --version")) 2>&1
 Write-Host "    $version"
+$pyMinor = 0
+if ("$version" -match 'Python (\d+)\.(\d+)') { $pyMinor = [int]$Matches[2] }
 
 # --- virtual environment, inside the repo so nothing leaks onto the machine ---
 Write-Step 'creating the virtual environment'
@@ -64,6 +66,36 @@ if (-not (Test-Path $venvPython)) {
 }
 & $venvPython -m pip install --quiet --upgrade pip
 & $venvPython -m pip install --quiet -e $RepoDir
+# PowerShell does not treat a failing native command as a terminating error even
+# with ErrorActionPreference = Stop, so pip's exit code has to be checked by
+# hand. Skipping this lets a broken install look like a successful one and
+# surface later as something baffling.
+if ($LASTEXITCODE -ne 0) {
+    Write-Warn "installing the dependencies failed (pip exit code $LASTEXITCODE)."
+    if ($pyMinor -ge 14) {
+        Write-Host ''
+        Write-Host "    You are on Python 3.$pyMinor, which is new enough that some"
+        Write-Host '    packages have no prebuilt wheel for it yet. Without one, pip tries'
+        Write-Host '    to compile from source, which needs a C compiler you probably do'
+        Write-Host '    not have and cannot install without administrator rights.'
+        Write-Host ''
+        Write-Host '    Install Python 3.12 from the Microsoft Store (no admin needed),'
+        Write-Host '    delete the .venv folder, and run this script again.'
+    } else {
+        Write-Host '    Scroll up for pip''s own error, which says why.'
+    }
+    exit 1
+}
+
+# An install can report success and still be unusable, so import the thing.
+Write-Step 'checking the install actually works'
+& $venvPython -c "import aiohttp, padserver; print('    ok: padserver imports, aiohttp ' + aiohttp.__version__)"
+if ($LASTEXITCODE -ne 0) {
+    Write-Warn 'the package installed but cannot be imported.'
+    Write-Host '    Delete the .venv folder and run this script again. If it repeats,'
+    Write-Host '    send the error above.'
+    exit 1
+}
 
 # --- which backend can this machine use? -------------------------------------
 Write-Step 'checking what this machine allows'
@@ -96,6 +128,10 @@ if ($Backend -eq 'vigem' -and -not $hasVigem) {
 Write-Step "installing dependencies for the '$Backend' backend"
 if ($Backend -eq 'vigem') {
     & $venvPython -m pip install --quiet -e "$RepoDir[vigem]"
+    if ($LASTEXITCODE -ne 0) {
+        Write-Warn 'installing vgamepad failed; falling back to the winkey backend.'
+        $Backend = 'winkey'
+    }
 } else {
     Write-Host '    winkey uses the standard library only; nothing to install.'
 }
