@@ -10,6 +10,12 @@ bios/
 *.chd
 *.cdi
 *.bin
+*.raw
+*.iso
+*.cue
+*.gdi.*
+*.apk
+*.7z
 *.log
 
 # downloaded on demand by scripts/run.ps1 -Tunnel
