@@ -13,7 +13,36 @@ assumes that.
 | `.gdi` | a text index plus a set of numbered track files. Keep all of them together in one folder. |
 | `.chd` | one compressed file, and the easiest to move around. Roughly 1 GB. |
 | `.cdi` | a single-file image. Works, but `.gdi` and `.chd` are more faithful. |
-| `.cue` + `.bin` | works for CD rips |
+| `.cue` + `.bin` | a text index plus numbered track files. Keep all of them together, with the exact names the `.cue` lists. |
+
+## Checking a dump is complete
+
+A Dreamcast GD-ROM has two areas, and this catches people out. The
+**single-density** area is the small part an ordinary CD drive can read: a
+warning track and some audio, a few megabytes in total. The **high-density**
+area is the game, and it is around 1 GB.
+
+A `.cue` from a GD-ROM rip usually lists three tracks and labels the areas:
+
+```
+REM SINGLE-DENSITY AREA
+  TRACK 01 MODE1/2352      <- warning data, ~1 MB
+  TRACK 02 AUDIO           <- audio, ~14 MB
+REM HIGH-DENSITY AREA
+  TRACK 03 MODE1/2352      <- THE GAME, ~1 GB
+```
+
+So before copying anything, open the `.cue` in a text editor and confirm that a
+file exists for **every** `FILE` line it names, and that the high-density track
+is the large one. A set that totals a few tens of megabytes contains no game at
+all, however many files it has.
+
+Two further rules for `.cue` and `.gdi` sets:
+
+- **Keep the exact filenames.** The index looks for the names written inside it,
+  spaces and punctuation included. Renaming a track, or letting a download
+  rename it, breaks the set.
+- **Keep every file in one folder**, alongside the index.
 
 **The BIOS, optional.** `dc_boot.bin` and `dc_flash.bin`. Flycast has a built-in
 high-level BIOS and boots Marvel vs Capcom 2 fine without them. Real BIOS files
