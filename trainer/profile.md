@@ -18,6 +18,11 @@ _Last updated: 2026-09-28 (Phase 1 intake)_
   win conditions, endgame counting) when it comes up.
 - Narrated recordings are available, so every review compares what the Trainer meant to do with what they did.
 
+## For later (Doubles and official events)
+- Official VGC events at Regionals and above require a Nintendo Switch. The mobile version is allowed only at Open Play,
+  VGC Cups and Challenges, and Celebration Events (VGC Tournament Handbook §3.2.1, see
+  `knowledge/regulations/vgc-reg-m-c.md` §4). Before any Regional, practice on a Switch to get used to its controls and timer.
+
 ## Current team(s)
 Not yet submitted. See `trainer/teams/`.
 
