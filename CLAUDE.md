@@ -10,3 +10,5 @@ This repo runs a three-agent coaching team for one player (the "Trainer"). The m
 - Cite sources as described in `knowledge/sources.md`. Keep video files out of git.
 - To sample frames from a Trainer's game recording: `python3 tools/extract_frames.py <recording>` (frames land in the
   git-ignored `frames/` folder).
+- To find and read Showdown replays for the Singles supplement: `python3 tools/showdown_replays.py search|fetch|board …`
+  (downloads land in the git-ignored `replays/` folder).

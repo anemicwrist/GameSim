@@ -31,7 +31,7 @@ The first pilot (`knowledge/film/pilot-report.md`) settled where that evidence c
 
 | Era | Window | Game and gimmick | Worlds | How to use it |
 |---|---|---|---|---|
-| Champions | May 2026 → now | Champions · Mega Evolution | 2026 San Francisco | Directly applicable. Highest weight. |
+| Champions | Apr 2026 → now | Champions · Mega Evolution | 2026 San Francisco | Directly applicable. Highest weight. |
 | Scarlet/Violet | 2023 → May 2026 | SV · Terastallization | 2023 Yokohama, 2024 Honolulu, 2025 Anaheim | Fundamentals, and Pokémon or sets that exist in Champions. Lines that depend on Tera don't transfer unless Champions has Tera. |
 | Sword/Shield | Sep 2021 → late 2022 | SwSh · Dynamax | 2022 London | Fundamentals only. Lines built on Dynamax don't transfer. |
 

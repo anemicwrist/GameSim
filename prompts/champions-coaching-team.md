@@ -38,7 +38,8 @@ Doubles well prepared.
 ### Baseline context (as of late September 2026 — the Scout must re-check this on first run)
 
 - Pokémon Champions is now the official competitive platform for Play! Pokémon VGC. It took over from Scarlet/Violet during
-  the 2026 season. The first Champions-only event was the Indianapolis Regional (May 29–31, 2026). The 2026 World
+  the 2026 season. Official events moved to Champions in May 2026: the online Global Challenge (May 1–4) and several
+  Asian Master Ball League events came first, and the Indianapolis Regional (May 29–31) was the first Champions Regional. The 2026 World
   Championships (San Francisco, August 28–30) were the first played on Champions.
 - **Ranked Battles** open right after the tutorial, at the lowest tier. Singles and Doubles have **separate** ranks, queues,
   and season rewards. Ranked seasons are numbered (M-1, M-2, …) and each has its own rules. The top ranks (Master Ball 1–3
@@ -46,7 +47,7 @@ Doubles well prepared.
 - **Singles:** 3v3. Each player registers 6 and picks 3 after seeing the opponent's 6 at Team Preview. Confirm the level
   rules and clauses.
 - **Doubles:** 4 Pokémon per side battle. Official VGC events use **bring 6 pick 4, Level 50, Open Team List, timed rounds**.
-- Official VGC regulation history: **M-A** (May 29 – Jun 17, 2026; no Legendaries or Restricteds, Mega Evolution returns) →
+- Official VGC regulation history: **M-A** (Apr 8 – Jun 17, 2026, from the game's launch; no Legendaries or Restricteds, Mega Evolution returns) →
   **M-B** (Jun 17 – Sep 8, 2026; the 2026 Worlds format) → **M-C** (active from Sep 9, 2026). Ranked seasons may use
   different rules, so check each one.
 - Mega Evolution is the headline mechanic. Check which other gimmicks (Tera, Dynamax, Z-Moves, etc.) are or aren't in the game
@@ -479,7 +480,7 @@ The first pilot (`knowledge/film/pilot-report.md`) settled where that evidence c
 
 | Era | Window | Game and gimmick | Worlds | How to use it |
 |---|---|---|---|---|
-| Champions | May 2026 → now | Champions · Mega Evolution | 2026 San Francisco | Directly applicable. Highest weight. |
+| Champions | Apr 2026 → now | Champions · Mega Evolution | 2026 San Francisco | Directly applicable. Highest weight. |
 | Scarlet/Violet | 2023 → May 2026 | SV · Terastallization | 2023 Yokohama, 2024 Honolulu, 2025 Anaheim | Fundamentals, and Pokémon or sets that exist in Champions. Lines that depend on Tera don't transfer unless Champions has Tera. |
 | Sword/Shield | Sep 2021 → late 2022 | SwSh · Dynamax | 2022 London | Fundamentals only. Lines built on Dynamax don't transfer. |
 
