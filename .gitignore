@@ -1,0 +1,9 @@
+# Game and broadcast recordings stay out of git (store links and notes instead)
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.avi
+*.m4a
+# Scratch output from frame extraction
+frames/
