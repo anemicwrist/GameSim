@@ -21,9 +21,10 @@ status: draft   # extracted from the exact text log; awaiting the second-agent Q
 > `[log]` = taken from the replay's battle log. `[inferred]` = a deduction the log supports but doesn't state.
 > **My read** = Scout analysis.
 > Source: the battle log — (Pokémon Showdown replay, https://replay.pokemonshowdown.com/gen9championsbssregmc-2683599297.json,
-> accessed 2026-09-28, Tier 2). Typings, abilities and base stats — (Pokémon Showdown source, github.com/smogon/pokemon-showdown
-> `data/pokedex.ts` and `data/mods/champions/`, accessed 2026-09-28, Tier 2; Showdown's implementation of Champions,
-> not checked against the game client).
+> accessed 2026-09-28, Tier 2). Typings, abilities and base stats — (Pokémon Showdown public data,
+> https://play.pokemonshowdown.com/data/pokedex.json, accessed 2026-09-28, Tier 2). Move data — (Pokémon Showdown public
+> data, https://play.pokemonshowdown.com/data/moves.json, accessed 2026-09-28, Tier 2). This is Showdown's data, not
+> checked against the Champions game client.
 > Rules [log]: Level 50, Species Clause, Item Clause, register 6 / bring 3. 26 turns, 5 min 35 s, played 14:58 UTC.
 > Data quirk: the log's T22 burn line reads `20/100y brn` (a stray character). The HP is read as 20%.
 
@@ -129,8 +130,8 @@ status: draft   # extracted from the exact text log; awaiting the second-agent Q
 - **Keep the Pokémon that beats their last one.** Samurott-Hisui at 34% was Dragalge THL's only real threat to
   Gholdengo. It sat out from T9 to T23 and then won the game.
   `[era: singles-supplement | mode: singles | topic: win-condition]`
-- **Prankster status moves fail against Dark types** (the Gen 7+ rule; Showdown's Champions mod leaves Prankster
-  unchanged). A Prankster Grimmsnarl or Sableye can't Thunder Wave, Will-O-Wisp or Parting Shot a Samurott-Hisui.
-  `[era: singles-supplement | mode: singles | topic: mechanics]`
+- **Prankster status moves fail against Dark types** (the Gen 7+ rule; not yet verified for Champions, so it needs an
+  entry in knowledge/mechanics.md). A Prankster Grimmsnarl or Sableye can't Thunder Wave, Will-O-Wisp or Parting Shot a
+  Samurott-Hisui. `[era: singles-supplement | mode: singles | topic: mechanics]`
 - **Screens with Light Clay last 8 turns** (both setters here). Count them.
   `[era: singles-supplement | mode: singles | topic: screens]`

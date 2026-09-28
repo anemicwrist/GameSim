@@ -21,9 +21,10 @@ status: draft   # extracted from the exact text log; awaiting the second-agent Q
 > `[log]` = taken from the replay's battle log. `[inferred]` = a deduction the log supports but doesn't state.
 > **My read** = Scout analysis.
 > Source: the battle log — (Pokémon Showdown replay, https://replay.pokemonshowdown.com/gen9championsbssregmc-2688548425.json,
-> accessed 2026-09-28, Tier 2). Typings and abilities of Megas — (Pokémon Showdown source, github.com/smogon/pokemon-showdown
-> `data/pokedex.ts` and `data/mods/champions/`, accessed 2026-09-28, Tier 2; Showdown's implementation of Champions,
-> not checked against the game client).
+> accessed 2026-09-28, Tier 2). Typings, abilities and base stats — (Pokémon Showdown public data,
+> https://play.pokemonshowdown.com/data/pokedex.json, accessed 2026-09-28, Tier 2). Move data — (Pokémon Showdown public
+> data, https://play.pokemonshowdown.com/data/moves.json, accessed 2026-09-28, Tier 2). This is Showdown's data, not
+> checked against the Champions game client.
 > Rules [log]: Level 50, Species Clause, Item Clause, register 6 / bring 3. 11 turns, 3 min 28 s, played 05:55 UTC.
 
 ## Team Preview
