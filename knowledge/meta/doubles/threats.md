@@ -357,7 +357,7 @@ A living page. **Last updated:** 2026-09-28 by Scout. **Status:** PROVISIONAL. B
 | Mega Gardevoir | Baltimore 10.5% but 47.9% win and conversion 0.68; Pixilate Hyper Voice + Expanding Force with Indeedee | 167 (152) |
 | Mega Staraptor | Baltimore 9.9%, conversion 1.43; Mega ability Contrary (Close Combat raises its defenses), Tailwind 73% | 178 (162) |
 | Mega Tyranitar + Excadrill (sand) | Baltimore winner (Ugarte). Excadrill has Sand Rush and a Sash; Mega Tyranitar has Rock Slide, Knock Off, Low Kick | Tyranitar-Mega 135 (123); Excadrill 154 (140) |
-| Mega Gengar (Perish trap) | 4.5% usage, 55.0% win, three M-C top 8s; Shadow Tag (Showdown data) | 200 (182) |
+| Mega Gengar (Perish trap) | 4.5% usage, 55.0% win; on 3 of the 24 M-C top-8 teams (two Perish builds); Shadow Tag (Showdown data) | 200 (182) |
 | Kommo-o | Baltimore conversion 1.74, 54.2% win; Clangorous Soul in Frankfurt 3rd and 5th | 150 (137) |
 | Volcarona | Rage Powder / Tailwind support in Frankfurt 1st and Brisbane 7th; Quiver Dance in Frankfurt 7th | 167 (152) |
 | Mega Froslass | Worlds 3rd, 4th and Juniors champion (M-B); M-C: Baltimore 6th, Frankfurt 7th; Snow Warning + Aurora Veil + Blizzard | 189 (172) |

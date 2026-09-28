@@ -35,7 +35,6 @@ From Limitless (T2):
 - **Indeedee-M:** Choice Scarf, Modest; Expanding Force / Mystical Fire / **Trick** / Protect.
 - **Sneasler:** White Herb; Dire Claw / Close Combat / **Coaching** / Protect.
 - **Mega Salamence:** Timid; Hyper Voice / Draco Meteor / **Flamethrower** / Protect.
-- A search-engine summary says he Coached Mega Tyranitar in the final (T4 lead, **unverified**).
 
 ## Team reports and public content
 Victory Road Pastes has his open team list: "Joseph Ugarte's 2027 Baltimore Regional Championships OTS" (vrpastes.com/QGsL7HXz, T2; it contains the open-team-list information only, with no spreads). No written report was found in this pass.

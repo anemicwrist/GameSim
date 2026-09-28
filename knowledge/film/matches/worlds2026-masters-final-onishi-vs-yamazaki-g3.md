@@ -93,7 +93,6 @@ Turn-by-turn log: Not available from permitted sources. No permitted written sou
 
 Moments with no known turn number (order unknown):
 - M1: Yamazaki made "a crowd-pleasing play to set the win—double-up Feint and Aqua Jet to take down Hiroshi Onishi's Mega Charizard Y! He admitted himself it wasn't optimal, but it sure was cool." `[report]` — (pokemon.com, "Quick Attack: Top Moments from the 2026 Pokémon World Championships", https://www.pokemon.com/us/news/quick-attack-top-moments-from-the-2026-pokemon-world-championships, published 2026-09-02, Tier 1). Game number: the article doesn't give one. I assign it to game 3 `[inferred]` because "to set the win" plus the 2-1 score points to the deciding game. On Yamazaki's team only Sneasler has Feint and only Basculegion has Aqua Jet (RK9 list above), so both were on the field at that moment `[inferred]`.
-  - Unverified leads (Tier 4, not used as fact): a search-engine summary and a guide site (Deltia's Gaming, which refused automated fetches) say the Feint broke Charizard's Protect and that this happened in the deciding game. Check this in watch-along.
 - M2: Onishi on his Charizard set: "ソーラービームの不採用によりイダイトウやラグラージが重くなるのは明確にデメリットではあります。（決勝のGame3はまさにそうですね）". Translation (Scout): "Not running Solar Beam clearly makes Basculegion and Swampert hard to handle (the final's Game 3 was exactly that)." `[report]` — (Onishi report, https://note.com/cona_5757/n/n0b5081073f01, 2026-09-13, Tier 3)
 
 ## Key Decisions

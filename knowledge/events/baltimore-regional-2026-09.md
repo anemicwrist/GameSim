@@ -57,7 +57,7 @@ Team sources: Limitless team lists, standings.limitlessvgc.com/0037/player/<id>/
 - **Psychic Terrain:** Indeedee-M sets terrain, which boosts Expanding Force and triggers Corviknight's Psychic Seed.
 - Mega Salamence is the flexible special attacker.
 - Coaching and Bulk Up / Power Trip give a late-game setup path.
-- A 2026-09-28 search-engine summary says Ugarte used Coaching on Mega Tyranitar in the final (T4 lead, **unverified**).
+- Open item for watch-along: what Ugarte's Sneasler targeted with Coaching in the final.
 - Ugarte ran an earlier version of the same shell (Excadrill / Tyranitar / Corviknight / Indeedee / Sneasler + Annihilape) to 8th at the Las Vegas Regional in November 2025, when the format was Scarlet/Violet (Limitless profile, limitlessvgc.com/players/1088, T2).
 
 ## Usage (DATA)
