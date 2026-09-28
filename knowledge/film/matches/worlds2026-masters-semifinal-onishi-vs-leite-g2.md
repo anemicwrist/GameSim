@@ -10,7 +10,7 @@ players: [Hiroshi Onishi (JP), João Felipe Leite (BR)]
 winner: Hiroshi Onishi   # [inferred] from the 2-0 set score: the set winner won both games
 video: https://www.youtube.com/watch?v=SPiMHL6SfzA   # official "VGC Day 2" stream VOD; the match started about 16:25 PDT (Liquipedia); the VOD offset is not published on any permitted page
 team_lists: https://rk9.gg/teamlist/public/WCS02wAQpCIaqFmXxER4/zQSjw85uxlz690ShQNiG (Onishi) | https://rk9.gg/teamlist/public/WCS02wAQpCIaqFmXxER4/cdj4Zi0xQo0jiJ4lnkHh (Leite)
-status: draft
+status: draft-text
 # --- pilot extensions (proposed in knowledge/film/pilot-report.md; not yet in the README schema) ---
 series_score: "Onishi 2-0 Leite"
 game_winner_basis: inferred-from-set-score

@@ -10,7 +10,7 @@ players: [Takuma Yamazaki (JP), Zachary Weed (US)]
 winner: Takuma Yamazaki   # [inferred] from the 2-1 set score: in a best of 3 that ends 2-1, the set winner won game 3
 video: https://www.youtube.com/watch?v=SPiMHL6SfzA   # official "VGC Day 2" stream VOD; the match started about 17:05 PDT (Liquipedia); the VOD offset is not published on any permitted page
 team_lists: https://rk9.gg/teamlist/public/WCS02wAQpCIaqFmXxER4/vNFhoueupPbBpYYYSUPK (Yamazaki) | https://rk9.gg/teamlist/public/WCS02wAQpCIaqFmXxER4/bunpK59QyZm9f4p9Ryty (Weed)
-status: draft
+status: draft-text
 # --- pilot extensions (proposed in knowledge/film/pilot-report.md; not yet in the README schema) ---
 series_score: "Yamazaki 2-1 Weed"
 game_winner_basis: inferred-from-set-score

@@ -10,7 +10,7 @@ players: [Hiroshi Onishi (JP), Takuma Yamazaki (JP)]
 winner: Not available from permitted sources   # the set was 2-1 to Yamazaki, so game 3 was his and games 1 and 2 were split, one each; no permitted source says which way
 video: https://www.youtube.com/watch?v=GHNLQjVj1Xc   # official upload of the whole set; game 1 presumably starts near the beginning, but no timestamp is published
 team_lists: https://rk9.gg/teamlist/public/WCS02wAQpCIaqFmXxER4/zQSjw85uxlz690ShQNiG (Onishi) | https://rk9.gg/teamlist/public/WCS02wAQpCIaqFmXxER4/vNFhoueupPbBpYYYSUPK (Yamazaki)
-status: draft
+status: draft-text
 # --- pilot extensions (proposed in knowledge/film/pilot-report.md; not yet in the README schema) ---
 series_score: "Onishi 1-2 Yamazaki"
 game_winner_basis: unknown

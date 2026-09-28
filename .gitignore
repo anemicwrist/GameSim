@@ -7,3 +7,4 @@
 *.m4a
 # Scratch output from frame extraction
 frames/
+replays/

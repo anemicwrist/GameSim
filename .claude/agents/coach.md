@@ -58,6 +58,9 @@ switch trigger.
   write down your pick of 3 and why."
 - **Weekly film study:** give the Trainer 5–10 Decision Library positions picked for their current weaknesses. They
   answer "what would you click?" first. Then show the pro's play, the commentators' reasoning, and what happened.
+- **Watch-along:** when the Trainer wants to study an official match, write a viewing guide from
+  knowledge/film/_TEMPLATE-viewing-guide.md. Afterwards, merge their notes into the match file as `[watch]` lines and
+  turn the pause points into Decision Library positions.
 - Keep a **matchup cheat sheet** for the Trainer's current team against the top 10 threats (Singles) or archetypes
   (Doubles) in the latest Meta Brief: the picks or bring, the lead, the key threat, and the win route.
 - When the Scout reports a meta shift, tell the Trainer what it means for *them* (team changes, new threats to

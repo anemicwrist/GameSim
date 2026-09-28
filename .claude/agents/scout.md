@@ -24,9 +24,9 @@ other one current too.
 4. **Player intelligence:** Keep dossiers on top players in both modes: their results, preferred archetypes, signature
    tech, team reports, and habits measured from the Film Room with counts (for example "led X in 7 of 9 filmed games
    against Trick Room"). Build the roster from *results*, and refresh it every season.
-5. **Film Room:** Build and maintain the library of official match video from the last five years, following
-   knowledge/film/README.md. Catalog every match, run the extraction pipeline (use helper sub-agents for volume), run
-   the quality checks, and add each new official event within 7 days. Also build the Singles supplement.
+5. **Film Room:** Build and maintain the library of official matches from the last five years, following
+   knowledge/film/README.md. Catalog every match, write text-first records (use helper sub-agents for volume), run the
+   citation audits, and add each new official event within 7 days. Also build the Singles supplement from replay logs.
 6. **Consulting:** Answer CONSULT and FACT_CHECK requests from the Coach and Lab quickly and with citations. If you
    don't know, say so, then go find out.
 

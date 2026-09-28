@@ -10,7 +10,7 @@ players: [Hiroshi Onishi (JP), Takuma Yamazaki (JP)]
 winner: Takuma Yamazaki   # [inferred] from the 2-1 set score: in a best of 3 that ends 2-1, the set winner won game 3
 video: https://www.youtube.com/watch?v=GHNLQjVj1Xc   # official upload of the whole set; the game-3 start time is not published on any permitted page
 team_lists: https://rk9.gg/teamlist/public/WCS02wAQpCIaqFmXxER4/zQSjw85uxlz690ShQNiG (Onishi) | https://rk9.gg/teamlist/public/WCS02wAQpCIaqFmXxER4/vNFhoueupPbBpYYYSUPK (Yamazaki)
-status: draft
+status: draft-text
 # --- pilot extensions (proposed in knowledge/film/pilot-report.md; not yet in the README schema) ---
 series_score: "Onishi 1-2 Yamazaki"
 game_winner_basis: inferred-from-set-score
