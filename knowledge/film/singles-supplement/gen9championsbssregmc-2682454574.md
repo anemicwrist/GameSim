@@ -12,7 +12,7 @@ rating: 1377   # Showdown replay rating (= the lower of the two post-game Elos).
 video: https://replay.pokemonshowdown.com/gen9championsbssregmc-2682454574
 team_lists: "none published; both 6s come from the log's Team Preview; sets only as revealed in play"
 official: false
-status: draft   # extracted from the exact text log; awaiting the second-agent QC in README 4.5 step 6
+status: verified   # turn log checked against the replay log by tools/showdown_replays.py on 2026-09-28 (README 4.5, replays step 3)
 ---
 
 > **NON-OFFICIAL.** This is a Pokémon Showdown ladder game. It is not Pokémon Champions in-game ranked and not a
