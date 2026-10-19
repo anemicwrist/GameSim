@@ -1,0 +1,4207 @@
+{
+ "meta": {
+  "subject": "8055 Crown Way, Jonesboro, GA 30238 (parcel 13211D B011)",
+  "model_date": "2026-10-19",
+  "script": "/tmp/claude-0/-home-user-GameSim/5bfe0ab3-48c3-50bc-a339-6dfe509a3a76/scratchpad/valuation_model.py",
+  "notes_dir": "/home/user/GameSim/research_notes/8055 Crown Way investment analysis/"
+ },
+ "inputs": {
+  "list_price": {
+   "value": 200000,
+   "src": "verification.md claim 1; property_record.md KQ1",
+   "date": "2026-10-13 listed; status 2026-10-18"
+  },
+  "sf_mls": {
+   "value": 2117,
+   "src": "verification.md claim 3 (MLS 2,117 per appraisal; county 2,119 = 1,575 main + 544 frame addition)",
+   "date": "2026-10-19"
+  },
+  "sf_main_block": {
+   "value": 1575,
+   "src": "verification.md claim 3 / gapfill_2 KQ2 (A0 MAIN polygon)",
+   "date": "2026-10-19"
+  },
+  "year_built": {
+   "value": 1968,
+   "src": "verification.md claim 3",
+   "date": "2026-10-19"
+  },
+  "beds_mls": {
+   "value": 4,
+   "src": "verification.md claim 4 (county card says 3)",
+   "date": "2026-10-19"
+  },
+  "baths_full": {
+   "value": 3,
+   "src": "verification.md claim 4",
+   "date": "2026-10-19"
+  },
+  "county_notice_value_2026": {
+   "value": 200500,
+   "src": "verification.md claim 6 (notice 06/30/2026)",
+   "date": "2026-06-30"
+  },
+  "millage_2026_district8": {
+   "value": 39.552,
+   "src": "gapfill_6 KQ1 (15.052 county M&O + 4.500 fire + 20.000 school), adopted 2026-09-24 / 2026-10-05",
+   "date": "2026-10-05"
+  },
+  "streetlight_fee": {
+   "value": 35,
+   "src": "property_record.md KQ2 tax-by-authority tab",
+   "date": "2025"
+  },
+  "assessment_ratio": {
+   "value": 0.4,
+   "src": "rental_and_operating_costs.md KQ3 (O.C.G.A. 48-5-7)",
+   "date": "2026"
+  },
+  "tax_growth_pa": {
+   "value": 0.03,
+   "src": "rental_and_operating_costs.md KQ3 inference (2-6%/yr; county adopted above rollback 2024-2026); model uses 3%",
+   "date": "2026"
+  },
+  "rent_base_achieved": {
+   "value": 2025,
+   "src": "gapfill_4 KQ1 (achieved $1,950-$2,100, base $2,000-$2,050; model uses midpoint $2,025)",
+   "date": "2026-10-19"
+  },
+  "rent_low": {
+   "value": 1950,
+   "src": "gapfill_4 KQ1 low end of achieved range",
+   "date": "2026-10-19"
+  },
+  "rent_high": {
+   "value": 2100,
+   "src": "gapfill_4 KQ1 high end of achieved range",
+   "date": "2026-10-19"
+  },
+  "rent_lightly_refreshed": {
+   "value": 1900,
+   "src": "gapfill_4 KQ1 ($1,850-$1,950 lightly refreshed)",
+   "date": "2026-10-19"
+  },
+  "rent_zestimate": {
+   "value": 1994,
+   "src": "property_record.md KQ4 (unverified per verification.md claim 7)",
+   "date": "2026-10-18"
+  },
+  "rent_redfin_estimate": {
+   "value": 1876,
+   "src": "property_record.md KQ4 (unverified per verification.md claim 7)",
+   "date": "2026-10-18"
+  },
+  "hud_fy2027_safmr_4br_30238": {
+   "value": 2320,
+   "src": "verification.md claim 7 (HUD FY27_safmrs.xlsx, effective 2026-10-01)",
+   "date": "2026-10-01"
+  },
+  "voucher_payment_standard_range": {
+   "value": [
+    2088,
+    2320,
+    2552
+   ],
+   "src": "gapfill_4 KQ2 (90/100/110% of SAFMR; JHA table not published)",
+   "date": "2026-10-19"
+  },
+  "section8_contract_rent": {
+   "value": 2100,
+   "src": "gapfill_4 KQ2 (rent reasonableness caps contract rent near $2,050-$2,150)",
+   "date": "2026-10-19"
+  },
+  "rent_growth_base_pa": {
+   "value": 0.025,
+   "src": "valuation_methods.md KQ4 (INVH Atlanta blended +2.8%, ZORI metro +2.1%, county +1.6%; Rental Beast SFR -3%)",
+   "date": "2026-09/10"
+  },
+  "vacancy_credit_loss": {
+   "value": 0.08,
+   "src": "rental_and_operating_costs.md KQ2 inference (8% defensible; 5% aggressive)",
+   "date": "2026-10-18"
+  },
+  "management_pct_of_collected": {
+   "value": 0.09,
+   "src": "rental_and_operating_costs.md KQ4 (8-10% metro Atlanta)",
+   "date": "2026"
+  },
+  "leasing_fee_pa": {
+   "value": 510,
+   "src": "rental_and_operating_costs.md KQ4 (half-month fee over 2-yr tenancy)",
+   "date": "2026"
+  },
+  "maintenance_pct_gross": {
+   "value": 0.075,
+   "src": "rental_and_operating_costs.md KQ4 (1968 house)",
+   "date": "2026"
+  },
+  "capex_reserve_pct_gross": {
+   "value": 0.1,
+   "src": "rental_and_operating_costs.md KQ4 (10-15% for >25-yr-old property)",
+   "date": "2026"
+  },
+  "insurance_dp3_pa": {
+   "value": 1500,
+   "src": "gapfill_6 KQ3 (Steadily Atlanta SFR $1,200-$1,700; GA median $1,433)",
+   "date": "2026-10-19"
+  },
+  "insurance_growth_pa": {
+   "value": 0.08,
+   "src": "rental_and_operating_costs.md KQ4 (7-10%/yr; Insurify +10% 2026)",
+   "date": "2026"
+  },
+  "owner_utilities_pa": {
+   "value": 210,
+   "src": "rental_and_operating_costs.md KQ7 (CCWA stormwater $5/mo + ~$150 turnover utilities)",
+   "date": "2026"
+  },
+  "other_opex_growth_pa": {
+   "value": 0.03,
+   "src": "model assumption (CPI-type growth for management/maintenance/utilities)",
+   "date": "2026"
+  },
+  "pmms_30yr": {
+   "value": 0.074,
+   "src": "gapfill_6 KQ4 / market_history KQ3 (Freddie Mac PMMS Oct 15, 2026)",
+   "date": "2026-10-15"
+  },
+  "llpa_investment_70_75ltv": {
+   "value": 0.02125,
+   "src": "gapfill_6 KQ4 (Fannie LLPA 2.125% of loan at 70.01-75% LTV; secondary source)",
+   "date": "2026-09-30"
+  },
+  "dscr_par_rate_75ltv": {
+   "value": 0.0675,
+   "src": "gapfill_6 KQ4 (HomeAbroad Oct 6, 2026; Griffin 'from 7.125%' Oct 14)",
+   "date": "2026-10-06"
+  },
+  "ltv_base": {
+   "value": 0.75,
+   "src": "task spec 20-25% down; gapfill_6 (75% LTV conventional/DSCR purchase)",
+   "date": "2026"
+  },
+  "ltv_alt": {
+   "value": 0.8,
+   "src": "gapfill_6 KQ4 (80% LTV DSCR purchase available)",
+   "date": "2026"
+  },
+  "buyer_closing_pct": {
+   "value": 0.03,
+   "src": "rental_and_operating_costs.md KQ7 (about 3%)",
+   "date": "2026"
+  },
+  "make_ready_tier_a": {
+   "value": 16500,
+   "src": "gapfill_3 KQ4 (Tier A rent-ready $12,000-$24,500, central $15,000-$18,000)",
+   "date": "2026-10-19"
+  },
+  "systems_contingency_base": {
+   "value": 10000,
+   "src": "gapfill_3 KQ4 ($10,000 clean inspection to $25,000 bad inspection)",
+   "date": "2026-10-19"
+  },
+  "systems_contingency_bad": {
+   "value": 25000,
+   "src": "gapfill_3 KQ4",
+   "date": "2026-10-19"
+  },
+  "renovation_flip_tier_ab": {
+   "value": 50000,
+   "src": "gapfill_3 KQ4 (Tier A+B $37,500-$77,500, central $45,000-$55,000); verification.md 5c uses $45,000",
+   "date": "2026-10-19"
+  },
+  "selling_cost_pct": {
+   "value": 0.08,
+   "src": "comparable_sales.md KQ1 (concessions 2.6-4.1%) + 6% commission; model uses 8% all-in at sale",
+   "date": "2026"
+  },
+  "eviction_event_cost": {
+   "value": 5000,
+   "src": "rental_and_operating_costs.md KQ2 ($2,500-$7,000 per event)",
+   "date": "2026"
+  },
+  "arv_mid": {
+   "value": 290000,
+   "src": "verification.md 5c / gapfill_5 KQ1 (1692 Pheasant Dr $285,000 2026-03-12; ARV $285K-$295K)",
+   "date": "2026-03-12"
+  },
+  "arv_low": {
+   "value": 280000,
+   "src": "verification.md 5c (records-verifier cap kept as downside)",
+   "date": "2026-10-19"
+  },
+  "arv_high": {
+   "value": 295000,
+   "src": "verification.md 5c",
+   "date": "2026-10-19"
+  },
+  "investor_asis_range": {
+   "value": [
+    160000,
+    185000
+   ],
+   "src": "gapfill_5 KQ1 inference (investor as-is $160K-$185K)",
+   "date": "2026-10-19"
+  },
+  "owner_occupant_asis_range": {
+   "value": [
+    185000,
+    205000,
+    225000
+   ],
+   "src": "comparable_sales.md KQ5 (low/mid/high; verification.md 5c calls it an owner-occupant range)",
+   "date": "2026-10-18"
+  },
+  "redfin_onmarket_median_error_clayton": {
+   "value": 0.0194,
+   "src": "valuation_methods.md KQ1 (Clayton County row: 1.94% median; 76.7% within 5%, 89.5% within 10%)",
+   "date": "2026-10-18"
+  },
+  "redfin_offmarket_median_error_clayton": {
+   "value": 0.0757,
+   "src": "valuation_methods.md KQ1 (7.57%; 38.2% within 5%, 59.1% within 10%)",
+   "date": "2026-10-18"
+  },
+  "zhvi_zip30238_sep2026": {
+   "value": 227054,
+   "src": "market_history KQ2 (Zillow ZHVI mid-tier SA, 2026-09-30)",
+   "date": "2026-09-30"
+  },
+  "zhvi_zip30238_peak": {
+   "value": 260568,
+   "src": "verification.md claim 8 (May 2024)",
+   "date": "2024-05-31"
+  },
+  "zhvi_clayton_sep2026": {
+   "value": 228970,
+   "src": "market_history KQ2",
+   "date": "2026-09-30"
+  },
+  "zip_last12mo_log_change": {
+   "value": -0.0387,
+   "src": "valuation_methods.md KQ2 inference (ZIP ZHVI 12-month log change)",
+   "date": "2026-09-30"
+  },
+  "atlanta_msa_zhvi_1yr": {
+   "value": -0.015,
+   "src": "market_history KQ2 (Atlanta metro ZHVI 1-yr -1.5%)",
+   "date": "2026-09-30"
+  },
+  "zori_zip30238_sep2026": {
+   "value": 1788,
+   "src": "valuation_methods.md KQ4 (Zillow ZORI)",
+   "date": "2026-09-30"
+  },
+  "zip_gross_rent_yield_now": {
+   "value": 0.0945,
+   "src": "valuation_methods.md KQ2 (12 x ZORI / ZHVI)",
+   "date": "2026-09-30"
+  },
+  "zip_gross_rent_yield_mean_2016_2026": {
+   "value": 0.0838,
+   "src": "valuation_methods.md KQ2",
+   "date": "2016-2026"
+  },
+  "county_income_growth_pa": {
+   "value": 0.032,
+   "src": "market_history KQ4 (SAIPE 2024 +3.2% y/y)",
+   "date": "2024"
+  },
+  "inflation_pa": {
+   "value": 0.026,
+   "src": "market_history KQ1 line 27 (~2.6%/yr CPI used for real appreciation); FOMC PCE 2.3% 2027 / 2.1% 2028",
+   "date": "2026-09-16"
+  },
+  "capozza_alpha_beta_gamma_panel": {
+   "value": [
+    0.33,
+    0.25,
+    0.52
+   ],
+   "src": "valuation_methods.md KQ2 (Capozza-Hendershott-Mack-Mayer NBER w9262: alpha 0.33, beta 0.25, gamma 0.52)",
+   "date": "2002"
+  },
+  "capozza_alpha_beta_repeat_sales": {
+   "value": [
+    0.55,
+    0.15,
+    0.52
+   ],
+   "src": "valuation_methods.md KQ2 (repeat-sales data: alpha 0.55, beta 0.15; gamma as panel)",
+   "date": "2002"
+  },
+  "zip_ar1_log_changes": {
+   "value": 0.644,
+   "src": "valuation_methods.md KQ2 (Zillow ZHVI 30238 2001-2026 AR(1) 0.644)",
+   "date": "2026"
+  },
+  "gallin_rent_price_coeff": {
+   "value": 0.169,
+   "src": "valuation_methods.md KQ2 (Gallin FEDS 2004-50: 0.169/yr on log rent-price ratio)",
+   "date": "2004"
+  },
+  "glaeser_nathanson_autocorr": {
+   "value": [
+    0.67,
+    0.26,
+    -0.1,
+    -0.26,
+    -0.28
+   ],
+   "src": "valuation_methods.md KQ2 (NBER w21037 lags 1-5)",
+   "date": "2015"
+  },
+  "beta_zip_to_metro_base": {
+   "value": 1.5,
+   "src": "verification.md 5b (FHFA 1.33-1.48; Zillow 2013-2026 1.47-1.55; base 1.3-1.5; stress 1.8)",
+   "date": "2026"
+  },
+  "beta_zip_to_metro_stress": {
+   "value": 1.8,
+   "src": "verification.md 5b / valuation_methods KQ3 (full-cycle Zillow 1.82)",
+   "date": "2026"
+  },
+  "metro_long_run_log_drift": {
+   "value": 0.035,
+   "src": "valuation_methods.md KQ5 (Zillow 2000-26 3.35%; CS 3.70%; FHFA 4.03-4.58%) -> 3.5%",
+   "date": "2026"
+  },
+  "metro_annual_sd": {
+   "value": 0.065,
+   "src": "valuation_methods.md KQ3 (metro sd 5-8%: FHFA 5.04%, CS 6.50%, Zillow 7.86%)",
+   "date": "2026"
+  },
+  "metro_ar1": {
+   "value": 0.65,
+   "src": "valuation_methods.md KQ2 (Atlanta AR(1) 0.54-0.72)",
+   "date": "2026"
+  },
+  "zip_long_run_log_drift": {
+   "value": 0.03,
+   "src": "verification.md 5b (FHFA county 2000-25 3.24%; FHFA ZIP 1980-2025 3.25%; Zillow ZIP 2.86%) -> 3.0%",
+   "date": "2026"
+  },
+  "zip_idiosyncratic_sd": {
+   "value": 0.056,
+   "src": "valuation_methods.md KQ3 (residual sd 5.58% of ZIP on metro regression)",
+   "date": "2026"
+  },
+  "property_idiosyncratic_sd": {
+   "value": 0.06,
+   "src": "valuation_methods.md KQ1/KQ3 (Case-Shiller individual-home residual ~14% 1970-86; 'lower if the AVM band is trusted'); model uses 6%",
+   "date": "2026"
+  },
+  "crash_regime_hazard_pa": {
+   "value": 0.02,
+   "src": "model assumption: one 2008-type episode in ~50 years of FHFA metro history (1976-2026) -> 2%/yr",
+   "date": "2026"
+  },
+  "adj_time_pa": {
+   "value": -0.06,
+   "src": "verification.md claim 9 (Redfin ZIP -8.4% YoY Sep 2026; Zillow ZIP -3.8%; county ZHVI -3.7%) -> -6%/yr applied from sale date to Oct 2026",
+   "date": "2026-10-19"
+  },
+  "adj_size_per_sf": {
+   "value": 40,
+   "src": "comparable_sales.md KQ5 ($40/sf marginal)",
+   "date": "2026-10-18"
+  },
+  "adj_age_pct_per_year": {
+   "value": 0.0025,
+   "src": "comparable_sales.md KQ5 (-5% for 24 yrs, -10% for 35 yrs -> ~0.25%/yr)",
+   "date": "2026-10-18"
+  },
+  "adj_full_bath": {
+   "value": 3000,
+   "src": "comparable_sales.md KQ5",
+   "date": "2026-10-18"
+  },
+  "adj_bedroom": {
+   "value": 2000,
+   "src": "model judgment (comparable_sales used +$3,000 for bed/bath combined)",
+   "date": "2026-10-19"
+  },
+  "adj_garage_vs_none": {
+   "value": 5000,
+   "src": "comparable_sales.md KQ5 (detached 2-car + workshop vs none)",
+   "date": "2026-10-18"
+  },
+  "adj_garage_vs_attached": {
+   "value": -3000,
+   "src": "comparable_sales.md KQ5",
+   "date": "2026-10-18"
+  },
+  "adj_brick_vs_siding": {
+   "value": 5000,
+   "src": "comparable_sales.md KQ5",
+   "date": "2026-10-18"
+  },
+  "adj_condition_tlc": {
+   "value": 10000,
+   "src": "model judgment: county quality F / 'needs TLC' comps vs subject (quality A, roof/windows/panel done)",
+   "date": "2026-10-19"
+  },
+  "adj_condition_refreshed": {
+   "value": -15000,
+   "src": "gapfill_3 KQ4 (Tier A rent-ready $12,000-$24,500) -> -$15,000 for paint/floor/appliance comps",
+   "date": "2026-10-19"
+  },
+  "adj_condition_renovated": {
+   "value": -45000,
+   "src": "verification.md 5c / gapfill_3 KQ4 (Tier A+B central $45,000-$55,000)",
+   "date": "2026-10-19"
+  },
+  "adj_condition_renovated_systems": {
+   "value": -60000,
+   "src": "gapfill_3 KQ4 (Tier A+B plus new roof/HVAC/plumbing/electrical ~ +$15,000)",
+   "date": "2026-10-19"
+  },
+  "adj_finished_basement_per_sf": {
+   "value": -15,
+   "src": "model judgment: finished below-grade area at $15/sf in this ZIP",
+   "date": "2026-10-19"
+  },
+  "cap_rate_low": {
+   "value": 0.055,
+   "src": "valuation_methods.md KQ4 (INVH 5.1% stabilised acquisition cap Q2 2026; Gordon cross-check 5.4-5.9% at $200K)",
+   "date": "2026-07-29"
+  },
+  "cap_rate_mid": {
+   "value": 0.065,
+   "src": "model midpoint between the institutional 5.5% and Arbor's 7.4%",
+   "date": "2026"
+  },
+  "cap_rate_high": {
+   "value": 0.074,
+   "src": "valuation_methods.md KQ4 (Arbor SFR cap rate 7.4%, Q1 2026, +210 bps since 2021)",
+   "date": "2026-06-12"
+  },
+  "opening_offer": {
+   "value": 145000,
+   "src": "model: ~3% below the walk-away price to leave room for the 3% concession ask; sits inside the investor-tier comp indications ($143K-$182K, gapfill_5 county deeds) and below the 70%-rule MAO",
+   "date": "2026-10-19"
+  }
+ },
+ "A_current_value": {
+  "sales_comparison": {
+   "grid": [
+    {
+     "comp": "9542 Canvasback Ct",
+     "sale_price": 235000,
+     "concessions": 0,
+     "net_price": 235000,
+     "sf": 2284,
+     "year": 1992,
+     "beds": 3,
+     "baths": 2.5,
+     "sale_ym": "2025-11",
+     "condition": "asis",
+     "tier": "owner",
+     "adjustments": {
+      "time": -12925,
+      "size": -6680,
+      "age": -14100,
+      "beds": 2000,
+      "baths": 1500,
+      "garage": 5000,
+      "brick": 5000,
+      "condition": 0,
+      "basement": 0
+     },
+     "net_adjustment": -20205,
+     "gross_adj_pct": 0.201,
+     "indicated_value": 214795,
+     "src": "comparable_sales.md KQ1 (Loyal Home Realty; sold 3.7% below final list)"
+    },
+    {
+     "comp": "1206 Village Path",
+     "sale_price": 243000,
+     "concessions": 10000,
+     "net_price": 233000,
+     "sf": 1817,
+     "year": 2003,
+     "beds": 4,
+     "baths": 3,
+     "sale_ym": "2026-05",
+     "condition": "asis",
+     "tier": "owner",
+     "adjustments": {
+      "time": -5825,
+      "size": 12000,
+      "age": -20388,
+      "beds": 0,
+      "baths": 0,
+      "garage": -3000,
+      "brick": 5000,
+      "condition": 0,
+      "basement": 0
+     },
+     "net_adjustment": -12212,
+     "gross_adj_pct": 0.198,
+     "indicated_value": 220788,
+     "src": "comparable_sales.md KQ1 (Compass; $10,000 concessions; original finishes)"
+    },
+    {
+     "comp": "8427 Fredericksburg Ct",
+     "sale_price": 205000,
+     "concessions": 0,
+     "net_price": 205000,
+     "sf": 1825,
+     "year": 1965,
+     "beds": 4,
+     "baths": 2,
+     "sale_ym": "2026-05",
+     "condition": "refreshed",
+     "tier": "owner",
+     "adjustments": {
+      "time": -5125,
+      "size": 11680,
+      "age": 1538,
+      "beds": 0,
+      "baths": 3000,
+      "garage": 5000,
+      "brick": 0,
+      "condition": -15000,
+      "basement": 0
+     },
+     "net_adjustment": 1092,
+     "gross_adj_pct": 0.202,
+     "indicated_value": 206092,
+     "src": "value_add KQ2 (Redfin; 'new paint, new floor')"
+    },
+    {
+     "comp": "657 Utoy Ct",
+     "sale_price": 197000,
+     "concessions": 0,
+     "net_price": 197000,
+     "sf": 1775,
+     "year": 1965,
+     "beds": 3,
+     "baths": 2,
+     "sale_ym": "2026-07",
+     "condition": "asis",
+     "tier": "owner",
+     "adjustments": {
+      "time": -2955,
+      "size": 13680,
+      "age": 1478,
+      "beds": 2000,
+      "baths": 3000,
+      "garage": 5000,
+      "brick": 0,
+      "condition": 0,
+      "basement": 0
+     },
+     "net_adjustment": 22202,
+     "gross_adj_pct": 0.143,
+     "indicated_value": 219202,
+     "src": "gapfill_5 KQ1 (county GIS; quality F; mailing Jonesboro)"
+    },
+    {
+     "comp": "295 River Chase Dr",
+     "sale_price": 238500,
+     "concessions": 0,
+     "net_price": 238500,
+     "sf": 2060,
+     "year": 1978,
+     "beds": 3,
+     "baths": 2,
+     "sale_ym": "2026-05",
+     "condition": "asis",
+     "tier": "owner",
+     "adjustments": {
+      "time": -5962,
+      "size": 2280,
+      "age": -5962,
+      "beds": 2000,
+      "baths": 3000,
+      "garage": 0,
+      "brick": 0,
+      "condition": 0,
+      "basement": 0
+     },
+     "net_adjustment": -4645,
+     "gross_adj_pct": 0.081,
+     "indicated_value": 233855,
+     "src": "gapfill_5 KQ1 (county GIS; quality A)"
+    },
+    {
+     "comp": "9396 Forest Knoll Dr",
+     "sale_price": 188000,
+     "concessions": 0,
+     "net_price": 188000,
+     "sf": 1790,
+     "year": 1979,
+     "beds": 3,
+     "baths": 2.5,
+     "sale_ym": "2026-06",
+     "condition": "asis",
+     "tier": "owner",
+     "adjustments": {
+      "time": -3760,
+      "size": 13080,
+      "age": -5170,
+      "beds": 2000,
+      "baths": 1500,
+      "garage": 0,
+      "brick": 0,
+      "condition": 0,
+      "basement": 0
+     },
+     "net_adjustment": 7650,
+     "gross_adj_pct": 0.136,
+     "indicated_value": 195650,
+     "src": "gapfill_5 KQ1 (county GIS; H1)"
+    },
+    {
+     "comp": "8762 E Bourne Dr",
+     "sale_price": 258000,
+     "concessions": 0,
+     "net_price": 258000,
+     "sf": 1829,
+     "year": 1970,
+     "beds": 4,
+     "baths": 4,
+     "sale_ym": "2025-10",
+     "condition": "asis",
+     "tier": "owner",
+     "adjustments": {
+      "time": -15480,
+      "size": 11520,
+      "age": -1290,
+      "beds": 0,
+      "baths": -3000,
+      "garage": 0,
+      "brick": 0,
+      "condition": 0,
+      "basement": 0
+     },
+     "net_adjustment": -8250,
+     "gross_adj_pct": 0.121,
+     "indicated_value": 249750,
+     "src": "gapfill_5 KQ1 (county GIS; quality A; condition unknown)"
+    },
+    {
+     "comp": "8229 Kendrick Rd",
+     "sale_price": 135000,
+     "concessions": 0,
+     "net_price": 135000,
+     "sf": 1404,
+     "year": 1969,
+     "beds": 4,
+     "baths": 1.5,
+     "sale_ym": "2026-09",
+     "condition": "tlc",
+     "tier": "investor",
+     "adjustments": {
+      "time": -675,
+      "size": 28520,
+      "age": -338,
+      "beds": 0,
+      "baths": 4500,
+      "garage": 5000,
+      "brick": 0,
+      "condition": 10000,
+      "basement": 0
+     },
+     "net_adjustment": 47008,
+     "gross_adj_pct": 0.363,
+     "indicated_value": 182008,
+     "src": "value_add KQ2 (Redfin; four-sided brick 'Needs TLC')"
+    },
+    {
+     "comp": "7990 Devonshire Dr",
+     "sale_price": 150000,
+     "concessions": 0,
+     "net_price": 150000,
+     "sf": 2040,
+     "year": 1967,
+     "beds": 3,
+     "baths": 1,
+     "sale_ym": "2026-05",
+     "condition": "tlc",
+     "tier": "investor",
+     "adjustments": {
+      "time": -3750,
+      "size": 3080,
+      "age": 375,
+      "beds": 2000,
+      "baths": 6000,
+      "garage": 5000,
+      "brick": 0,
+      "condition": 10000,
+      "basement": -15000
+     },
+     "net_adjustment": 7705,
+     "gross_adj_pct": 0.301,
+     "indicated_value": 157705,
+     "src": "gapfill_5 KQ1 (county GIS; quality F; Lawrenceville buyer; $130K deed 5 wks earlier)"
+    },
+    {
+     "comp": "45 Royce Dr",
+     "sale_price": 165000,
+     "concessions": 0,
+     "net_price": 165000,
+     "sf": 2844,
+     "year": 1970,
+     "beds": 4,
+     "baths": 3,
+     "sale_ym": "2026-02",
+     "condition": "tlc",
+     "tier": "investor",
+     "adjustments": {
+      "time": -6600,
+      "size": -29080,
+      "age": -825,
+      "beds": 0,
+      "baths": 0,
+      "garage": 5000,
+      "brick": 0,
+      "condition": 10000,
+      "basement": 0
+     },
+     "net_adjustment": -21505,
+     "gross_adj_pct": 0.312,
+     "indicated_value": 143495,
+     "src": "gapfill_5 KQ1 (county GIS; quality F; H3T estate seller)"
+    }
+   ],
+   "owner_tier": {
+    "n": 7,
+    "min": 195650.0,
+    "median": 219202.0,
+    "mean": 220018.85714285713,
+    "max": 249750.0,
+    "sd": 17756.340524148658
+   },
+   "investor_tier": {
+    "n": 3,
+    "min": 143495.0,
+    "median": 157705.0,
+    "mean": 161069.33333333334,
+    "max": 182008.0
+   },
+   "weighted_all": 210968.99178921696,
+   "range_low_mid_high": [
+    195650.0,
+    219202.0,
+    227321.5
+   ],
+   "notes_range_owner": [
+    185000,
+    205000,
+    225000
+   ],
+   "notes_range_investor": [
+    160000,
+    185000
+   ],
+   "method": "indication = net price + time(-6%/yr) + size($40/sf) + age(0.25%/yr) + beds($2,000) + baths($3,000) + garage + brick + condition + basement; weights = 1 (owner tier) / 0.5 (investor tier), divided by (1 + gross adjustment %)"
+  },
+  "arv_grid": {
+   "grid": [
+    {
+     "comp": "1692 Pheasant Dr",
+     "sale_price": 285000,
+     "concessions": 0,
+     "net_price": 285000,
+     "sf": 2144,
+     "year": 1970,
+     "beds": 4,
+     "baths": 3,
+     "sale_ym": "2026-03",
+     "condition": "renovated",
+     "tier": "owner",
+     "adjustments": {
+      "time": -9975,
+      "size": -1080,
+      "age": -1425,
+      "beds": 0,
+      "baths": 0,
+      "garage": 5000,
+      "brick": 0,
+      "condition": 0,
+      "basement": 0
+     },
+     "net_adjustment": -7480,
+     "gross_adj_pct": 0.061,
+     "indicated_value": 277520,
+     "src": "gapfill_5 KQ1 (GAMLS #10668549; 96.6% of $294,900 list)"
+    },
+    {
+     "comp": "9383 Woodknoll Way (resale)",
+     "sale_price": 265000,
+     "concessions": 10000,
+     "net_price": 255000,
+     "sf": 1764,
+     "year": 1979,
+     "beds": 3,
+     "baths": 2,
+     "sale_ym": "2026-06",
+     "condition": "refreshed",
+     "tier": "owner",
+     "adjustments": {
+      "time": -5100,
+      "size": 14120,
+      "age": -7012,
+      "beds": 2000,
+      "baths": 3000,
+      "garage": -3000,
+      "brick": 5000,
+      "condition": 30000,
+      "basement": 0
+     },
+     "net_adjustment": 39008,
+     "gross_adj_pct": 0.272,
+     "indicated_value": 294008,
+     "src": "gapfill_5 KQ3 (FMLS #7741258; 'updated' cosmetics; $10,000 concessions)"
+    },
+    {
+     "comp": "20 Skylark Ln",
+     "sale_price": 265000,
+     "concessions": 0,
+     "net_price": 265000,
+     "sf": 1600,
+     "year": 1970,
+     "beds": 4,
+     "baths": 2,
+     "sale_ym": "2026-06",
+     "condition": "renovated_systems",
+     "tier": "owner",
+     "adjustments": {
+      "time": -5300,
+      "size": 20680,
+      "age": -1325,
+      "beds": 0,
+      "baths": 3000,
+      "garage": 0,
+      "brick": 0,
+      "condition": -15000,
+      "basement": 0
+     },
+     "net_adjustment": 2055,
+     "gross_adj_pct": 0.171,
+     "indicated_value": 267055,
+     "src": "value_add KQ2 (Redfin; full renovation incl. roof/HVAC/plumbing/electrical; vintage 'similar' -> 1970 assumed)"
+    }
+   ],
+   "mean": 279527.6666666667,
+   "min": 267055.0,
+   "max": 294008.0,
+   "notes_arv": [
+    280000,
+    290000,
+    295000
+   ],
+   "unverified_upper_bracket": "8919 Saddlewood $325,000 (2,210 sf, 1975, 2026-06-03); 229 Deerfield $316,000 (2,468 sf, 1978, 2026-08-05); 9268 Choctaw $310,000 (gapfill_5; condition unverified)"
+  },
+  "income_approach": {
+   "values": {
+    "rent_low": {
+     "low_cap_institutional_gordon": 186958,
+     "mid_cap": 163825,
+     "high_cap_arbor_national_sfr": 147410
+    },
+    "rent_base": {
+     "low_cap_institutional_gordon": 195373,
+     "mid_cap": 171199,
+     "high_cap_arbor_national_sfr": 154045
+    },
+    "rent_high": {
+     "low_cap_institutional_gordon": 203788,
+     "mid_cap": 178573,
+     "high_cap_arbor_national_sfr": 160680
+    },
+    "section8_contract": {
+     "low_cap_institutional_gordon": 203788,
+     "mid_cap": 178573,
+     "high_cap_arbor_national_sfr": 160680
+    }
+   },
+   "cap_rates": {
+    "low_cap_institutional_gordon": 0.055,
+    "mid_cap": 0.065,
+    "high_cap_arbor_national_sfr": 0.074
+   },
+   "noi_year1_at_list_price": 10672,
+   "cap_rate_at_list_price": 0.0533615,
+   "opex_detail_at_list": {
+    "gpr": 24300,
+    "vacancy": 1944,
+    "egi": 22356,
+    "mgmt": 2522,
+    "maint": 1822,
+    "capex": 2430,
+    "insurance": 1500,
+    "utilities": 210,
+    "tax": 3199,
+    "opex_total": 11684
+   },
+   "opex_ratio_at_list": 0.4808106995884774,
+   "grm_at_list": 8.23045267489712,
+   "rent_to_price_monthly": 0.010125,
+   "range_low_mid_high": [
+    154045,
+    171199,
+    195373
+   ],
+   "formula": "V = (EGI - opex_ex_tax - $35) / (cap + 0.40 x 39.552/1000); EGI = 12 x rent x (1 - 8%); opex = 9% mgmt of EGI + $510 leasing + 7.5% maint + 10% capex + $1,500 insurance + $210 utilities + tax(V)"
+  },
+  "avms": {
+   "estimates": {
+    "Zestimate": {
+     "value": 208700,
+     "date": "2026-10-18",
+     "src": "property_record.md KQ4",
+     "vs_list_pct": 0.043500000000000094,
+     "median_error_band": [
+      204651,
+      212749
+     ],
+     "band_within_5pct_77pct_coverage": [
+      198265,
+      219135
+     ],
+     "band_within_10pct_90pct_coverage": [
+      187830,
+      229570
+     ],
+     "band_source": "valuation_methods.md KQ1: Redfin on-market Clayton County median error 1.94% (76.7% within 5%, 89.5% within 10%); Zestimate accuracy table could not be retrieved, so the Redfin band is applied to all AVMs as a proxy"
+    },
+    "Redfin Estimate": {
+     "value": 201887,
+     "date": "2026-10-18",
+     "src": "property_record.md KQ4 / value_add KQ2",
+     "vs_list_pct": 0.009435000000000082,
+     "median_error_band": [
+      197970,
+      205804
+     ],
+     "band_within_5pct_77pct_coverage": [
+      191793,
+      211981
+     ],
+     "band_within_10pct_90pct_coverage": [
+      181698,
+      222076
+     ],
+     "band_source": "valuation_methods.md KQ1: Redfin on-market Clayton County median error 1.94% (76.7% within 5%, 89.5% within 10%); Zestimate accuracy table could not be retrieved, so the Redfin band is applied to all AVMs as a proxy"
+    },
+    "Trulia Estimate": {
+     "value": 209000,
+     "date": "2026-10-18",
+     "src": "comparable_sales.md subject baseline",
+     "vs_list_pct": 0.04499999999999993,
+     "median_error_band": [
+      204945,
+      213055
+     ],
+     "band_within_5pct_77pct_coverage": [
+      198550,
+      219450
+     ],
+     "band_within_10pct_90pct_coverage": [
+      188100,
+      229900
+     ],
+     "band_source": "valuation_methods.md KQ1: Redfin on-market Clayton County median error 1.94% (76.7% within 5%, 89.5% within 10%); Zestimate accuracy table could not be retrieved, so the Redfin band is applied to all AVMs as a proxy"
+    },
+    "Movoto": {
+     "value": 222000,
+     "date": "2026-10-18",
+     "src": "comparable_sales.md subject baseline (via search)",
+     "vs_list_pct": 0.1100000000000001,
+     "median_error_band": [
+      217693,
+      226307
+     ],
+     "band_within_5pct_77pct_coverage": [
+      210900,
+      233100
+     ],
+     "band_within_10pct_90pct_coverage": [
+      199800,
+      244200
+     ],
+     "band_source": "valuation_methods.md KQ1: Redfin on-market Clayton County median error 1.94% (76.7% within 5%, 89.5% within 10%); Zestimate accuracy table could not be retrieved, so the Redfin band is applied to all AVMs as a proxy"
+    }
+   },
+   "mean_all_four": 210396.75,
+   "mean_zillow_redfin": 205293.5,
+   "range_low_mid_high": [
+    191792.65,
+    205293.5,
+    226306.80000000002
+   ],
+   "off_market_caution": "for a resale years out the relevant band is the off-market 7.57% median error (38% within 5%)"
+  },
+  "reconciled": {
+   "weights": {
+    "sales_comparison": 0.5,
+    "avm": 0.3,
+    "income": 0.2
+   },
+   "low_mid_high": [
+    186000.0,
+    205000.0,
+    221000.0
+   ],
+   "inputs": {
+    "sales_comparison": [
+     195650,
+     219202,
+     227322
+    ],
+    "avm": [
+     191793,
+     205294,
+     226307
+    ],
+    "income": [
+     154045,
+     171199,
+     195373
+    ]
+   },
+   "vs_list_pct": [
+    -0.06999999999999995,
+    0.02499999999999991,
+    0.10499999999999998
+   ],
+   "county_notice_2026": 200500,
+   "investor_value_range": [
+    160000,
+    185000
+   ],
+   "investor_value_model": [
+    143495,
+    157705
+   ],
+   "arv_low_mid_high": [
+    280000,
+    290000,
+    295000
+   ],
+   "arv_model_mean": 279528
+  }
+ },
+ "B_appreciation": {
+  "index_stats": {
+   "fhfa_clayton": {
+    "cagr_2000_2025": 0.032448026573108635,
+    "cagr_2000_2024": 0.03482726002193015,
+    "mean_annual_return_2001_2025": 0.03757576415696254,
+    "sd_annual_return_2001_2025": 0.104587500788147,
+    "drawdown_2005_2012": -0.48469303326162505,
+    "peak_year": 2005,
+    "trough_year": 2012,
+    "recovery_year": 2019,
+    "all_time_high": [
+     2024,
+     227.42
+    ],
+    "2025_vs_2024": -0.023041069387037094,
+    "worst_3yr": -0.31482746839767684,
+    "worst_5yr": -0.4680560300649128,
+    "share_negative_5yr_windows": 0.3333333333333333,
+    "annual_changes": {
+     "2001": 0.07159999999999989,
+     "2002": 0.04815229563269874,
+     "2003": 0.02412749287749305,
+     "2004": 0.027471094497087734,
+     "2005": 0.022590743717742612,
+     "2006": -0.010590766175740507,
+     "2007": -0.020906506104699796,
+     "2008": -0.12751964468739319,
+     "2009": -0.14488497307880577,
+     "2010": -0.08162564396107608,
+     "2011": -0.07716280229369232,
+     "2012": -0.15871943806564903,
+     "2013": 0.06037251123956344,
+     "2014": 0.09433676559660786,
+     "2015": 0.11443199114432012,
+     "2016": 0.06878569654829891,
+     "2017": 0.11512546468401474,
+     "2018": 0.15814147307011162,
+     "2019": 0.1175676891247639,
+     "2020": 0.0647939471989698,
+     "2021": 0.2050797490362084,
+     "2022": 0.2709823108769289,
+     "2023": 0.098953706445563,
+     "2024": 0.02133201598778456,
+     "2025": -0.023041069387037094
+    },
+    "real_cagr_2000_2025_at_cpi": 0.006284626289579487
+   },
+   "fhfa_zip30238": {
+    "cagr_2000_2025": 0.03136764016425997,
+    "drawdown_2006_2012": -0.5477712293517059,
+    "2025_change": -0.09571756841445578,
+    "sd_annual_2006_2025": 0.14089778481009435
+   },
+   "fhfa_atlanta_msa": {
+    "cagr_2000_2026_q2": 0.039904800377213556,
+    "drawdown_2007_2012": -0.2735229759299781
+   },
+   "zillow_zip30238": {
+    "cagr_dec2000_dec2025": 0.030625177387894942,
+    "drawdown_from_peak_sep2026": -0.12861901691688926,
+    "cagr_dec2000_sep2026": 0.028836462750126524
+   },
+   "beta_zip_to_metro": {
+    "fhfa_2001_2025_county": 1.33,
+    "fhfa_2001_2025_zip": 1.48,
+    "zillow_2001_2026_zip": 1.82,
+    "zillow_2013_2026_zip": 1.55,
+    "src": "verification.md 5b"
+   }
+  },
+  "repeat_sales_trend": {
+   "drift_used": 0.032448026573108635,
+   "sd_used": 0.104587500788147,
+   "V0": 205000.0,
+   "by_horizon": {
+    "1": {
+     "central": 211651.84544748726,
+     "p16": 190633.96685160112,
+     "p84": 234986.99849328975,
+     "real_central": 206288.3483893638,
+     "alt_zip_fhfa_3.25": 211662.5,
+     "alt_zillow_zip_2.86": 210863.0,
+     "alt_1975_2025_3.42": 212011.0
+    },
+    "3": {
+     "central": 225610.05767395656,
+     "p16": 188228.6101111333,
+     "p84": 270415.3109008979,
+     "real_central": 208889.38641785292,
+     "alt_zip_fhfa_3.25": 225644.131015625,
+     "alt_zillow_zip_2.86": 223096.84109947996,
+     "alt_1975_2025_3.42": 226760.52894604002
+    },
+    "5": {
+     "central": 240488.7990276217,
+     "p16": 190339.39220122926,
+     "p84": 303851.2511199155,
+     "real_central": 211523.22028226044,
+     "alt_zip_fhfa_3.25": 240549.33614502585,
+     "alt_zillow_zip_2.86": 236040.46470251595,
+     "alt_1975_2025_3.42": 242536.1773110256
+    },
+    "7": {
+     "central": 256348.7774172224,
+     "p16": 194382.21703671105,
+     "p84": 338069.4833359872,
+     "real_central": 214190.2634970531,
+     "alt_zip_fhfa_3.25": 256439.12323075568,
+     "alt_zillow_zip_2.86": 249735.0509420079,
+     "alt_1975_2025_3.42": 259409.33185352982
+    },
+    "10": {
+     "central": 282121.28028169664,
+     "p16": 202674.7207658524,
+     "p84": 392710.13418459694,
+     "real_central": 218254.01326135453,
+     "alt_zip_fhfa_3.25": 282263.332291769,
+     "alt_zillow_zip_2.86": 271780.98037551064,
+     "alt_1975_2025_3.42": 286945.3527055866
+    }
+   },
+   "formula": "V_T = V_0 x (1+g)^T with g = FHFA Clayton County 2000-2025 CAGR; +/-1 sd band uses sd of annual returns x sqrt(T) in logs (no autocorrelation)"
+  },
+  "momentum_mean_reversion": {
+   "inputs": {
+    "last_12mo_zip_log_change": -0.0387,
+    "rent_gap_log": 0.12016682701165975,
+    "price_to_income_now": 3.5635844516058284,
+    "price_to_income_hist": {
+     "2019": 2.91491416520488,
+     "2020": 3.376017824589832,
+     "2021": 4.140873556065498,
+     "2022": 4.377613882863341,
+     "2023": 4.412995480732742,
+     "2024": 4.175963226076055
+    },
+    "pti_mean_2019_2024": 3.899729689255391,
+    "income_gap_vs_2019_2024_mean": 0.0901403335456665,
+    "income_gap_vs_2019_anchor": -0.20092653327044244,
+    "income_gap_blended": -0.05539309986238797,
+    "fundamental_gap_blended": 0.03238686357463589,
+    "fundamental_growth": 0.025,
+    "rent_based_fundamental_value_zip": 256045.38186157518,
+    "income_2026_est": 63715.0608
+   },
+   "annual_log_changes": {
+    "capozza_panel_a0.33_b0.25_g0.52": [
+     0.008325715893658974,
+     0.02801277316515169,
+     0.03375630877345637,
+     0.033462598330832816,
+     0.03125002430205884,
+     0.02895736879704872,
+     0.027211450281133198,
+     0.026082434600597778,
+     0.025439250775871645,
+     0.02511718741974411
+    ],
+    "capozza_repeat_sales_a0.55_b0.15_g0.52": [
+     -0.0034269704638046176,
+     0.02023724135067354,
+     0.03396697164603549,
+     0.04017327756157924,
+     0.04131075418089142,
+     0.039489753194379404,
+     0.036314739672640886,
+     0.03287127128478857,
+     0.02979667297875151,
+     0.027386142963618403
+    ],
+    "local_ar1_0.644_gallin_0.169": [
+     -0.010549420055886534,
+     0.013587405417567363,
+     0.03106024950690279,
+     0.04128857893376823,
+     0.04512285324486274,
+     0.0441913637028258,
+     0.040348143971976454,
+     0.035279274134045455,
+     0.030277724629764212,
+     0.026164791286576936
+    ]
+   },
+   "mean_path_log_changes": [
+    -0.0018835582086773924,
+    0.020612473311130863,
+    0.032927843308798214,
+    0.038308151608726755,
+    0.03922787724260433,
+    0.037546161898084636,
+    0.03462477797525018,
+    0.0314109933398106,
+    0.028504549461462456,
+    0.026222707223313147
+   ],
+   "values_by_horizon": {
+    "capozza_panel_a0.33_b0.25_g0.52": {
+     "1": 206713.89656589233,
+     "3": 219885.02079245218,
+     "5": 234584.86019847242,
+     "7": 248138.29172749535,
+     "10": 267903.03128619964
+    },
+    "capozza_repeat_sales_a0.55_b0.15_g0.52": {
+     "1": 204298.67345397157,
+     "3": 215678.1438545559,
+     "5": 233988.3325960053,
+     "7": 252415.2998446094,
+     "10": 276201.26846046385
+    },
+    "local_ar1_0.644_gallin_0.169": {
+     "1": 202848.73613282607,
+     "3": 212110.68002063117,
+     "5": 231254.68743715817,
+     "7": 251655.01307849848,
+     "10": 275828.9546043137
+    }
+   },
+   "mean_values_by_horizon": {
+    "1": 204614.2339876422,
+    "3": 215867.9196498677,
+    "5": 233271.442882174,
+    "7": 250729.2586755233,
+    "10": 273284.1117194744
+   },
+   "year1_vs_zillow_zhvf": {
+    "model_mean_year1": -0.0018835582086773924,
+    "zillow_zip_12mo": -0.005
+   },
+   "steady_state_note": "Capozza form converges to price growth = fundamental growth (2.5%) with a steady gap of g*(1-alpha-gamma)/beta"
+  },
+  "monte_carlo": {
+   "n_paths": 20000,
+   "params": {
+    "drift": "momentum + mean-reversion mean path (B2)",
+    "sd_metro": 0.065,
+    "phi_metro": 0.65,
+    "beta": 1.5,
+    "sd_zip_idio": 0.056,
+    "sd_property": 0.06,
+    "crash_hazard": 0.02,
+    "crash_path_cum_7yr": -0.48469303326162494,
+    "crash_path_cum_10yr": -0.3336091345358265,
+    "V0": 205000.0,
+    "implied_annual_sd_zip": 0.1124377605611211,
+    "implied_annual_sd_property": 0.12744508621363163
+   },
+   "percentiles_nominal": {
+    "1": {
+     "p5": 171066.2603442277,
+     "p25": 189979.80860864144,
+     "p50": 204574.1046143982,
+     "p75": 220041.44058109378,
+     "p95": 245312.4676052999
+    },
+    "3": {
+     "p5": 142744.52178123122,
+     "p25": 180247.72577867593,
+     "p50": 214120.96319288106,
+     "p75": 253099.1368290999,
+     "p95": 324882.78655835596
+    },
+    "5": {
+     "p5": 122702.36827299313,
+     "p25": 173613.59389634346,
+     "p50": 225303.35443841806,
+     "p75": 291901.8478151765,
+     "p95": 425172.95559289603
+    },
+    "7": {
+     "p5": 105251.88268679014,
+     "p25": 166772.31371686512,
+     "p50": 236497.4481022192,
+     "p75": 332177.9476851257,
+     "p95": 537412.4251062727
+    },
+    "10": {
+     "p5": 92251.84614669545,
+     "p25": 155153.32032464677,
+     "p50": 244344.91178488723,
+     "p75": 383484.91906149284,
+     "p95": 714808.9288037114
+    }
+   },
+   "percentiles_real": {
+    "1": {
+     "p5": 166731.2478988574,
+     "p25": 185165.5054665121,
+     "p50": 199389.96551110936,
+     "p75": 214465.3416969725,
+     "p95": 239095.9723248537
+    },
+    "3": {
+     "p5": 132165.27612648747,
+     "p25": 166888.99967187672,
+     "p50": 198251.78487919757,
+     "p75": 234341.1634224405,
+     "p95": 300804.70100305835
+    },
+    "5": {
+     "p5": 107923.52982053997,
+     "p25": 152702.77291173657,
+     "p50": 198166.78058979372,
+     "p75": 256743.8446441605,
+     "p95": 373963.1662995098
+    },
+    "7": {
+     "p5": 87942.4068777709,
+     "p25": 139345.33325622437,
+     "p50": 197603.63687223796,
+     "p75": 277548.7476844402,
+     "p95": 449030.8481274991
+    },
+    "10": {
+     "p5": 71367.66015020659,
+     "p25": 120029.35332587027,
+     "p50": 189029.54631353682,
+     "p75": 296670.7173836918,
+     "p95": 552988.832571172
+    }
+   },
+   "stats": {
+    "share_negative_5yr": 0.40345,
+    "share_negative_10yr": 0.39585,
+    "share_max_drawdown_ge_40pct": 0.2499,
+    "share_max_drawdown_ge_25pct": 0.46685,
+    "share_paths_with_crash_regime": 0.17985,
+    "mean_annual_log_return_10yr": 0.018774204688204996,
+    "p5_1yr_change": -0.16553043734523076,
+    "p95_1yr_change": 0.19664618344048737
+   },
+   "no_crash_regime": {
+    "percentiles": {
+     "1": {
+      "p5": 170742.14838099957,
+      "p25": 189633.60993812268,
+      "p50": 204382.79481804642,
+      "p75": 220314.0136610232,
+      "p95": 244585.22661511332
+     },
+     "3": {
+      "p5": 142178.13074956788,
+      "p25": 181997.87856443852,
+      "p50": 215492.55150692837,
+      "p75": 255461.4166833225,
+      "p95": 326699.23630099633
+     },
+     "5": {
+      "p5": 125687.39753174873,
+      "p25": 180511.79399403284,
+      "p50": 233347.94440504268,
+      "p75": 300818.7514821624,
+      "p95": 430701.89976005646
+     },
+     "7": {
+      "p5": 113204.65708556758,
+      "p25": 181491.15852479782,
+      "p50": 249734.34917834,
+      "p75": 346427.1549254517,
+      "p95": 550027.2699149007
+     },
+     "10": {
+      "p5": 97555.69572653245,
+      "p25": 180475.06392154176,
+      "p50": 273030.5538070361,
+      "p75": 411821.34286329837,
+      "p95": 748196.0761832624
+     }
+    },
+    "stats": {
+     "share_negative_5yr": 0.3647,
+     "share_negative_10yr": 0.3196,
+     "share_max_drawdown_ge_40pct": 0.17695,
+     "share_max_drawdown_ge_25pct": 0.39475,
+     "share_paths_with_crash_regime": 0.0,
+     "mean_annual_log_return_10yr": 0.028395186020012942,
+     "p5_1yr_change": -0.1671114713121973,
+     "p95_1yr_change": 0.19309866641518697
+    }
+   },
+   "stress_beta_1.8": {
+    "percentiles": {
+     "1": {
+      "p5": 167535.61079259793,
+      "p25": 188839.84610035524,
+      "p50": 204973.34597950574,
+      "p75": 222175.27291805917,
+      "p95": 249595.09969457638
+     },
+     "3": {
+      "p5": 134806.45111314827,
+      "p25": 176168.4300487605,
+      "p50": 212965.08882845013,
+      "p75": 259530.3513319678,
+      "p95": 344550.532460118
+     },
+     "5": {
+      "p5": 113895.85798859362,
+      "p25": 167462.29380408875,
+      "p50": 225358.3129128919,
+      "p75": 304837.7619289756,
+      "p95": 470475.93910049915
+     },
+     "7": {
+      "p5": 96737.60754326465,
+      "p25": 158076.6728635911,
+      "p50": 234707.3379688763,
+      "p75": 348140.0109476285,
+      "p95": 612214.68774437
+     },
+     "10": {
+      "p5": 81625.23186895438,
+      "p25": 146292.50255032012,
+      "p50": 240262.40932716412,
+      "p75": 405730.1636246342,
+      "p95": 840050.9608681718
+     }
+    },
+    "stats": {
+     "share_negative_5yr": 0.4176,
+     "share_negative_10yr": 0.42055,
+     "share_max_drawdown_ge_40pct": 0.3038,
+     "share_max_drawdown_ge_25pct": 0.5286,
+     "share_paths_with_crash_regime": 0.18575,
+     "mean_annual_log_return_10yr": 0.018822984535981205,
+     "p5_1yr_change": -0.1827531180848881,
+     "p95_1yr_change": 0.2175370716808603
+    }
+   },
+   "historical_check": {
+    "zip_share_negative_5yr_windows_zillow": 0.27,
+    "fhfa_zip_share_negative_5yr": 0.2,
+    "zillow_1yr_p5": -0.234,
+    "zillow_1yr_p95": 0.263,
+    "src": "valuation_methods.md KQ3"
+   }
+  },
+  "scenarios": {
+   "bear_2008_replay": {
+    "annual_log_changes": [
+     -0.010647247480654093,
+     -0.021128141629073265,
+     -0.13641514056005397,
+     -0.1565192846835656,
+     -0.08515017623815871,
+     -0.0803024438868998,
+     -0.17283006948920937,
+     0.05862027208612985,
+     0.09014848624296219,
+     0.10834485012841862
+    ],
+    "table": {
+     "1": {
+      "value": 202828.8929339732,
+      "real_value": 197688.97946781013,
+      "cum_change": -0.010590766175740507
+     },
+     "3": {
+      "value": 173264.5209333113,
+      "real_value": 160423.34211025116,
+      "cum_change": -0.15480721495945715
+     },
+     "5": {
+      "value": 136067.35065364884,
+      "real_value": 119678.77215865513,
+      "cum_change": -0.3362568260797617
+     },
+     "7": {
+      "value": 105637.9281813669,
+      "real_value": 88264.96424292917,
+      "cum_change": -0.48469303326162494
+     },
+     "10": {
+      "value": 136610.1274201556,
+      "real_value": 105684.01125864428,
+      "cum_change": -0.3336091345358264
+     }
+    }
+   },
+   "bear_moderate_mc_p10": {
+    "annual_log_changes": [
+     -0.14131578416126445,
+     -0.07482271978482302,
+     -0.05988949091938167,
+     -0.0560866382786358,
+     -0.05589773040978763,
+     -0.052014263516218406,
+     -0.06430314307256779,
+     -0.051271868318016445,
+     -0.038125166254921794,
+     -0.01955669910677038
+    ],
+    "table": {
+     "1": {
+      "value": 177984.0954645284,
+      "real_value": 173473.7772558756,
+      "cum_change": -0.13178490017303224
+     },
+     "3": {
+      "value": 155552.2960794976,
+      "real_value": 144023.82597185657,
+      "cum_change": -0.2412083118073287
+     },
+     "5": {
+      "value": 139072.8109243193,
+      "real_value": 122322.24094993797,
+      "cum_change": -0.32159604427161326
+     },
+     "7": {
+      "value": 123801.59068487906,
+      "real_value": 103441.47375039148,
+      "cum_change": -0.3960898015371753
+     },
+     "10": {
+      "value": 111021.7885526025,
+      "real_value": 85888.41964301496,
+      "cum_change": -0.45843029974340244
+     }
+    }
+   },
+   "base": {
+    "annual_log_changes": [
+     -0.0018835582086773924,
+     0.020612473311130863,
+     0.032927843308798214,
+     0.038308151608726755,
+     0.03922787724260433,
+     0.037546161898084636,
+     0.03462477797525018,
+     0.0314109933398106,
+     0.028504549461462456,
+     0.026222707223313147
+    ],
+    "table": {
+     "1": {
+      "value": 204614.2339876422,
+      "real_value": 199429.0779606649,
+      "cum_change": -0.001881785426135707
+     },
+     "3": {
+      "value": 215867.9196498677,
+      "real_value": 199869.2688963597,
+      "cum_change": 0.05301424219447659
+     },
+     "5": {
+      "value": 233271.442882174,
+      "real_value": 205175.15575708597,
+      "cum_change": 0.1379094774740195
+     },
+     "7": {
+      "value": 250729.2586755233,
+      "real_value": 209494.91752295409,
+      "cum_change": 0.22306955451474786
+     },
+     "10": {
+      "value": 273284.1117194744,
+      "real_value": 211417.42332866232,
+      "cum_change": 0.33309322789987506
+     }
+    }
+   },
+   "bull": {
+    "annual_log_changes": [
+     0.01980262729617973,
+     0.0769610411361284,
+     0.0769610411361284,
+     0.058268908123975824,
+     0.04879016416943204,
+     0.03922071315328133,
+     0.03922071315328133,
+     0.03440142671733232,
+     0.03440142671733232,
+     0.03440142671733232
+    ],
+    "table": {
+     "1": {
+      "value": 209100.0,
+      "real_value": 203801.16959064326,
+      "cum_change": 0.020000000000000018
+     },
+     "3": {
+      "value": 243894.24000000002,
+      "real_value": 225818.47046054658,
+      "cum_change": 0.18972800000000012
+     },
+     "5": {
+      "value": 271454.2891200001,
+      "real_value": 238759.08410810962,
+      "cum_change": 0.3241672640000004
+     },
+     "7": {
+      "value": 293604.9591121921,
+      "real_value": 245319.3816248602,
+      "cum_change": 0.43221931274240055
+     },
+     "10": {
+      "value": 325525.06635633146,
+      "real_value": 251831.94999858877,
+      "cum_change": 0.5879271529577144
+     }
+    }
+   }
+  },
+  "scenario_definitions": {
+   "bear_2008_replay": "FHFA Clayton County actual annual changes 2006-2015 applied from year 1 (-48.5% trough at year 7, -33% at year 10) - market_history KQ1",
+   "bear_moderate_mc_p10": "10th percentile of the Monte Carlo value distribution at each horizon (with crash regime)",
+   "base": "mean of three momentum + mean-reversion parameterisations (Capozza panel, Capozza repeat-sales, local AR(1)+Gallin) - valuation_methods KQ2",
+   "bull": "year 1 +2%, years 2-3 +8%, year 4 +6%, year 5 +5%, years 6-7 +4%, years 8-10 +3.5%: rates easing to Zillow's 6.5% end-2027 path and a 2013-2015-type rebound (ZIP +14-28%/yr then) scaled to today's 13% drawdown - valuation_methods KQ3/KQ6"
+  },
+  "published_forecasts": [
+   {
+    "source": "Zillow ZHVF ZIP 30238",
+    "horizon": "to 2027-09-30",
+    "pct": -0.005,
+    "date": "2026-09-30",
+    "src": "market_history KQ2"
+   },
+   {
+    "source": "Zillow ZHVF Atlanta MSA",
+    "horizon": "to 2027-09-30",
+    "pct": -0.01,
+    "date": "2026-09-30",
+    "src": "market_history KQ2"
+   },
+   {
+    "source": "Zillow ZHVF United States",
+    "horizon": "to 2027-09-30",
+    "pct": 0.011,
+    "date": "2026-09-30",
+    "src": "market_history KQ2"
+   },
+   {
+    "source": "Cotality (CoreLogic) HPI Forecast, U.S.",
+    "horizon": "to 2027-08",
+    "pct": 0.016,
+    "date": "2026-10-06",
+    "src": "market_history KQ5 (+1.6%; valuation_methods KQ6 cites +1.7%)"
+   },
+   {
+    "source": "Fannie Mae Home Price Expectations panel, U.S.",
+    "horizon": "calendar 2027",
+    "pct": 0.02,
+    "date": "2026-07-17",
+    "src": "market_history KQ5 (secondary: Ramsey Solutions)"
+   },
+   {
+    "source": "Federal Reserve 2026 baseline scenario, U.S.",
+    "horizon": "Q1 2026 to Q4 2028 (3 yrs)",
+    "pct": 0.012,
+    "date": "2026-02-04",
+    "src": "valuation_methods KQ3/KQ6 (stale on rates)"
+   },
+   {
+    "source": "Federal Reserve 2026 severely adverse, U.S.",
+    "horizon": "to Q4 2027 trough",
+    "pct": -0.3,
+    "date": "2026-02-04",
+    "src": "valuation_methods KQ3"
+   },
+   {
+    "source": "UGA Selig Center (Georgia)",
+    "horizon": "2026",
+    "pct": null,
+    "date": "2025-12-16",
+    "src": "market_history KQ5 ('prices begin to fall, though not sharply')"
+   }
+  ],
+  "gain_tables": {
+   "purchase_at_list": {
+    "bear_2008_replay": {
+     "1": {
+      "value": 202828.8929339732,
+      "gain_gross": 2828.8929339731985,
+      "gain_net_of_8pct_sale_costs": -13397.41850074465,
+      "real_value": 197688.97946781013,
+      "real_gain_gross": -2311.0205321898684
+     },
+     "3": {
+      "value": 173264.5209333113,
+      "gain_gross": -26735.479066688713,
+      "gain_net_of_8pct_sale_costs": -40596.64074135362,
+      "real_value": 160423.34211025116,
+      "real_gain_gross": -39576.657889748836
+     },
+     "5": {
+      "value": 136067.35065364884,
+      "gain_gross": -63932.64934635116,
+      "gain_net_of_8pct_sale_costs": -74818.03739864306,
+      "real_value": 119678.77215865513,
+      "real_gain_gross": -80321.22784134487
+     },
+     "7": {
+      "value": 105637.9281813669,
+      "gain_gross": -94362.0718186331,
+      "gain_net_of_8pct_sale_costs": -102813.10607314245,
+      "real_value": 88264.96424292917,
+      "real_gain_gross": -111735.03575707083
+     },
+     "10": {
+      "value": 136610.1274201556,
+      "gain_gross": -63389.87257984441,
+      "gain_net_of_8pct_sale_costs": -74318.68277345685,
+      "real_value": 105684.01125864428,
+      "real_gain_gross": -94315.98874135572
+     }
+    },
+    "bear_moderate_mc_p10": {
+     "1": {
+      "value": 177984.0954645284,
+      "gain_gross": -22015.904535471607,
+      "gain_net_of_8pct_sale_costs": -36254.632172633865,
+      "real_value": 173473.7772558756,
+      "real_gain_gross": -26526.22274412439
+     },
+     "3": {
+      "value": 155552.2960794976,
+      "gain_gross": -44447.70392050239,
+      "gain_net_of_8pct_sale_costs": -56891.887606862205,
+      "real_value": 144023.82597185657,
+      "real_gain_gross": -55976.17402814343
+     },
+     "5": {
+      "value": 139072.8109243193,
+      "gain_gross": -60927.18907568071,
+      "gain_net_of_8pct_sale_costs": -72053.01394962624,
+      "real_value": 122322.24094993797,
+      "real_gain_gross": -77677.75905006203
+     },
+     "7": {
+      "value": 123801.59068487906,
+      "gain_gross": -76198.40931512094,
+      "gain_net_of_8pct_sale_costs": -86102.53656991126,
+      "real_value": 103441.47375039148,
+      "real_gain_gross": -96558.52624960852
+     },
+     "10": {
+      "value": 111021.7885526025,
+      "gain_gross": -88978.2114473975,
+      "gain_net_of_8pct_sale_costs": -97859.95453160569,
+      "real_value": 85888.41964301496,
+      "real_gain_gross": -114111.58035698504
+     }
+    },
+    "base": {
+     "1": {
+      "value": 204614.2339876422,
+      "gain_gross": 4614.23398764219,
+      "gain_net_of_8pct_sale_costs": -11754.90473136917,
+      "real_value": 199429.0779606649,
+      "real_gain_gross": -570.9220393350988
+     },
+     "3": {
+      "value": 215867.9196498677,
+      "gain_gross": 15867.91964986769,
+      "gain_net_of_8pct_sale_costs": -1401.513922121725,
+      "real_value": 199869.2688963597,
+      "real_gain_gross": -130.73110364031163
+     },
+     "5": {
+      "value": 233271.442882174,
+      "gain_gross": 33271.442882173986,
+      "gain_net_of_8pct_sale_costs": 14609.727451600076,
+      "real_value": 205175.15575708597,
+      "real_gain_gross": 5175.155757085973
+     },
+     "7": {
+      "value": 250729.2586755233,
+      "gain_gross": 50729.258675523306,
+      "gain_net_of_8pct_sale_costs": 30670.91798148144,
+      "real_value": 209494.91752295409,
+      "real_gain_gross": 9494.917522954085
+     },
+     "10": {
+      "value": 273284.1117194744,
+      "gain_gross": 73284.11171947437,
+      "gain_net_of_8pct_sale_costs": 51421.38278191644,
+      "real_value": 211417.42332866232,
+      "real_gain_gross": 11417.42332866232
+     }
+    },
+    "bull": {
+     "1": {
+      "value": 209100.0,
+      "gain_gross": 9100.0,
+      "gain_net_of_8pct_sale_costs": -7628.0,
+      "real_value": 203801.16959064326,
+      "real_gain_gross": 3801.169590643258
+     },
+     "3": {
+      "value": 243894.24000000002,
+      "gain_gross": 43894.24000000002,
+      "gain_net_of_8pct_sale_costs": 24382.70080000002,
+      "real_value": 225818.47046054658,
+      "real_gain_gross": 25818.47046054658
+     },
+     "5": {
+      "value": 271454.2891200001,
+      "gain_gross": 71454.28912000009,
+      "gain_net_of_8pct_sale_costs": 49737.9459904001,
+      "real_value": 238759.08410810962,
+      "real_gain_gross": 38759.084108109615
+     },
+     "7": {
+      "value": 293604.9591121921,
+      "gain_gross": 93604.9591121921,
+      "gain_net_of_8pct_sale_costs": 70116.56238321675,
+      "real_value": 245319.3816248602,
+      "real_gain_gross": 45319.381624860194
+     },
+     "10": {
+      "value": 325525.06635633146,
+      "gain_gross": 125525.06635633146,
+      "gain_net_of_8pct_sale_costs": 99483.06104782497,
+      "real_value": 251831.94999858877,
+      "real_gain_gross": 51831.94999858877
+     }
+    }
+   },
+   "purchase_at_max_price": {
+    "bear_2008_replay": {
+     "1": {
+      "value": 202828.8929339732,
+      "gain_gross": 53828.8929339732,
+      "gain_net_of_8pct_sale_costs": 37602.58149925535,
+      "real_value": 197688.97946781013,
+      "real_gain_gross": 48688.97946781013
+     },
+     "3": {
+      "value": 173264.5209333113,
+      "gain_gross": 24264.520933311287,
+      "gain_net_of_8pct_sale_costs": 10403.359258646378,
+      "real_value": 160423.34211025116,
+      "real_gain_gross": 11423.342110251164
+     },
+     "5": {
+      "value": 136067.35065364884,
+      "gain_gross": -12932.649346351158,
+      "gain_net_of_8pct_sale_costs": -23818.037398643064,
+      "real_value": 119678.77215865513,
+      "real_gain_gross": -29321.227841344866
+     },
+     "7": {
+      "value": 105637.9281813669,
+      "gain_gross": -43362.07181863311,
+      "gain_net_of_8pct_sale_costs": -51813.10607314245,
+      "real_value": 88264.96424292917,
+      "real_gain_gross": -60735.03575707083
+     },
+     "10": {
+      "value": 136610.1274201556,
+      "gain_gross": -12389.872579844407,
+      "gain_net_of_8pct_sale_costs": -23318.68277345685,
+      "real_value": 105684.01125864428,
+      "real_gain_gross": -43315.988741355715
+     }
+    },
+    "bear_moderate_mc_p10": {
+     "1": {
+      "value": 177984.0954645284,
+      "gain_gross": 28984.095464528393,
+      "gain_net_of_8pct_sale_costs": 14745.367827366135,
+      "real_value": 173473.7772558756,
+      "real_gain_gross": 24473.77725587561
+     },
+     "3": {
+      "value": 155552.2960794976,
+      "gain_gross": 6552.29607949761,
+      "gain_net_of_8pct_sale_costs": -5891.887606862205,
+      "real_value": 144023.82597185657,
+      "real_gain_gross": -4976.174028143432
+     },
+     "5": {
+      "value": 139072.8109243193,
+      "gain_gross": -9927.189075680712,
+      "gain_net_of_8pct_sale_costs": -21053.01394962624,
+      "real_value": 122322.24094993797,
+      "real_gain_gross": -26677.759050062028
+     },
+     "7": {
+      "value": 123801.59068487906,
+      "gain_gross": -25198.409315120938,
+      "gain_net_of_8pct_sale_costs": -35102.53656991126,
+      "real_value": 103441.47375039148,
+      "real_gain_gross": -45558.52624960852
+     },
+     "10": {
+      "value": 111021.7885526025,
+      "gain_gross": -37978.211447397494,
+      "gain_net_of_8pct_sale_costs": -46859.95453160569,
+      "real_value": 85888.41964301496,
+      "real_gain_gross": -63111.58035698504
+     }
+    },
+    "base": {
+     "1": {
+      "value": 204614.2339876422,
+      "gain_gross": 55614.23398764219,
+      "gain_net_of_8pct_sale_costs": 39245.09526863083,
+      "real_value": 199429.0779606649,
+      "real_gain_gross": 50429.0779606649
+     },
+     "3": {
+      "value": 215867.9196498677,
+      "gain_gross": 66867.91964986769,
+      "gain_net_of_8pct_sale_costs": 49598.486077878275,
+      "real_value": 199869.2688963597,
+      "real_gain_gross": 50869.26889635969
+     },
+     "5": {
+      "value": 233271.442882174,
+      "gain_gross": 84271.44288217399,
+      "gain_net_of_8pct_sale_costs": 65609.72745160008,
+      "real_value": 205175.15575708597,
+      "real_gain_gross": 56175.15575708597
+     },
+     "7": {
+      "value": 250729.2586755233,
+      "gain_gross": 101729.2586755233,
+      "gain_net_of_8pct_sale_costs": 81670.91798148144,
+      "real_value": 209494.91752295409,
+      "real_gain_gross": 60494.917522954085
+     },
+     "10": {
+      "value": 273284.1117194744,
+      "gain_gross": 124284.11171947437,
+      "gain_net_of_8pct_sale_costs": 102421.38278191644,
+      "real_value": 211417.42332866232,
+      "real_gain_gross": 62417.42332866232
+     }
+    },
+    "bull": {
+     "1": {
+      "value": 209100.0,
+      "gain_gross": 60100.0,
+      "gain_net_of_8pct_sale_costs": 43372.0,
+      "real_value": 203801.16959064326,
+      "real_gain_gross": 54801.16959064326
+     },
+     "3": {
+      "value": 243894.24000000002,
+      "gain_gross": 94894.24000000002,
+      "gain_net_of_8pct_sale_costs": 75382.70080000002,
+      "real_value": 225818.47046054658,
+      "real_gain_gross": 76818.47046054658
+     },
+     "5": {
+      "value": 271454.2891200001,
+      "gain_gross": 122454.28912000009,
+      "gain_net_of_8pct_sale_costs": 100737.9459904001,
+      "real_value": 238759.08410810962,
+      "real_gain_gross": 89759.08410810962
+     },
+     "7": {
+      "value": 293604.9591121921,
+      "gain_gross": 144604.9591121921,
+      "gain_net_of_8pct_sale_costs": 121116.56238321675,
+      "real_value": 245319.3816248602,
+      "real_gain_gross": 96319.3816248602
+     },
+     "10": {
+      "value": 325525.06635633146,
+      "gain_gross": 176525.06635633146,
+      "gain_net_of_8pct_sale_costs": 150483.06104782497,
+      "real_value": 251831.94999858877,
+      "real_gain_gross": 102831.94999858877
+     }
+    }
+   },
+   "purchase_at_opening_offer": {
+    "bear_2008_replay": {
+     "1": {
+      "value": 202828.8929339732,
+      "gain_gross": 57828.8929339732,
+      "gain_net_of_8pct_sale_costs": 41602.58149925535,
+      "real_value": 197688.97946781013,
+      "real_gain_gross": 52688.97946781013
+     },
+     "3": {
+      "value": 173264.5209333113,
+      "gain_gross": 28264.520933311287,
+      "gain_net_of_8pct_sale_costs": 14403.359258646378,
+      "real_value": 160423.34211025116,
+      "real_gain_gross": 15423.342110251164
+     },
+     "5": {
+      "value": 136067.35065364884,
+      "gain_gross": -8932.649346351158,
+      "gain_net_of_8pct_sale_costs": -19818.037398643064,
+      "real_value": 119678.77215865513,
+      "real_gain_gross": -25321.227841344866
+     },
+     "7": {
+      "value": 105637.9281813669,
+      "gain_gross": -39362.07181863311,
+      "gain_net_of_8pct_sale_costs": -47813.10607314245,
+      "real_value": 88264.96424292917,
+      "real_gain_gross": -56735.03575707083
+     },
+     "10": {
+      "value": 136610.1274201556,
+      "gain_gross": -8389.872579844407,
+      "gain_net_of_8pct_sale_costs": -19318.68277345685,
+      "real_value": 105684.01125864428,
+      "real_gain_gross": -39315.988741355715
+     }
+    },
+    "bear_moderate_mc_p10": {
+     "1": {
+      "value": 177984.0954645284,
+      "gain_gross": 32984.09546452839,
+      "gain_net_of_8pct_sale_costs": 18745.367827366135,
+      "real_value": 173473.7772558756,
+      "real_gain_gross": 28473.77725587561
+     },
+     "3": {
+      "value": 155552.2960794976,
+      "gain_gross": 10552.29607949761,
+      "gain_net_of_8pct_sale_costs": -1891.8876068622048,
+      "real_value": 144023.82597185657,
+      "real_gain_gross": -976.1740281434322
+     },
+     "5": {
+      "value": 139072.8109243193,
+      "gain_gross": -5927.1890756807115,
+      "gain_net_of_8pct_sale_costs": -17053.01394962624,
+      "real_value": 122322.24094993797,
+      "real_gain_gross": -22677.759050062028
+     },
+     "7": {
+      "value": 123801.59068487906,
+      "gain_gross": -21198.409315120938,
+      "gain_net_of_8pct_sale_costs": -31102.53656991126,
+      "real_value": 103441.47375039148,
+      "real_gain_gross": -41558.52624960852
+     },
+     "10": {
+      "value": 111021.7885526025,
+      "gain_gross": -33978.211447397494,
+      "gain_net_of_8pct_sale_costs": -42859.95453160569,
+      "real_value": 85888.41964301496,
+      "real_gain_gross": -59111.58035698504
+     }
+    },
+    "base": {
+     "1": {
+      "value": 204614.2339876422,
+      "gain_gross": 59614.23398764219,
+      "gain_net_of_8pct_sale_costs": 43245.09526863083,
+      "real_value": 199429.0779606649,
+      "real_gain_gross": 54429.0779606649
+     },
+     "3": {
+      "value": 215867.9196498677,
+      "gain_gross": 70867.91964986769,
+      "gain_net_of_8pct_sale_costs": 53598.486077878275,
+      "real_value": 199869.2688963597,
+      "real_gain_gross": 54869.26889635969
+     },
+     "5": {
+      "value": 233271.442882174,
+      "gain_gross": 88271.44288217399,
+      "gain_net_of_8pct_sale_costs": 69609.72745160008,
+      "real_value": 205175.15575708597,
+      "real_gain_gross": 60175.15575708597
+     },
+     "7": {
+      "value": 250729.2586755233,
+      "gain_gross": 105729.2586755233,
+      "gain_net_of_8pct_sale_costs": 85670.91798148144,
+      "real_value": 209494.91752295409,
+      "real_gain_gross": 64494.917522954085
+     },
+     "10": {
+      "value": 273284.1117194744,
+      "gain_gross": 128284.11171947437,
+      "gain_net_of_8pct_sale_costs": 106421.38278191644,
+      "real_value": 211417.42332866232,
+      "real_gain_gross": 66417.42332866232
+     }
+    },
+    "bull": {
+     "1": {
+      "value": 209100.0,
+      "gain_gross": 64100.0,
+      "gain_net_of_8pct_sale_costs": 47372.0,
+      "real_value": 203801.16959064326,
+      "real_gain_gross": 58801.16959064326
+     },
+     "3": {
+      "value": 243894.24000000002,
+      "gain_gross": 98894.24000000002,
+      "gain_net_of_8pct_sale_costs": 79382.70080000002,
+      "real_value": 225818.47046054658,
+      "real_gain_gross": 80818.47046054658
+     },
+     "5": {
+      "value": 271454.2891200001,
+      "gain_gross": 126454.28912000009,
+      "gain_net_of_8pct_sale_costs": 104737.9459904001,
+      "real_value": 238759.08410810962,
+      "real_gain_gross": 93759.08410810962
+     },
+     "7": {
+      "value": 293604.9591121921,
+      "gain_gross": 148604.9591121921,
+      "gain_net_of_8pct_sale_costs": 125116.56238321675,
+      "real_value": 245319.3816248602,
+      "real_gain_gross": 100319.3816248602
+     },
+     "10": {
+      "value": 325525.06635633146,
+      "gain_gross": 180525.06635633146,
+      "gain_net_of_8pct_sale_costs": 154483.06104782497,
+      "real_value": 251831.94999858877,
+      "real_gain_gross": 106831.94999858877
+     }
+    }
+   }
+  }
+ },
+ "C_cash_flow": {
+  "proforma_at_list_base": {
+   "price": 200000,
+   "loan": 150000.0,
+   "rate": 0.074,
+   "ltv": 0.75,
+   "pi_monthly": 1038.569700088628,
+   "cash_invested": 85687.5,
+   "year1": {
+    "year": 1,
+    "rent_mo": 2025.0,
+    "gpr": 2025.0,
+    "vacancy": 162.0,
+    "egi": 1863.0,
+    "mgmt": 210.17,
+    "maint": 151.875,
+    "capex": 202.5,
+    "tax": 266.59666666666664,
+    "insurance": 125.0,
+    "utilities": 17.5,
+    "eviction": 0,
+    "opex": 973.6416666666668,
+    "noi": 889.3583333333332,
+    "debt_service": 1038.569700088628,
+    "cash_flow": -149.21136675529473
+   },
+   "year1_annual": {
+    "year": 1,
+    "rent_mo": 2025.0,
+    "gpr": 24300.0,
+    "vacancy": 1944.0,
+    "egi": 22356.0,
+    "mgmt": 2522.04,
+    "maint": 1822.5,
+    "capex": 2430.0,
+    "tax": 3199.16,
+    "insurance": 1500.0,
+    "utilities": 210.0,
+    "eviction": 0,
+    "opex": 11683.7,
+    "noi": 10672.3,
+    "debt_service": 12462.836401063536,
+    "cash_flow": -1790.5364010635367
+   },
+   "cap_rate": 0.0533615,
+   "cash_on_cash": -0.02089612138367366,
+   "dscr_lender_gross_rent_over_pitia": 1.415919187495816,
+   "dscr_noi_over_debt_service": 0.8563299442083073,
+   "grm": 8.23045267489712,
+   "opex_ratio": 0.4808106995884774,
+   "hold5": {
+    "exit_value": 247353.07266591498,
+    "loan_balance": 141784.47808431255,
+    "net_sale_proceeds": 85780.34876832925,
+    "irr": -0.01684332891323265,
+    "equity_multiple": 0.915430053134133,
+    "total_profit": -7246.587322068983
+   },
+   "hold10": {
+    "exit_value": 289781.14041473536,
+    "loan_balance": 129904.08838127315,
+    "net_sale_proceeds": 136694.5608002834,
+    "irr": 0.03693174466652352,
+    "equity_multiple": 1.4667990714001056,
+    "total_profit": 39998.84543059654
+   },
+   "rows_annual": [
+    {
+     "year": 1,
+     "rent_mo": 2025,
+     "gpr": 24300,
+     "vacancy": 1944,
+     "egi": 22356,
+     "mgmt": 2522,
+     "maint": 1822,
+     "capex": 2430,
+     "tax": 3199,
+     "insurance": 1500,
+     "utilities": 210,
+     "eviction": 0,
+     "opex": 11684,
+     "noi": 10672,
+     "debt_service": 12463,
+     "cash_flow": -1791
+    },
+    {
+     "year": 2,
+     "rent_mo": 2076,
+     "gpr": 24908,
+     "vacancy": 1993,
+     "egi": 22915,
+     "mgmt": 2588,
+     "maint": 1868,
+     "capex": 2491,
+     "tax": 3295,
+     "insurance": 1620,
+     "utilities": 216,
+     "eviction": 0,
+     "opex": 12078,
+     "noi": 10837,
+     "debt_service": 12463,
+     "cash_flow": -1626
+    },
+    {
+     "year": 3,
+     "rent_mo": 2128,
+     "gpr": 25530,
+     "vacancy": 2042,
+     "egi": 23488,
+     "mgmt": 2655,
+     "maint": 1915,
+     "capex": 2553,
+     "tax": 3394,
+     "insurance": 1750,
+     "utilities": 223,
+     "eviction": 0,
+     "opex": 12489,
+     "noi": 10999,
+     "debt_service": 12463,
+     "cash_flow": -1464
+    },
+    {
+     "year": 4,
+     "rent_mo": 2181,
+     "gpr": 26168,
+     "vacancy": 2093,
+     "egi": 24075,
+     "mgmt": 2724,
+     "maint": 1963,
+     "capex": 2617,
+     "tax": 3496,
+     "insurance": 1890,
+     "utilities": 229,
+     "eviction": 0,
+     "opex": 12918,
+     "noi": 11157,
+     "debt_service": 12463,
+     "cash_flow": -1306
+    },
+    {
+     "year": 5,
+     "rent_mo": 2235,
+     "gpr": 26823,
+     "vacancy": 2146,
+     "egi": 24677,
+     "mgmt": 2795,
+     "maint": 2012,
+     "capex": 2682,
+     "tax": 3601,
+     "insurance": 2041,
+     "utilities": 236,
+     "eviction": 0,
+     "opex": 13367,
+     "noi": 11310,
+     "debt_service": 12463,
+     "cash_flow": -1153
+    },
+    {
+     "year": 6,
+     "rent_mo": 2291,
+     "gpr": 27493,
+     "vacancy": 2199,
+     "egi": 25294,
+     "mgmt": 2868,
+     "maint": 2062,
+     "capex": 2749,
+     "tax": 3709,
+     "insurance": 2204,
+     "utilities": 243,
+     "eviction": 0,
+     "opex": 13835,
+     "noi": 11459,
+     "debt_service": 12463,
+     "cash_flow": -1004
+    },
+    {
+     "year": 7,
+     "rent_mo": 2348,
+     "gpr": 28181,
+     "vacancy": 2254,
+     "egi": 25926,
+     "mgmt": 2942,
+     "maint": 2114,
+     "capex": 2818,
+     "tax": 3820,
+     "insurance": 2380,
+     "utilities": 251,
+     "eviction": 0,
+     "opex": 14325,
+     "noi": 11601,
+     "debt_service": 12463,
+     "cash_flow": -862
+    },
+    {
+     "year": 8,
+     "rent_mo": 2407,
+     "gpr": 28885,
+     "vacancy": 2311,
+     "egi": 26574,
+     "mgmt": 3019,
+     "maint": 2166,
+     "capex": 2889,
+     "tax": 3935,
+     "insurance": 2571,
+     "utilities": 258,
+     "eviction": 0,
+     "opex": 14837,
+     "noi": 11737,
+     "debt_service": 12463,
+     "cash_flow": -726
+    },
+    {
+     "year": 9,
+     "rent_mo": 2467,
+     "gpr": 29607,
+     "vacancy": 2369,
+     "egi": 27239,
+     "mgmt": 3098,
+     "maint": 2221,
+     "capex": 2961,
+     "tax": 4053,
+     "insurance": 2776,
+     "utilities": 266,
+     "eviction": 0,
+     "opex": 15374,
+     "noi": 11865,
+     "debt_service": 12463,
+     "cash_flow": -598
+    },
+    {
+     "year": 10,
+     "rent_mo": 2529,
+     "gpr": 30347,
+     "vacancy": 2428,
+     "egi": 27920,
+     "mgmt": 3178,
+     "maint": 2276,
+     "capex": 3035,
+     "tax": 4174,
+     "insurance": 2999,
+     "utilities": 274,
+     "eviction": 0,
+     "opex": 15936,
+     "noi": 11984,
+     "debt_service": 12463,
+     "cash_flow": -479
+    }
+   ]
+  },
+  "proforma_at_list_dscr_loan_6.75": {
+   "price": 200000,
+   "loan": 150000.0,
+   "rate": 0.0675,
+   "ltv": 0.75,
+   "pi_monthly": 972.8971448523234,
+   "cash_invested": 82500.0,
+   "year1": {
+    "year": 1,
+    "rent_mo": 2025.0,
+    "gpr": 2025.0,
+    "vacancy": 162.0,
+    "egi": 1863.0,
+    "mgmt": 210.17,
+    "maint": 151.875,
+    "capex": 202.5,
+    "tax": 266.59666666666664,
+    "insurance": 125.0,
+    "utilities": 17.5,
+    "eviction": 0,
+    "opex": 973.6416666666668,
+    "noi": 889.3583333333332,
+    "debt_service": 972.8971448523234,
+    "cash_flow": -83.53881151899016
+   },
+   "year1_annual": {
+    "year": 1,
+    "rent_mo": 2025.0,
+    "gpr": 24300.0,
+    "vacancy": 1944.0,
+    "egi": 22356.0,
+    "mgmt": 2522.04,
+    "maint": 1822.5,
+    "capex": 2430.0,
+    "tax": 3199.16,
+    "insurance": 1500.0,
+    "utilities": 210.0,
+    "eviction": 0,
+    "opex": 11683.7,
+    "noi": 10672.3,
+    "debt_service": 11674.765738227881,
+    "cash_flow": -1002.465738227882
+   },
+   "cap_rate": 0.0533615,
+   "cash_on_cash": -0.012151099857307661,
+   "dscr_lender_gross_rent_over_pitia": 1.4840668260310519,
+   "dscr_noi_over_debt_service": 0.9141339740166772,
+   "grm": 8.23045267489712,
+   "opex_ratio": 0.4808106995884774,
+   "hold5": {
+    "exit_value": 247353.07266591498,
+    "loan_balance": 140813.56430591998,
+    "net_sale_proceeds": 86751.26254672182,
+    "irr": 0.0020166157016728962,
+    "equity_multiple": 1.010329451763659,
+    "total_profit": 852.1797705018689
+   },
+   "hold10": {
+    "exit_value": 289781.14041473536,
+    "loan_balance": 127951.49854021848,
+    "net_sale_proceeds": 138647.15064133806,
+    "irr": 0.04968701986322857,
+    "equity_multiple": 1.6426623260607,
+    "total_profit": 53019.64190000776
+   }
+  },
+  "proforma_at_list_80ltv_dscr_7.00": {
+   "price": 200000,
+   "loan": 160000.0,
+   "rate": 0.07,
+   "ltv": 0.8,
+   "pi_monthly": 1064.4839922866918,
+   "cash_invested": 72500.0,
+   "year1": {
+    "year": 1,
+    "rent_mo": 2025.0,
+    "gpr": 2025.0,
+    "vacancy": 162.0,
+    "egi": 1863.0,
+    "mgmt": 210.17,
+    "maint": 151.875,
+    "capex": 202.5,
+    "tax": 266.59666666666664,
+    "insurance": 125.0,
+    "utilities": 17.5,
+    "eviction": 0,
+    "opex": 973.6416666666668,
+    "noi": 889.3583333333332,
+    "debt_service": 1064.4839922866918,
+    "cash_flow": -175.1256589533585
+   },
+   "year1_annual": {
+    "year": 1,
+    "rent_mo": 2025.0,
+    "gpr": 24300.0,
+    "vacancy": 1944.0,
+    "egi": 22356.0,
+    "mgmt": 2522.04,
+    "maint": 1822.5,
+    "capex": 2430.0,
+    "tax": 3199.16,
+    "insurance": 1500.0,
+    "utilities": 210.0,
+    "eviction": 0,
+    "opex": 11683.7,
+    "noi": 10672.3,
+    "debt_service": 12773.807907440301,
+    "cash_flow": -2101.507907440302
+   },
+   "cap_rate": 0.0533615,
+   "cash_on_cash": -0.02898631596469382,
+   "dscr_lender_gross_rent_over_pitia": 1.3907196607196093,
+   "dscr_noi_over_debt_service": 0.8354830507341318,
+   "grm": 8.23045267489712,
+   "opex_ratio": 0.4808106995884774,
+   "hold5": {
+    "exit_value": 247353.07266591498,
+    "loan_balance": 150610.54377246706,
+    "net_sale_proceeds": 76954.28308017473,
+    "irr": -0.011899689532965559,
+    "equity_multiple": 0.9387584752812783,
+    "total_profit": -4440.010542107324
+   },
+   "hold10": {
+    "exit_value": 289781.14041473536,
+    "loan_balance": 137299.81345027647,
+    "net_sale_proceeds": 129298.83573128007,
+    "irr": 0.04389459536513812,
+    "equity_multiple": 1.5887021420389733,
+    "total_profit": 42680.905297825564
+   }
+  },
+  "scenarios_at_list": {
+   "bear_2008_replay": {
+    "cash_invested": 100687.5,
+    "cap_rate": 0.05115020000000001,
+    "cash_on_cash": -0.022175507397279057,
+    "hold5": {
+     "exit_value": 144281.1724309118,
+     "loan_balance": 141784.47808431255,
+     "net_sale_proceeds": -9045.799447873695,
+     "irr": null,
+     "equity_multiple": -0.27531953414585697,
+     "total_profit": -128408.73559431097
+    },
+    "hold10": {
+     "exit_value": 144856.71438027473,
+     "loan_balance": 129904.08838127315,
+     "net_sale_proceeds": 3364.0888485796168,
+     "irr": null,
+     "equity_multiple": -0.41148003578660847,
+     "total_profit": -142118.39610326412
+    },
+    "cum_cf_10": -44794.984951843755
+   },
+   "bear_moderate_mc_p10": {
+    "cash_invested": 100687.5,
+    "cap_rate": 0.05115020000000001,
+    "cash_on_cash": -0.022175507397279057,
+    "hold5": {
+     "exit_value": 147468.05987645808,
+     "loan_balance": 141784.47808431255,
+     "net_sale_proceeds": -6113.862997971097,
+     "irr": null,
+     "equity_multiple": -0.23050181543802734,
+     "total_profit": -123896.15154191638
+    },
+    "hold10": {
+     "exit_value": 117723.71359327789,
+     "loan_balance": 129904.08838127315,
+     "net_sale_proceeds": -21598.27187545749,
+     "irr": null,
+     "equity_multiple": -0.5379019275361795,
+     "total_profit": -154847.50032879907
+    },
+    "cum_cf_10": -32561.728453341588
+   },
+   "base": {
+    "cash_invested": 85687.5,
+    "cap_rate": 0.0533615,
+    "cash_on_cash": -0.02089612138367366,
+    "hold5": {
+     "exit_value": 247353.07266591498,
+     "loan_balance": 141784.47808431255,
+     "net_sale_proceeds": 85780.34876832925,
+     "irr": -0.01684332891323265,
+     "equity_multiple": 0.915430053134133,
+     "total_profit": -7246.587322068983
+    },
+    "hold10": {
+     "exit_value": 289781.14041473536,
+     "loan_balance": 129904.08838127315,
+     "net_sale_proceeds": 136694.5608002834,
+     "irr": 0.03693174466652352,
+     "equity_multiple": 1.4667990714001056,
+     "total_profit": 39998.84543059654
+    },
+    "cum_cf_10": -11008.215369686852
+   },
+   "bull": {
+    "cash_invested": 85687.5,
+    "cap_rate": 0.055572800000000006,
+    "cash_on_cash": -0.01573480847338917,
+    "hold5": {
+     "exit_value": 287840.8590120001,
+     "loan_balance": 141784.47808431255,
+     "net_sale_proceeds": 123029.11220672753,
+     "irr": 0.06794394508943244,
+     "equity_multiple": 1.3977439574900519,
+     "total_profit": 34081.68535742881
+    },
+    "hold10": {
+     "exit_value": 345175.66487418313,
+     "loan_balance": 129904.08838127315,
+     "net_sale_proceeds": 187657.52330297534,
+     "irr": 0.08181509221059399,
+     "equity_multiple": 2.2212587376042556,
+     "total_profit": 104646.60807846466
+    },
+    "cum_cf_10": 2676.584775489331
+   }
+  },
+  "section8_at_list": {
+   "price": 200000,
+   "loan": 150000.0,
+   "rate": 0.074,
+   "ltv": 0.75,
+   "pi_monthly": 1038.569700088628,
+   "cash_invested": 85687.5,
+   "year1": {
+    "year": 1,
+    "rent_mo": 2100.0,
+    "gpr": 2100.0,
+    "vacancy": 84.0,
+    "egi": 2016.0,
+    "mgmt": 223.93999999999997,
+    "maint": 157.5,
+    "capex": 210.0,
+    "tax": 266.59666666666664,
+    "insurance": 125.0,
+    "utilities": 17.5,
+    "eviction": 0,
+    "opex": 1025.5366666666666,
+    "noi": 990.4633333333335,
+    "debt_service": 1038.569700088628,
+    "cash_flow": -48.10636675529455
+   },
+   "year1_annual": {
+    "year": 1,
+    "rent_mo": 2100.0,
+    "gpr": 25200.0,
+    "vacancy": 1008.0,
+    "egi": 24192.0,
+    "mgmt": 2687.2799999999997,
+    "maint": 1890.0,
+    "capex": 2520.0,
+    "tax": 3199.16,
+    "insurance": 1500.0,
+    "utilities": 210.0,
+    "eviction": 0,
+    "opex": 12306.439999999999,
+    "noi": 11885.560000000001,
+    "debt_service": 12462.836401063536,
+    "cash_flow": -577.2764010635346
+   },
+   "cap_rate": 0.05942780000000001,
+   "cash_on_cash": -0.006736996657196612,
+   "dscr_lender_gross_rent_over_pitia": 1.4683606388845498,
+   "dscr_noi_over_debt_service": 0.9536801750029975,
+   "grm": 7.936507936507937,
+   "opex_ratio": 0.4883507936507936,
+   "hold5": {
+    "exit_value": 247353.07266591498,
+    "loan_balance": 141784.47808431255,
+    "net_sale_proceeds": 85780.34876832925,
+    "irr": -0.001840155478407717,
+    "equity_multiple": 0.9907524944418463,
+    "total_profit": -792.3956325142935
+   },
+   "hold10": {
+    "exit_value": 289781.14041473536,
+    "loan_balance": 129904.08838127315,
+    "net_sale_proceeds": 136694.5608002834,
+    "irr": 0.049904024786354736,
+    "equity_multiple": 1.6296423040072325,
+    "total_profit": 53952.474924619746
+   }
+  },
+  "section8_notes": "contract rent $2,100 (rent reasonableness, gapfill_4 KQ2); vacancy 4% (HAP share paid reliably; 2-4 week lease-up); +$300/yr inspection/admin; payment standard range $2,088-$2,552 (JHA schedule unpublished); SAFMR fell 4.1% FY2027 so no voucher-side rent growth",
+  "flip": {
+   "at_list_arv_mid": {
+    "price": 200000,
+    "arv": 290000,
+    "renovation": 50000,
+    "contingency": 10000,
+    "buy_closing": 4000.0,
+    "holding_6mo": 3249.5799999999995,
+    "financing_or_opportunity_cost": 9250.0,
+    "selling_costs_10pct": 29000.0,
+    "all_in_cost": 276499.58,
+    "profit": -15499.580000000016,
+    "roi_on_cost": -0.05605643234611791,
+    "mao_70_rule": 153000.0,
+    "mao_75_rule": 167500.0
+   },
+   "at_list_arv_low": {
+    "price": 200000,
+    "arv": 280000,
+    "renovation": 50000,
+    "contingency": 10000,
+    "buy_closing": 4000.0,
+    "holding_6mo": 3249.5799999999995,
+    "financing_or_opportunity_cost": 9250.0,
+    "selling_costs_10pct": 28000.0,
+    "all_in_cost": 276499.58,
+    "profit": -24499.580000000016,
+    "roi_on_cost": -0.08860621054107935,
+    "mao_70_rule": 146000.0,
+    "mao_75_rule": 160000.0
+   },
+   "at_172500": {
+    "price": 172500,
+    "arv": 290000,
+    "renovation": 50000,
+    "contingency": 10000,
+    "buy_closing": 3450.0,
+    "holding_6mo": 3032.0440000000003,
+    "financing_or_opportunity_cost": 8232.5,
+    "selling_costs_10pct": 29000.0,
+    "all_in_cost": 247214.544,
+    "profit": 13785.456000000006,
+    "roi_on_cost": 0.05576312694612339,
+    "mao_70_rule": 153000.0,
+    "mao_75_rule": 167500.0
+   },
+   "at_158000": {
+    "price": 158000,
+    "arv": 290000,
+    "renovation": 50000,
+    "contingency": 10000,
+    "buy_closing": 3160.0,
+    "holding_6mo": 2917.3432000000003,
+    "financing_or_opportunity_cost": 7696.0,
+    "selling_costs_10pct": 29000.0,
+    "all_in_cost": 231773.3432,
+    "profit": 29226.656799999997,
+    "roi_on_cost": 0.12610016491318402,
+    "mao_70_rule": 153000.0,
+    "mao_75_rule": 167500.0
+   },
+   "at_158000_arv_low": {
+    "price": 158000,
+    "arv": 280000,
+    "renovation": 50000,
+    "contingency": 10000,
+    "buy_closing": 3160.0,
+    "holding_6mo": 2917.3432000000003,
+    "financing_or_opportunity_cost": 7696.0,
+    "selling_costs_10pct": 28000.0,
+    "all_in_cost": 231773.3432,
+    "profit": 20226.656799999997,
+    "roi_on_cost": 0.08726912474376387,
+    "mao_70_rule": 146000.0,
+    "mao_75_rule": 160000.0
+   },
+   "benchmarks": {
+    "attom_q2_2026_us_gross_roi": 0.215,
+    "attom_q2_2026_georgia_gross_roi": 0.253,
+    "src": "value_add KQ5 / comparable_sales KQ4"
+   },
+   "at_max_price": {
+    "price": 149000.0,
+    "arv": 290000,
+    "renovation": 50000,
+    "contingency": 10000,
+    "buy_closing": 2980.0,
+    "holding_6mo": 2846.1496000000006,
+    "financing_or_opportunity_cost": 7363.0,
+    "selling_costs_10pct": 29000.0,
+    "all_in_cost": 222189.1496,
+    "profit": 38810.850399999996,
+    "roi_on_cost": 0.17467482309496177,
+    "mao_70_rule": 153000.0,
+    "mao_75_rule": 167500.0
+   }
+  },
+  "mc_levered_irr_10yr_at_list": {
+   "p5": -1.0,
+   "p25": -0.15140723140715448,
+   "p50": 0.012142580516487814,
+   "p75": 0.10120762028460112,
+   "p95": 0.20060701711879142,
+   "share_irr_below_0": 0.4702,
+   "share_irr_above_12": 0.19855,
+   "share_equity_wiped_out": 0.2153
+  },
+  "scenarios_at_max_price": {
+   "bear_2008_replay": {
+    "cash_invested": 85594.6875,
+    "cap_rate": 0.07407315973154362,
+    "cash_on_cash": 0.020469584414426,
+    "dscr_lender": 1.8441066154793966,
+    "noi_coverage": 1.1887046792208948,
+    "hold5": {
+     "exit_value": 144281.1724309118,
+     "loan_balance": 105629.43617281286,
+     "net_sale_proceeds": 27109.242463625997,
+     "irr": -0.19701286779746624,
+     "equity_multiple": 0.3342223347156909,
+     "total_profit": -56987.031204490035
+    },
+    "hold10": {
+     "exit_value": 144856.71438027473,
+     "loan_balance": 96778.54584404847,
+     "net_sale_proceeds": 36489.6313858043,
+     "irr": -0.09041202397103346,
+     "equity_multiple": 0.38232085477301697,
+     "total_profit": -52870.05341097073
+    },
+    "cum_cf_10": -3764.9972967750273
+   },
+   "bear_moderate_mc_p10": {
+    "cash_invested": 85594.6875,
+    "cap_rate": 0.07407315973154362,
+    "cash_on_cash": 0.020469584414426,
+    "dscr_lender": 1.8441066154793966,
+    "noi_coverage": 1.1887046792208948,
+    "hold5": {
+     "exit_value": 147468.05987645808,
+     "loan_balance": 105629.43617281286,
+     "net_sale_proceeds": 30041.178913528594,
+     "irr": -0.1774262711241079,
+     "equity_multiple": 0.38694271005901576,
+     "total_profit": -52474.44715209544
+    },
+    "hold10": {
+     "exit_value": 117723.71359327789,
+     "loan_balance": 96778.54584404847,
+     "net_sale_proceeds": 11527.270661767194,
+     "irr": -0.15270213847829667,
+     "equity_multiple": 0.2336071366986921,
+     "total_profit": -65599.15763650567
+    },
+    "cum_cf_10": 8468.259201727136
+   },
+   "base": {
+    "cash_invested": 70594.6875,
+    "cap_rate": 0.0770413476510067,
+    "cash_on_cash": 0.031083750901336086,
+    "dscr_lender": 1.8441066154793966,
+    "noi_coverage": 1.2363373019071686,
+    "hold5": {
+     "exit_value": 247353.07266591498,
+     "loan_balance": 105629.43617281286,
+     "net_sale_proceeds": 121935.39067982894,
+     "irr": 0.14466761375561188,
+     "equity_multiple": 1.9090643976255575,
+     "total_profit": 64175.11706775197
+    },
+    "hold10": {
+     "exit_value": 289781.14041473536,
+     "loan_balance": 96778.54584404847,
+     "net_sale_proceeds": 169820.10333750807,
+     "irr": 0.12025442052476934,
+     "equity_multiple": 2.8308344820265683,
+     "total_profit": 129247.18812288996
+    },
+    "cum_cf_10": 30021.77228538187
+   },
+   "bull": {
+    "cash_invested": 70594.6875,
+    "cap_rate": 0.0800095355704698,
+    "cash_on_cash": 0.037348528261530504,
+    "dscr_lender": 1.8441066154793966,
+    "noi_coverage": 1.2839699245934424,
+    "hold5": {
+     "exit_value": 287840.8590120001,
+     "loan_balance": 105629.43617281286,
+     "net_sale_proceeds": 159184.15411822722,
+     "irr": 0.2109525631376436,
+     "equity_multiple": 2.4944947485920914,
+     "total_profit": 105503.38974724975
+    },
+    "hold10": {
+     "exit_value": 345175.66487418313,
+     "loan_balance": 96778.54584404847,
+     "net_sale_proceeds": 220783.06584020003,
+     "irr": 0.15679959930226461,
+     "equity_multiple": 3.746594080053943,
+     "total_profit": 193894.9507707581
+    },
+    "cum_cf_10": 43706.57243055805
+   }
+  },
+  "scenarios_at_open_offer": {
+   "bear_2008_replay": {
+    "cash_invested": 84410.9375,
+    "cap_rate": 0.07655299310344828,
+    "cash_on_cash": 0.024459242728217957,
+    "hold5": {
+     "exit_value": 144281.1724309118,
+     "loan_balance": 102793.7466111266,
+     "net_sale_proceeds": 29944.932025312257,
+     "irr": -0.17359235573855358,
+     "equity_multiple": 0.39124797779427545,
+     "total_profit": -51385.32889940603
+    },
+    "hold10": {
+     "exit_value": 144856.71438027473,
+     "loan_balance": 94180.46407642303,
+     "net_sale_proceeds": 39087.71315342974,
+     "irr": -0.07665256349255457,
+     "equity_multiple": 0.45658483658129123,
+     "total_profit": -45870.18339588891
+    }
+   },
+   "bear_moderate_mc_p10": {
+    "cash_invested": 84410.9375,
+    "cap_rate": 0.07655299310344828,
+    "cash_on_cash": 0.024459242728217957,
+    "hold5": {
+     "exit_value": 147468.05987645808,
+     "loan_balance": 102793.7466111266,
+     "net_sale_proceeds": 32876.868475214855,
+     "irr": -0.1552447870407332,
+     "equity_multiple": 0.44470768557674856,
+     "total_profit": -46872.744847011425
+    },
+    "hold10": {
+     "exit_value": 117723.71359327789,
+     "loan_balance": 94180.46407642303,
+     "net_sale_proceeds": 14125.352429392631,
+     "irr": -0.12900910323446504,
+     "equity_multiple": 0.3057856083943642,
+     "total_profit": -58599.28762142385
+    }
+   },
+   "base": {
+    "cash_invested": 69410.9375,
+    "cap_rate": 0.07960306206896552,
+    "cash_on_cash": 0.03611660783617763,
+    "hold5": {
+     "exit_value": 247353.07266591498,
+     "loan_balance": 102793.7466111266,
+     "net_sale_proceeds": 124771.0802415152,
+     "irr": 0.15734491893774022,
+     "equity_multiple": 2.0052712423432686,
+     "total_profit": 69776.81937283598
+    },
+    "hold10": {
+     "exit_value": 289781.14041473536,
+     "loan_balance": 94180.46407642303,
+     "net_sale_proceeds": 172418.1851051335,
+     "irr": 0.12712857936269756,
+     "equity_multiple": 2.9629047387232275,
+     "total_profit": 136247.05813797176
+    }
+   },
+   "bull": {
+    "cash_invested": 69410.9375,
+    "cap_rate": 0.08265313103448275,
+    "cash_on_cash": 0.0424882261420102,
+    "hold5": {
+     "exit_value": 287840.8590120001,
+     "loan_balance": 102793.7466111266,
+     "net_sale_proceeds": 162019.8436799135,
+     "irr": 0.22263940935481963,
+     "equity_multiple": 2.600685656382811,
+     "total_profit": 111105.09205233378
+    },
+    "hold10": {
+     "exit_value": 345175.66487418313,
+     "loan_balance": 94180.46407642303,
+     "net_sale_proceeds": 223381.14760782546,
+     "irr": 0.1631849558966008,
+     "equity_multiple": 3.894281910337833,
+     "total_profit": 200894.82078583993
+    }
+   }
+  },
+  "proforma_at_max_price_base": {
+   "price": 149000.0,
+   "loan": 111750.0,
+   "rate": 0.074,
+   "ltv": 0.75,
+   "pi_monthly": 773.7344265660279,
+   "cash_invested": 70594.6875,
+   "year1": {
+    "year": 1,
+    "rent_mo": 2025.0,
+    "gpr": 2025.0,
+    "vacancy": 162.0,
+    "egi": 1863.0,
+    "mgmt": 210.17,
+    "maint": 151.875,
+    "capex": 202.5,
+    "tax": 199.3582666666667,
+    "insurance": 125.0,
+    "utilities": 17.5,
+    "eviction": 0,
+    "opex": 906.4032666666667,
+    "noi": 956.5967333333333,
+    "debt_service": 773.734426566028,
+    "cash_flow": 182.86230676730534
+   },
+   "year1_annual": {
+    "year": 1,
+    "rent_mo": 2025.0,
+    "gpr": 24300.0,
+    "vacancy": 1944.0,
+    "egi": 22356.0,
+    "mgmt": 2522.04,
+    "maint": 1822.5,
+    "capex": 2430.0,
+    "tax": 2392.2992000000004,
+    "insurance": 1500.0,
+    "utilities": 210.0,
+    "eviction": 0,
+    "opex": 10876.8392,
+    "noi": 11479.1608,
+    "debt_service": 9284.813118792335,
+    "cash_flow": 2194.347681207664
+   },
+   "cap_rate": 0.0770413476510067,
+   "cash_on_cash": 0.031083750901336086,
+   "dscr_lender_gross_rent_over_pitia": 1.8441066154793966,
+   "dscr_noi_over_debt_service": 1.2363373019071686,
+   "grm": 6.131687242798354,
+   "opex_ratio": 0.44760655144032924,
+   "hold5": {
+    "exit_value": 247353.07266591498,
+    "loan_balance": 105629.43617281286,
+    "net_sale_proceeds": 121935.39067982894,
+    "irr": 0.14466761375561188,
+    "equity_multiple": 1.9090643976255575,
+    "total_profit": 64175.11706775197
+   },
+   "hold10": {
+    "exit_value": 289781.14041473536,
+    "loan_balance": 96778.54584404847,
+    "net_sale_proceeds": 169820.10333750807,
+    "irr": 0.12025442052476934,
+    "equity_multiple": 2.8308344820265683,
+    "total_profit": 129247.18812288996
+   }
+  },
+  "mc_levered_irr_10yr_at_max_price": {
+   "p5": -1.0,
+   "p25": 0.02151908478301684,
+   "p50": 0.10281583131767302,
+   "p75": 0.17012991510782077,
+   "p95": 0.25664158990011643,
+   "share_irr_below_0": 0.20265,
+   "share_irr_above_12": 0.4354,
+   "share_equity_wiped_out": 0.01385
+  },
+  "section8_at_max_price": {
+   "price": 149000.0,
+   "loan": 111750.0,
+   "rate": 0.074,
+   "ltv": 0.75,
+   "pi_monthly": 773.7344265660279,
+   "cash_invested": 70594.6875,
+   "year1": {
+    "year": 1,
+    "rent_mo": 2100.0,
+    "gpr": 2100.0,
+    "vacancy": 84.0,
+    "egi": 2016.0,
+    "mgmt": 223.93999999999997,
+    "maint": 157.5,
+    "capex": 210.0,
+    "tax": 199.3582666666667,
+    "insurance": 125.0,
+    "utilities": 17.5,
+    "eviction": 0,
+    "opex": 958.2982666666667,
+    "noi": 1057.7017333333333,
+    "debt_service": 773.734426566028,
+    "cash_flow": 283.9673067673054
+   },
+   "year1_annual": {
+    "year": 1,
+    "rent_mo": 2100.0,
+    "gpr": 25200.0,
+    "vacancy": 1008.0,
+    "egi": 24192.0,
+    "mgmt": 2687.2799999999997,
+    "maint": 1890.0,
+    "capex": 2520.0,
+    "tax": 2392.2992000000004,
+    "insurance": 1500.0,
+    "utilities": 210.0,
+    "eviction": 0,
+    "opex": 11499.5792,
+    "noi": 12692.4208,
+    "debt_service": 9284.813118792335,
+    "cash_flow": 3407.6076812076644
+   },
+   "cap_rate": 0.0851840322147651,
+   "cash_on_cash": 0.048270029968015146,
+   "dscr_lender_gross_rent_over_pitia": 1.912406860497152,
+   "dscr_noi_over_debt_service": 1.3670087526382964,
+   "grm": 5.912698412698413,
+   "opex_ratio": 0.4563325079365079,
+   "hold5": {
+    "exit_value": 247353.07266591498,
+    "loan_balance": 105629.43617281286,
+    "net_sale_proceeds": 121935.39067982894,
+    "irr": 0.159557501819038,
+    "equity_multiple": 2.000490422984118,
+    "total_profit": 70629.30875730663
+   },
+   "hold10": {
+    "exit_value": 289781.14041473536,
+    "loan_balance": 96778.54584404847,
+    "net_sale_proceeds": 169820.10333750807,
+    "irr": 0.13402474443078521,
+    "equity_multiple": 3.028492832649952,
+    "total_profit": 143200.81761691315
+   }
+  }
+ },
+ "D_price_to_buy": {
+  "hurdles_base": {
+   "cap_ge_7.4_arbor": 154045.16548505472,
+   "cap_ge_6.5_mid": 171199.24573872075,
+   "coc_ge_6pct": 127711.98934351857,
+   "coc_ge_8pct": 115081.6429708045,
+   "irr10_base_ge_12pct": 149148.92647754832,
+   "irr10_base_ge_10pct": 161035.5729809053,
+   "bear_2008_replay_equity_multiple_ge_1": 118787.97989273653,
+   "bear_mc_p10_equity_multiple_ge_1": 111514.0709783659,
+   "noi_coverage_ge_1.0": 177084.06202817487,
+   "noi_coverage_ge_1.2": 152723.98655269865,
+   "cash_flow_breakeven": 177084.06202817487,
+   "binding_return_hurdles": 149148.92647754832,
+   "binding_return_hurdle": "irr10_base_ge_12pct",
+   "binding_all_hurdles": 118787.97989273653,
+   "binding_all_hurdle": "bear_2008_replay_equity_multiple_ge_1"
+  },
+  "hurdles_clean_inspection_no_contingency": {
+   "cap_ge_7.4_arbor": 154045.16548505472,
+   "cap_ge_6.5_mid": 171199.24573872075,
+   "coc_ge_6pct": 133969.07862532826,
+   "coc_ge_8pct": 122939.41864508187,
+   "irr10_base_ge_12pct": 159599.58386988088,
+   "irr10_base_ge_10pct": 170668.03898826498,
+   "bear_2008_replay_equity_multiple_ge_1": 133073.95945872006,
+   "bear_mc_p10_equity_multiple_ge_1": 125800.05054434942,
+   "noi_coverage_ge_1.0": 177084.06202817487,
+   "noi_coverage_ge_1.2": 152723.98655269865,
+   "cash_flow_breakeven": 177084.06202817487,
+   "binding_return_hurdles": 152723.98655269865,
+   "binding_return_hurdle": "noi_coverage_ge_1.2",
+   "binding_all_hurdles": 133073.95945872006,
+   "binding_all_hurdle": "bear_2008_replay_equity_multiple_ge_1"
+  },
+  "hurdles_dscr_loan_6.75": {
+   "cap_ge_7.4_arbor": 154045.16548505472,
+   "cap_ge_6.5_mid": 171199.24573872075,
+   "coc_ge_6pct": 134584.42741238966,
+   "coc_ge_8pct": 121295.1502454996,
+   "irr10_base_ge_12pct": 155884.38142029755,
+   "irr10_base_ge_10pct": 168148.12810478464,
+   "bear_2008_replay_equity_multiple_ge_1": 123378.00777787098,
+   "bear_mc_p10_equity_multiple_ge_1": 115823.0313280389,
+   "noi_coverage_ge_1.0": 186488.7020002352,
+   "noi_coverage_ge_1.2": 161133.77871065948,
+   "cash_flow_breakeven": 186488.7020002352,
+   "binding_return_hurdles": 154045.16548505472,
+   "binding_return_hurdle": "cap_ge_7.4_arbor",
+   "binding_all_hurdles": 123378.00777787098,
+   "binding_all_hurdle": "bear_2008_replay_equity_multiple_ge_1"
+  },
+  "hurdles_80ltv_dscr_7.00": {
+   "cap_ge_7.4_arbor": 154045.16548505472,
+   "cap_ge_6.5_mid": 171199.24573872075,
+   "coc_ge_6pct": 130992.41650882165,
+   "coc_ge_8pct": 119446.21436103401,
+   "irr10_base_ge_12pct": 156551.48349864286,
+   "irr10_base_ge_10pct": 167846.51828871353,
+   "bear_2008_replay_equity_multiple_ge_1": 119705.30203094767,
+   "bear_mc_p10_equity_multiple_ge_1": 112375.22145944039,
+   "noi_coverage_ge_1.0": 173628.9102896329,
+   "noi_coverage_ge_1.2": 149642.16081010562,
+   "cash_flow_breakeven": 173628.9102896329,
+   "binding_return_hurdles": 149642.16081010562,
+   "binding_return_hurdle": "noi_coverage_ge_1.2",
+   "binding_all_hurdles": 119705.30203094767,
+   "binding_all_hurdle": "bear_2008_replay_equity_multiple_ge_1"
+  },
+  "sensitivity": {
+   "rent_minus_10": {
+    "cap_ge_7.4_arbor": 136130.0945883359,
+    "cap_ge_6.5_mid": 151289.19783026155,
+    "coc_ge_6pct": 110931.03902774036,
+    "coc_ge_8pct": 99276.25760185363,
+    "irr10_base_ge_12pct": 138743.0231244751,
+    "irr10_base_ge_10pct": 150568.45529166306,
+    "bear_2008_replay_equity_multiple_ge_1": 109845.41383577697,
+    "bear_mc_p10_equity_multiple_ge_1": 102158.16830327382,
+    "noi_coverage_ge_1.0": 156489.62457261258,
+    "noi_coverage_ge_1.2": 134962.56549085706,
+    "cash_flow_breakeven": 156489.62457261258,
+    "binding_return_hurdles": 134962.56549085706,
+    "binding_return_hurdle": "noi_coverage_ge_1.2",
+    "binding_all_hurdles": 109845.41383577697,
+    "binding_all_hurdle": "bear_2008_replay_equity_multiple_ge_1"
+   },
+   "rent_plus_10": {
+    "cap_ge_7.4_arbor": 171960.2363817735,
+    "cap_ge_6.5_mid": 191109.29364717996,
+    "coc_ge_6pct": 144492.93965929683,
+    "coc_ge_8pct": 130887.02833975537,
+    "irr10_base_ge_12pct": 159554.8298306215,
+    "irr10_base_ge_10pct": 171502.69067014754,
+    "bear_2008_replay_equity_multiple_ge_1": 127730.54594969616,
+    "bear_mc_p10_equity_multiple_ge_1": 120869.97365345794,
+    "noi_coverage_ge_1.0": 197678.4994837371,
+    "noi_coverage_ge_1.2": 170485.40761454025,
+    "cash_flow_breakeven": 197678.4994837371,
+    "binding_return_hurdles": 159554.8298306215,
+    "binding_return_hurdle": "irr10_base_ge_12pct",
+    "binding_all_hurdles": 127730.54594969616,
+    "binding_all_hurdle": "bear_2008_replay_equity_multiple_ge_1"
+   },
+   "rate_minus_1pt": {
+    "cap_ge_7.4_arbor": 154045.16548505472,
+    "cap_ge_6.5_mid": 171199.24573872075,
+    "coc_ge_6pct": 136264.6955296112,
+    "coc_ge_8pct": 122312.31966131076,
+    "irr10_base_ge_12pct": 155474.9370496964,
+    "irr10_base_ge_10pct": 167973.856826788,
+    "bear_2008_replay_equity_multiple_ge_1": 124143.19335171132,
+    "bear_mc_p10_equity_multiple_ge_1": 116541.36123372384,
+    "noi_coverage_ge_1.0": 191863.05859188648,
+    "noi_coverage_ge_1.2": 165953.67051359802,
+    "cash_flow_breakeven": 191863.05859188648,
+    "binding_return_hurdles": 154045.16548505472,
+    "binding_return_hurdle": "cap_ge_7.4_arbor",
+    "binding_all_hurdles": 124143.19335171132,
+    "binding_all_hurdle": "bear_2008_replay_equity_multiple_ge_1"
+   },
+   "rate_plus_1pt": {
+    "cap_ge_7.4_arbor": 154045.16548505472,
+    "cap_ge_6.5_mid": 171199.24573872075,
+    "coc_ge_6pct": 119895.90308381972,
+    "coc_ge_8pct": 108424.31106544536,
+    "irr10_base_ge_12pct": 143202.23490266496,
+    "irr10_base_ge_10pct": 154531.09334816266,
+    "bear_2008_replay_equity_multiple_ge_1": 113829.80813381262,
+    "bear_mc_p10_equity_multiple_ge_1": 106859.50981866912,
+    "noi_coverage_ge_1.0": 163965.92995794478,
+    "noi_coverage_ge_1.2": 141045.49814576365,
+    "cash_flow_breakeven": 163965.92995794478,
+    "binding_return_hurdles": 141045.49814576365,
+    "binding_return_hurdle": "noi_coverage_ge_1.2",
+    "binding_all_hurdles": 113829.80813381262,
+    "binding_all_hurdle": "bear_2008_replay_equity_multiple_ge_1"
+   },
+   "exit_cap": {
+    "0.06": {
+     "cap_ge_7.4_arbor": 154045.16548505472,
+     "cap_ge_6.5_mid": 171199.24573872075,
+     "coc_ge_6pct": 127711.98934351857,
+     "coc_ge_8pct": 115081.6429708045,
+     "irr10_base_ge_12pct": 130414.90812208652,
+     "irr10_base_ge_10pct": 139289.73066456383,
+     "bear_2008_replay_equity_multiple_ge_1": 122661.95474128786,
+     "bear_mc_p10_equity_multiple_ge_1": 140219.84804210294,
+     "noi_coverage_ge_1.0": 177084.06202817487,
+     "noi_coverage_ge_1.2": 152723.98655269865,
+     "cash_flow_breakeven": 177084.06202817487,
+     "binding_return_hurdles": 130414.90812208652,
+     "binding_return_hurdle": "irr10_base_ge_12pct",
+     "binding_all_hurdles": 122661.95474128786,
+     "binding_all_hurdle": "bear_2008_replay_equity_multiple_ge_1"
+    },
+    "0.065": {
+     "cap_ge_7.4_arbor": 154045.16548505472,
+     "cap_ge_6.5_mid": 171199.24573872075,
+     "coc_ge_6pct": 127711.98934351857,
+     "coc_ge_8pct": 115081.6429708045,
+     "irr10_base_ge_12pct": 125455.30021554153,
+     "irr10_base_ge_10pct": 133941.3502873871,
+     "bear_2008_replay_equity_multiple_ge_1": 117386.66012932695,
+     "bear_mc_p10_equity_multiple_ge_1": 134256.51225011697,
+     "noi_coverage_ge_1.0": 177084.06202817487,
+     "noi_coverage_ge_1.2": 152723.98655269865,
+     "cash_flow_breakeven": 177084.06202817487,
+     "binding_return_hurdles": 125455.30021554153,
+     "binding_return_hurdle": "irr10_base_ge_12pct",
+     "binding_all_hurdles": 117386.66012932695,
+     "binding_all_hurdle": "bear_2008_replay_equity_multiple_ge_1"
+    },
+    "0.07": {
+     "cap_ge_7.4_arbor": 154045.16548505472,
+     "cap_ge_6.5_mid": 171199.24573872075,
+     "coc_ge_6pct": 127711.98934351857,
+     "coc_ge_8pct": 115081.6429708045,
+     "irr10_base_ge_12pct": 121143.5839620739,
+     "irr10_base_ge_10pct": 129285.50401753167,
+     "bear_2008_replay_equity_multiple_ge_1": 112763.82628872772,
+     "bear_mc_p10_equity_multiple_ge_1": 129029.74711938616,
+     "noi_coverage_ge_1.0": 177084.06202817487,
+     "noi_coverage_ge_1.2": 152723.98655269865,
+     "cash_flow_breakeven": 177084.06202817487,
+     "binding_return_hurdles": 121143.5839620739,
+     "binding_return_hurdle": "irr10_base_ge_12pct",
+     "binding_all_hurdles": 112763.82628872772,
+     "binding_all_hurdle": "bear_2008_replay_equity_multiple_ge_1"
+    },
+    "0.075": {
+     "cap_ge_7.4_arbor": 154045.16548505472,
+     "cap_ge_6.5_mid": 171199.24573872075,
+     "coc_ge_6pct": 127711.98934351857,
+     "coc_ge_8pct": 115081.6429708045,
+     "irr10_base_ge_12pct": 117360.58854919657,
+     "irr10_base_ge_10pct": 125195.86178040694,
+     "bear_2008_replay_equity_multiple_ge_1": 108679.45612271436,
+     "bear_mc_p10_equity_multiple_ge_1": 124411.02245317685,
+     "noi_coverage_ge_1.0": 177084.06202817487,
+     "noi_coverage_ge_1.2": 152723.98655269865,
+     "cash_flow_breakeven": 177084.06202817487,
+     "binding_return_hurdles": 117360.58854919657,
+     "binding_return_hurdle": "irr10_base_ge_12pct",
+     "binding_all_hurdles": 108679.45612271436,
+     "binding_all_hurdle": "bear_2008_replay_equity_multiple_ge_1"
+    },
+    "0.08": {
+     "cap_ge_7.4_arbor": 154045.16548505472,
+     "cap_ge_6.5_mid": 171199.24573872075,
+     "coc_ge_6pct": 127711.98934351857,
+     "coc_ge_8pct": 115081.6429708045,
+     "irr10_base_ge_12pct": 114014.68120481985,
+     "irr10_base_ge_10pct": 121575.05861445575,
+     "bear_2008_replay_equity_multiple_ge_1": 105044.6475760183,
+     "bear_mc_p10_equity_multiple_ge_1": 120300.06862008106,
+     "noi_coverage_ge_1.0": 177084.06202817487,
+     "noi_coverage_ge_1.2": 152723.98655269865,
+     "cash_flow_breakeven": 177084.06202817487,
+     "binding_return_hurdles": 114014.68120481985,
+     "binding_return_hurdle": "irr10_base_ge_12pct",
+     "binding_all_hurdles": 105044.6475760183,
+     "binding_all_hurdle": "bear_2008_replay_equity_multiple_ge_1"
+    }
+   }
+  },
+  "recommendation": {
+   "walk_away_max_price": 149000.0,
+   "binding_hurdle": "irr10_base_ge_12pct",
+   "walk_away_if_clean_inspection": 153000.0,
+   "all_hurdles_price_incl_coc6_and_2008_survival": 119000.0,
+   "all_hurdles_binding": "bear_2008_replay_equity_multiple_ge_1",
+   "opening_offer": 145000,
+   "opening_offer_vs_list": -0.275,
+   "walk_away_vs_list": -0.255,
+   "concessions_ask_pct": 0.03,
+   "formula_band": {
+    "70_rule_arv290": 158000.0,
+    "75_rule_arv290": 172500.0,
+    "70_rule_arv280": 151000.0
+   },
+   "day_one_realistic_band_notes": [
+    185000,
+    190000
+   ],
+   "context": {
+    "dom_as_of_2026_10_18": 5,
+    "price_drops": 0,
+    "zip_price_drop_share": 0.358,
+    "zip_sale_to_list": 0.985,
+    "zip_median_dom": 61,
+    "pending_ratio": 0.346,
+    "deep_discount_dom_months": "5-7 (gapfill_5)",
+    "estate_sale": true,
+    "listed_2026_10_13": true
+   }
+  },
+  "price_ladder": [
+   {
+    "price": 200000,
+    "vs_list": 0.0,
+    "cash_invested": 85687.5,
+    "cf_month": -149.21136675529473,
+    "cap_rate": 0.0533615,
+    "cash_on_cash": -0.02089612138367366,
+    "dscr_lender": 1.415919187495816,
+    "noi_coverage": 0.8563299442083073,
+    "irr5_base": -0.01684332891323265,
+    "irr10_base": 0.03693174466652352,
+    "em10_base": 1.4667990714001056,
+    "irr10_bull": 0.08181509221059399,
+    "em10_bear_2008": -0.41148003578660847,
+    "em10_bear_p10": -0.5379019275361795,
+    "flip_profit_arv290": -15499.580000000016,
+    "flip_profit_arv280": -24499.580000000016
+   },
+   {
+    "price": 190000,
+    "vs_list": -0.050000000000000044,
+    "cash_invested": 82728.125,
+    "cf_month": -84.09888175086341,
+    "cap_rate": 0.057002673684210525,
+    "cash_on_cash": -0.012198832996763324,
+    "dscr_lender": 1.4834579257799463,
+    "noi_coverage": 0.9147624481269144,
+    "irr5_base": 0.015526181600091612,
+    "irr10_base": 0.052948822172343174,
+    "em10_base": 1.6950299002703269,
+    "irr10_bull": 0.09582748041393416,
+    "em10_bear_2008": -0.27515718802094613,
+    "em10_bear_p10": -0.40540735117034604,
+    "flip_profit_arv290": -4850.476000000024,
+    "flip_profit_arv280": -13850.476000000024
+   },
+   {
+    "price": 185000,
+    "vs_list": -0.07499999999999996,
+    "cash_invested": 81248.4375,
+    "cf_month": -51.542639248647596,
+    "cap_rate": 0.05897087567567568,
+    "cash_on_cash": -0.0076125977312950935,
+    "dscr_lender": 1.5197025047953046,
+    "noi_coverage": 0.9463475853802157,
+    "irr5_base": 0.03146692299432971,
+    "irr10_base": 0.06097223789712415,
+    "em10_base": 1.815380086382011,
+    "irr10_bull": 0.10292718971723958,
+    "em10_bear_2008": -0.20385209938298732,
+    "em10_bear_p10": -0.3361046798525138,
+    "flip_profit_arv290": 474.07600000000093,
+    "flip_profit_arv280": -8525.923999999999
+   },
+   {
+    "price": 172500,
+    "vs_list": -0.13749999999999996,
+    "cash_invested": 77549.21875,
+    "cf_month": 29.847967006891547,
+    "cap_rate": 0.06439056231884058,
+    "cash_on_cash": 0.0046186874588301195,
+    "dscr_lender": 1.6185665547378907,
+    "noi_coverage": 1.0333211517298855,
+    "irr5_base": 0.07088313582041338,
+    "irr10_base": 0.08117047689797005,
+    "em10_base": 2.1363486725555716,
+    "irr10_bull": 0.12101818580639928,
+    "em10_bear_2008": -0.015614081016502713,
+    "em10_bear_p10": -0.15315283496233162,
+    "flip_profit_arv290": 13785.456000000006,
+    "flip_profit_arv280": 4785.456000000006
+   },
+   {
+    "price": 158000,
+    "vs_list": -0.20999999999999996,
+    "cash_invested": 73258.125,
+    "cf_month": 124.26107026331722,
+    "cap_rate": 0.07175173164556962,
+    "cash_on_cash": 0.02035450461173838,
+    "dscr_lender": 1.7506791969254856,
+    "noi_coverage": 1.1514510715946904,
+    "irr5_base": 0.116329060141411,
+    "irr10_base": 0.1050544430572313,
+    "em10_base": 2.549281811252415,
+    "irr10_bull": 0.1427732926227566,
+    "em10_bear_2008": 0.22251055135258274,
+    "em10_bear_p10": 0.07828468857184788,
+    "flip_profit_arv290": 29226.656799999997,
+    "flip_profit_arv280": 20226.656799999997
+   },
+   {
+    "price": 153000.0,
+    "vs_list": -0.235,
+    "cash_invested": 71778.4375,
+    "cf_month": 156.81731276553288,
+    "cap_rate": 0.07461357908496732,
+    "cash_on_cash": 0.026216894916198122,
+    "dscr_lender": 1.801380758776781,
+    "noi_coverage": 1.197377172962008,
+    "irr5_base": 0.13204657904551143,
+    "irr10_base": 0.11345632882653037,
+    "em10_base": 2.7031203571101434,
+    "irr10_bull": 0.150510161184859,
+    "em10_bear_2008": 0.31008295204609376,
+    "em10_bear_p10": 0.1633978469410965,
+    "flip_profit_arv290": 34551.20879999999,
+    "flip_profit_arv280": 25551.208799999993
+   },
+   {
+    "price": 149000.0,
+    "vs_list": -0.255,
+    "cash_invested": 70594.6875,
+    "cf_month": 182.86230676730534,
+    "cap_rate": 0.0770413476510067,
+    "cash_on_cash": 0.031083750901336086,
+    "dscr_lender": 1.8441066154793966,
+    "noi_coverage": 1.2363373019071686,
+    "irr5_base": 0.14466761375561188,
+    "irr10_base": 0.12025442052476934,
+    "em10_base": 2.8308344820265683,
+    "irr10_bull": 0.15679959930226461,
+    "em10_bear_2008": 0.38232085477301697,
+    "em10_bear_p10": 0.2336071366986921,
+    "flip_profit_arv290": 38810.850399999996,
+    "flip_profit_arv280": 29810.850399999996
+   },
+   {
+    "price": 145000,
+    "vs_list": -0.275,
+    "cash_invested": 69410.9375,
+    "cf_month": 208.90730076907798,
+    "cap_rate": 0.07960306206896552,
+    "cash_on_cash": 0.03611660783617763,
+    "dscr_lender": 1.888908489288973,
+    "noi_coverage": 1.2774469552079246,
+    "irr5_base": 0.15734491893774022,
+    "irr10_base": 0.12712857936269756,
+    "em10_base": 2.9629047387232275,
+    "irr10_bull": 0.1631849558966008,
+    "em10_bear_2008": 0.45658483658129123,
+    "em10_bear_p10": 0.3057856083943642,
+    "flip_profit_arv290": 43070.492,
+    "flip_profit_arv280": 34070.492
+   },
+   {
+    "price": 119000.0,
+    "vs_list": -0.405,
+    "cash_invested": 61716.5625,
+    "cf_month": 378.1997617805996,
+    "cap_rate": 0.1004519731092437,
+    "cash_on_cash": 0.07353612964700028,
+    "dscr_lender": 2.2431329271421583,
+    "noi_coverage": 1.612024259592647,
+    "irr5_base": 0.2420608706140342,
+    "irr10_base": 0.1742378442800009,
+    "em10_base": 3.9448531459606757,
+    "irr10_bull": 0.20755344132833675,
+    "em10_bear_2008": 0.9951636480341911,
+    "em10_bear_p10": 0.8292398395275867,
+    "flip_profit_arv290": 70758.1624,
+    "flip_profit_arv280": 61758.1624
+   }
+  ]
+ },
+ "E_value_add": {
+  "tiers": {
+   "asis_psf": [
+    96,
+    99
+   ],
+   "refreshed_psf": [
+    112,
+    127
+   ],
+   "renovated_psf": [
+    133,
+    148
+   ],
+   "src": "value_add_and_strategy.md KQ2 / gapfill_5 KQ1"
+  },
+  "asis_value_used": 205000.0,
+  "refreshed_value_range": [
+   237104,
+   268859
+  ],
+  "renovated_value_range": [
+   280000,
+   295000
+  ],
+  "refresh_lift_range": [
+   32104.0,
+   63859.0
+  ],
+  "full_reno_lift_range": [
+   75000.0,
+   90000.0
+  ],
+  "items": [
+   {
+    "item": "After-the-fact permits / electrician letter for panel + addition",
+    "cost_2026": [
+     500,
+     3000
+    ],
+    "cost_mid": 1750.0,
+    "value_lift": [
+     5000,
+     20000
+    ],
+    "value_lift_mid": 12500,
+    "rent_lift_mo": [
+     0,
+     0
+    ],
+    "roi_value_net_of_cost": 6.142857142857143,
+    "annual_rent_yield_on_cost": 0.0,
+    "combined_score": 6.142857142857143,
+    "flag": "financeability: removes lender-overlay risk on 544 sf addition",
+    "src": "gapfill_2 KQ3 (lender overlays may assign unpermitted space zero value)",
+    "rank": 1
+   },
+   {
+    "item": "Interior paint (~2,100 sf, incl. wallpaper removal)",
+    "cost_2026": [
+     4500,
+     7500
+    ],
+    "cost_mid": 6000.0,
+    "value_lift": [
+     11236,
+     22351
+    ],
+    "value_lift_mid": 16794,
+    "rent_lift_mo": [
+     25,
+     50
+    ],
+    "roi_value_net_of_cost": 1.798920833333333,
+    "annual_rent_yield_on_cost": 0.075,
+    "combined_score": 2.173920833333333,
+    "flag": "core refresh",
+    "src": "gapfill_3 KQ4 Tier A; value_add KQ2 tiers",
+    "rank": 2
+   },
+   {
+    "item": "LVP in ~1,170 sf of carpeted rooms",
+    "cost_2026": [
+     3500,
+     7000
+    ],
+    "cost_mid": 5250.0,
+    "value_lift": [
+     9631,
+     19158
+    ],
+    "value_lift_mid": 14394,
+    "rent_lift_mo": [
+     25,
+     50
+    ],
+    "roi_value_net_of_cost": 1.7418000000000002,
+    "annual_rent_yield_on_cost": 0.08571428571428572,
+    "combined_score": 2.170371428571429,
+    "flag": "core refresh",
+    "src": "gapfill_3 KQ4 Tier A; value_add KQ2 tiers",
+    "rank": 3
+   },
+   {
+    "item": "Haul-out, deep clean, hardware, smoke/CO, blinds",
+    "cost_2026": [
+     2000,
+     4000
+    ],
+    "cost_mid": 3000.0,
+    "value_lift": [
+     4816,
+     9579
+    ],
+    "value_lift_mid": 7197,
+    "rent_lift_mo": [
+     25,
+     50
+    ],
+    "roi_value_net_of_cost": 1.399075,
+    "annual_rent_yield_on_cost": 0.15,
+    "combined_score": 2.149075,
+    "flag": "core refresh",
+    "src": "gapfill_3 KQ4 Tier A",
+    "rank": 4
+   },
+   {
+    "item": "Bath touch-ups x3 (regrout, vanity, lights, GFCI)",
+    "cost_2026": [
+     1200,
+     2500
+    ],
+    "cost_mid": 1850.0,
+    "value_lift": [
+     3210,
+     6386
+    ],
+    "value_lift_mid": 4798,
+    "rent_lift_mo": [
+     0,
+     25
+    ],
+    "roi_value_net_of_cost": 1.5935945945945948,
+    "annual_rent_yield_on_cost": 0.08108108108108109,
+    "combined_score": 1.9990000000000003,
+    "flag": "core refresh",
+    "src": "gapfill_3 KQ4 Tier A",
+    "rank": 5
+   },
+   {
+    "item": "Curb appeal (pressure wash, front/garage doors, landscaping)",
+    "cost_2026": [
+     2000,
+     6000
+    ],
+    "cost_mid": 4000.0,
+    "value_lift": [
+     3210,
+     6386
+    ],
+    "value_lift_mid": 4798,
+    "rent_lift_mo": [
+     0,
+     25
+    ],
+    "roi_value_net_of_cost": 0.19953750000000015,
+    "annual_rent_yield_on_cost": 0.0375,
+    "combined_score": 0.38703750000000015,
+    "flag": "core refresh",
+    "src": "value_add KQ3; NAR 2025 steel door 100% recovery",
+    "rank": 6
+   },
+   {
+    "item": "Kitchen refresh (reface/paint cabinets, counters, sink, appliances)",
+    "cost_2026": [
+     10000,
+     20000
+    ],
+    "cost_mid": 15000.0,
+    "value_lift": [
+     19303,
+     11763
+    ],
+    "value_lift_mid": 15533,
+    "rent_lift_mo": [
+     50,
+     100
+    ],
+    "roi_value_net_of_cost": 0.03555500000000005,
+    "annual_rent_yield_on_cost": 0.06,
+    "combined_score": 0.33555500000000005,
+    "flag": "retail flip tier",
+    "src": "gapfill_3 KQ4 Tier B; HomeAdvisor Southeast $12,000-$32,200",
+    "rank": 7
+   },
+   {
+    "item": "Two original baths: new tile surrounds, floors, vanities",
+    "cost_2026": [
+     7000,
+     16000
+    ],
+    "cost_mid": 11500.0,
+    "value_lift": [
+     15014,
+     9149
+    ],
+    "value_lift_mid": 12081,
+    "rent_lift_mo": [
+     25,
+     75
+    ],
+    "roi_value_net_of_cost": 0.050563043478260745,
+    "annual_rent_yield_on_cost": 0.05217391304347826,
+    "combined_score": 0.31143260869565204,
+    "flag": "retail flip tier",
+    "src": "gapfill_3 KQ4 Tier B",
+    "rank": 8
+   },
+   {
+    "item": "Lighting package, interior doors/trim paint, mid-grade LVP upgrade",
+    "cost_2026": [
+     3000,
+     6000
+    ],
+    "cost_mid": 4500.0,
+    "value_lift": [
+     4290,
+     2614
+    ],
+    "value_lift_mid": 3452,
+    "rent_lift_mo": [
+     0,
+     25
+    ],
+    "roi_value_net_of_cost": -0.23292222222222214,
+    "annual_rent_yield_on_cost": 0.03333333333333333,
+    "combined_score": -0.06625555555555548,
+    "flag": "retail flip tier",
+    "src": "gapfill_3 KQ4 Tier B",
+    "rank": 9
+   },
+   {
+    "item": "Attic insulation top-up + air/duct sealing (net of rebates)",
+    "cost_2026": [
+     1200,
+     2500
+    ],
+    "cost_mid": 1850.0,
+    "value_lift": [
+     500,
+     2000
+    ],
+    "value_lift_mid": 1250,
+    "rent_lift_mo": [
+     0,
+     15
+    ],
+    "roi_value_net_of_cost": -0.32432432432432434,
+    "annual_rent_yield_on_cost": 0.04864864864864865,
+    "combined_score": -0.08108108108108109,
+    "flag": "defensive / utility allowance help for voucher tenant",
+    "src": "gapfill_3 KQ4; Georgia Power rebates",
+    "rank": 10
+   },
+   {
+    "item": "Primary bath full refresh (7'10\" x 5'1\")",
+    "cost_2026": [
+     3500,
+     6000
+    ],
+    "cost_mid": 4750.0,
+    "value_lift": [
+     4290,
+     2614
+    ],
+    "value_lift_mid": 3452,
+    "rent_lift_mo": [
+     0,
+     25
+    ],
+    "roi_value_net_of_cost": -0.2732947368421052,
+    "annual_rent_yield_on_cost": 0.031578947368421054,
+    "combined_score": -0.11539999999999995,
+    "flag": "retail flip tier",
+    "src": "gapfill_3 KQ4 Tier B",
+    "rank": 11
+   },
+   {
+    "item": "Electric water heater (if >10 yrs)",
+    "cost_2026": [
+     900,
+     1800
+    ],
+    "cost_mid": 1350.0,
+    "value_lift": [
+     500,
+     1500
+    ],
+    "value_lift_mid": 1000,
+    "rent_lift_mo": [
+     0,
+     0
+    ],
+    "roi_value_net_of_cost": -0.25925925925925924,
+    "annual_rent_yield_on_cost": 0.0,
+    "combined_score": -0.25925925925925924,
+    "flag": "defensive",
+    "src": "gapfill_3 KQ4",
+    "rank": 12
+   },
+   {
+    "item": "HVAC replacement as heat pump (if end of life), net of $1,500 Georgia Power rebate",
+    "cost_2026": [
+     3500,
+     11000
+    ],
+    "cost_mid": 7250.0,
+    "value_lift": [
+     2000,
+     6000
+    ],
+    "value_lift_mid": 4000,
+    "rent_lift_mo": [
+     0,
+     25
+    ],
+    "roi_value_net_of_cost": -0.4482758620689655,
+    "annual_rent_yield_on_cost": 0.020689655172413793,
+    "combined_score": -0.3448275862068966,
+    "flag": "defensive: value lift limited, lowers turnover/insurance risk",
+    "src": "value_add KQ3; Georgia Power HEIP",
+    "rank": 13
+   },
+   {
+    "item": "High-end kitchen (stone, custom cabinets)",
+    "cost_2026": [
+     30000,
+     65000
+    ],
+    "cost_mid": 47500.0,
+    "value_lift": [
+     21448,
+     15685
+    ],
+    "value_lift_mid": 18566,
+    "rent_lift_mo": [
+     50,
+     100
+    ],
+    "roi_value_net_of_cost": -0.6091305263157895,
+    "annual_rent_yield_on_cost": 0.018947368421052633,
+    "combined_score": -0.5143936842105263,
+    "flag": "OVER-IMPROVEMENT vs the $10-20K refresh: same tier ceiling",
+    "src": "value_add KQ2 (ZIP p90 $200/sf; 1955-79 cohort p75 $148/sf)",
+    "rank": 14
+   },
+   {
+    "item": "Primary suite / bath addition",
+    "cost_2026": [
+     35000,
+     80000
+    ],
+    "cost_mid": 57500.0,
+    "value_lift": [
+     8000,
+     24000
+    ],
+    "value_lift_mid": 16000,
+    "rent_lift_mo": [
+     25,
+     50
+    ],
+    "roi_value_net_of_cost": -0.7217391304347827,
+    "annual_rent_yield_on_cost": 0.00782608695652174,
+    "combined_score": -0.682608695652174,
+    "flag": "OVER-IMPROVEMENT: 22-30% cost recovery; all-in above ~$150/sf not recovered",
+    "src": "value_add KQ1 (HomeAdvisor), KQ2",
+    "rank": 15
+   },
+   {
+    "item": "Wood privacy fence replacing chain-link",
+    "cost_2026": [
+     2100,
+     9400
+    ],
+    "cost_mid": 5750.0,
+    "value_lift": [
+     0,
+     2000
+    ],
+    "value_lift_mid": 1000,
+    "rent_lift_mo": [
+     0,
+     25
+    ],
+    "roi_value_net_of_cost": -0.8260869565217391,
+    "annual_rent_yield_on_cost": 0.02608695652173913,
+    "combined_score": -0.6956521739130435,
+    "flag": "amenity; low ROI",
+    "src": "value_add KQ3",
+    "rank": 16
+   },
+   {
+    "item": "Sewer camera scope + lateral repair if needed",
+    "cost_2026": [
+     100,
+     5300
+    ],
+    "cost_mid": 2700.0,
+    "value_lift": [
+     0,
+     0
+    ],
+    "value_lift_mid": 0,
+    "rent_lift_mo": [
+     0,
+     0
+    ],
+    "roi_value_net_of_cost": -1.0,
+    "annual_rent_yield_on_cost": 0.0,
+    "combined_score": -1.0,
+    "flag": "risk mitigation (expected loss avoided ~$1,000-$2,000)",
+    "src": "value_add KQ3; gapfill_3 contingency",
+    "rank": 17
+   },
+   {
+    "item": "Detached garage -> rental apartment/ADU",
+    "cost_2026": [
+     20000,
+     50000
+    ],
+    "cost_mid": 35000.0,
+    "value_lift": [
+     0,
+     0
+    ],
+    "value_lift_mid": 0,
+    "rent_lift_mo": [
+     0,
+     0
+    ],
+    "roi_value_net_of_cost": -1.0,
+    "annual_rent_yield_on_cost": 0.0,
+    "combined_score": -1.0,
+    "flag": "NOT PERMITTED: ADU conditional use only in AG/ER/RS-180 (subject RS-110); whole-house STR also barred",
+    "src": "gapfill_8 KQ4; value_add KQ3",
+    "rank": 18
+   },
+   {
+    "item": "Paint the brick exterior",
+    "cost_2026": [
+     3000,
+     9000
+    ],
+    "cost_mid": 6000.0,
+    "value_lift": [
+     -5000,
+     2000
+    ],
+    "value_lift_mid": -1500,
+    "rent_lift_mo": [
+     0,
+     0
+    ],
+    "roi_value_net_of_cost": -1.25,
+    "annual_rent_yield_on_cost": 0.0,
+    "combined_score": -1.25,
+    "flag": "NOT recommended (permanent, high-maintenance; comps' premiums came from interiors)",
+    "src": "value_add KQ3",
+    "rank": 19
+   }
+  ],
+  "packages": {
+   "tier_a_rent_ready": {
+    "cost": [
+     12000,
+     24500
+    ],
+    "central": [
+     15000,
+     18000
+    ],
+    "value_lift": [
+     32104.0,
+     63859.0
+    ],
+    "rent": [
+     1900,
+     2025
+    ]
+   },
+   "tier_ab_retail_flip": {
+    "cost": [
+     37500,
+     77500
+    ],
+    "central": [
+     45000,
+     55000
+    ],
+    "value_lift": [
+     75000.0,
+     90000.0
+    ],
+    "rent": [
+     2025,
+     2100
+    ]
+   }
+  }
+ },
+ "F_risk_register": [
+  {
+   "risk": "2008-style drawdown (>=40% peak-to-trough) within 10 years",
+   "probability": "25% of Monte Carlo paths (crash hazard 2%/yr; FHFA county -48.5% 2005-12; ZIP share of negative 5-yr windows 20-27%)",
+   "impact": "at 75% LTV, equity ($37,250 at the max price) is wiped out and the loan goes under water; 2008-replay 10-yr equity multiple 0.38x",
+   "mitigation": "buy below market, 25%+ down, hold >10 yrs, no forced sale",
+   "src": "valuation_methods KQ3/KQ5; market_history KQ1; model section B3"
+  },
+  {
+   "risk": "Eviction / non-payment / vacancy",
+   "probability": "Clayton 38.9 filings per 100 renter households (2023; serial filings inflate); ~10-15%/yr chance of an eviction event for a screened SFR tenant (model: 1-2 events per 10 yrs in bear cases)",
+   "impact": "$2,500-$7,000 per event + 1-3 months rent; expected ~$500-$1,000/yr; 8% vacancy allowance already in base",
+   "mitigation": "3x income screening (thin pool: $73,800 needed vs $42,403 renter median); voucher tenant; 2-month deposit cap",
+   "src": "rental_and_operating_costs KQ2"
+  },
+  {
+   "risk": "Insurance and property-tax escalation",
+   "probability": "high (80%+): GA premiums +7-10%/yr; county millage above rollback three years running; investor gets no HOME Act cap",
+   "impact": "insurance $1,500 -> $2,999 by yr 10; tax $2,392 -> $3,121; NOI growth lags rent growth",
+   "mitigation": "appeal 2027 FMV to purchase price within 45 days; shop DP-3 with 1-2% wind/hail deductible",
+   "src": "gapfill_6 KQ1-KQ3; rental KQ4"
+  },
+  {
+   "risk": "1968 systems failure (HVAC, water heater, aluminum wiring, galvanized supply, sewer lateral, crawl moisture)",
+   "probability": "HVAC/WH age unknown (50% replace within 5 yrs); aluminum branch wiring possible (1965-73 window, ~25%); galvanized supply likely (~50%); lateral ~20%; crawl moisture ~30%",
+   "impact": "expected ~$9,000-$12,000 over 5 yrs; bad case $25,000 (contingency); insurer surcharge/decline on aluminum wiring or FPE panel",
+   "mitigation": "inspection with panel-cover removal, receptacle sampling, sewer scope, data-plate reads; price the findings into the offer",
+   "src": "gapfill_3 KQ4; builder_and_construction KQ2/KQ4"
+  },
+  {
+   "risk": "Airport noise / 65 DNL contour",
+   "probability": "<5%: 7.1 mi from runway complex, no airport overlay on parcel; moderate ambient noise scores (SoundScore 73; Local Logic 2.3/10)",
+   "impact": "none expected on value; no NIP eligibility; ambient Tara Blvd noise may lengthen owner-occupant DOM slightly",
+   "mitigation": "confirm with ATL Dept of Aviation noise office before resale",
+   "src": "gapfill_8 KQ1; property_record KQ5"
+  },
+  {
+   "risk": "Flood",
+   "probability": "FEMA Zone X, Flood Factor 1/10, county floodplain NO (~1% over 30 yrs)",
+   "impact": "negligible; no flood insurance required",
+   "mitigation": "none needed; verify crawl/addition drainage",
+   "src": "property_record KQ5"
+  },
+  {
+   "risk": "Corporate-landlord supply and rent competition",
+   "probability": "high (70%): 15-16 of 61 subdivision parcels entity-owned; institutional operators asking $1,781-$1,985 for 4BR in 30238; INVH net seller (657 sold vs 196 bought Q2 2026)",
+   "impact": "achieved rent $115-$140/mo below private asks; resale competes with institutional dispositions of renovated 3-4BR ranches",
+   "mitigation": "underwrite $2,000-$2,050; compete on condition/responsiveness; voucher tenancy",
+   "src": "gapfill_4 KQ1; valuation_methods KQ4; builder KQ3"
+  },
+  {
+   "risk": "School and crime perception capping owner-occupant exit demand",
+   "probability": "persistent (90%): Swint ES 4/10, Jonesboro HS 3-4/10, district #199/222; tract 73% renter, $27,500 median income; county Part One crime down 22% (2024) and 17% (2025) but burglary +19% in 2026",
+   "impact": "thin FHA/first-time pool; exit liquidity depends on rate-sensitive buyers; DOM 61 median; price cuts on 35.8% of listings",
+   "mitigation": "plan a 10-yr hold; exit as a tenanted asset to an investor if owner-occupant demand is weak",
+   "src": "property_record KQ6; city_and_county_outlook 4-6; gapfill_8 KQ3"
+  },
+  {
+   "risk": "Property-specific: unpermitted 544 sf addition (4th bed/bath), unpermitted panel/roof/windows, garage not on county record, county 3BR vs MLS 4BR, slab vs crawl conflict",
+   "probability": "near-certain that no permits exist (none in 2016-2025 exports; assessor permit tab empty); 20-30% chance an exit lender's appraiser assigns the addition reduced value",
+   "impact": "resale value on 1,575 sf main block only would be ~$30,000-$50,000 lower; after-the-fact permits $500-$3,000; insurer may require electrical inspection letter",
+   "mitigation": "pull EnerGov history, obtain contractor invoices, after-the-fact permits, licensed-electrician letter; underwrite conservative case on 1,575 sf + discounted addition",
+   "src": "gapfill_2 KQ1-KQ3; gapfill_7 KQ3; verification claims 3-4"
+  },
+  {
+   "risk": "Estate-sale execution: two out-of-state executors, no seller disclosure, unknown mortgage payoff, 2.2-year contested probate",
+   "probability": "medium (30-40%) of delay or title friction; low (10%) that payoff exceeds net proceeds at a discounted price",
+   "impact": "closing delay; as-is terms; need both executors' signatures and certified Letters Testamentary",
+   "mitigation": "due-diligence period, owner's title policy, ask for lender name/payoff before offering",
+   "src": "gapfill_1 KQ1-KQ2"
+  },
+  {
+   "risk": "Radon (EPA Zone 1 county; 15-21% of Clayton tests >= 4 pCi/L) and lead paint (pre-1978)",
+   "probability": "radon ~15-21%; lead paint present with high probability on original trim",
+   "impact": "radon mitigation ~$1,000-$2,500 (not sourced locally); lead-safe work practices on renovation; disclosure",
+   "mitigation": "radon test during inspection ($150-$300)",
+   "src": "builder_and_construction KQ2"
+  },
+  {
+   "risk": "Rate / exit-financing risk",
+   "probability": "30-yr rate 7.40% (3-yr high); Zillow expects 7.1% end-2026, 6.5% end-2027; FOMC median funds 4.1% through 2027",
+   "impact": "+1 pt on the rate lowers the max price by ~$8,103; buyer pool shrinks above 7%",
+   "mitigation": "DSCR loan at 6.75% par with 3-2-1 prepay; refinance option if rates fall",
+   "src": "valuation_methods KQ6; gapfill_6 KQ4; model section D"
+  },
+  {
+   "risk": "Voucher payment standard / rent-reasonableness uncertainty",
+   "probability": "JHA schedule unpublished; DCA proposed cutting its own standards to 90% of FMR (June 2026); FY2027 SAFMR fell 4.1%",
+   "impact": "voucher contract rent capped near $2,050-$2,150 regardless of a $2,552 ceiling; standard could be $2,088",
+   "mitigation": "call JHA (770-478-7282) for the standard, utility allowance and RFTA timing before relying on Section 8",
+   "src": "gapfill_4 KQ2"
+  }
+ ]
+}

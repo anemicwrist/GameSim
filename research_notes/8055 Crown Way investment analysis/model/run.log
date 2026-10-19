@@ -1,0 +1,127 @@
+=== A. CURRENT VALUE ===
+Sales comparison grid (as-is):
+  9542 Canvasback Ct         owner    net $235,000 adj -20,205 (20% gross) -> $214,795
+  1206 Village Path          owner    net $233,000 adj -12,212 (20% gross) -> $220,788
+  8427 Fredericksburg Ct     owner    net $205,000 adj +1,092 (20% gross) -> $206,092
+  657 Utoy Ct                owner    net $197,000 adj +22,202 (14% gross) -> $219,202
+  295 River Chase Dr         owner    net $238,500 adj -4,645 (8% gross) -> $233,855
+  9396 Forest Knoll Dr       owner    net $188,000 adj +7,650 (14% gross) -> $195,650
+  8762 E Bourne Dr           owner    net $258,000 adj -8,250 (12% gross) -> $249,750
+  8229 Kendrick Rd           investor net $135,000 adj +47,008 (36% gross) -> $182,008
+  7990 Devonshire Dr         investor net $150,000 adj +7,705 (30% gross) -> $157,705
+  45 Royce Dr                investor net $165,000 adj -21,505 (31% gross) -> $143,495
+  owner tier: {'n': 7, 'min': 195650, 'median': 219202, 'mean': 220019, 'max': 249750, 'sd': 17756} | investor tier: {'n': 3, 'min': 143495, 'median': 157705, 'mean': 161069, 'max': 182008}
+  ARV grid: [('1692 Pheasant Dr', 277520), ('9383 Woodknoll Way (resale)', 294008), ('20 Skylark Ln', 267055)] mean 279528
+Income approach values: {'rent_low': {'low_cap_institutional_gordon': 186958, 'mid_cap': 163825, 'high_cap_arbor_national_sfr': 147410}, 'rent_base': {'low_cap_institutional_gordon': 195373, 'mid_cap': 171199, 'high_cap_arbor_national_sfr': 154045}, 'rent_high': {'low_cap_institutional_gordon': 203788, 'mid_cap': 178573, 'high_cap_arbor_national_sfr': 160680}, 'section8_contract': {'low_cap_institutional_gordon': 203788, 'mid_cap': 178573, 'high_cap_arbor_national_sfr': 160680}}
+  NOI yr1 at list $10,672 -> cap 5.34%; opex ratio 48.1%
+AVMs: {'Zestimate': (208700, [204651, 212749]), 'Redfin Estimate': (201887, [197970, 205804]), 'Trulia Estimate': (209000, [204945, 213055]), 'Movoto': (222000, [217693, 226307])}
+Reconciled low/mid/high: [186000.0, 205000.0, 221000.0] vs list ['-7.0%', '+2.5%', '+10.5%']
+
+=== B. APPRECIATION ===
+FHFA Clayton: CAGR 2000-25 3.24%; drawdown 2005-12 -48.5%; sd 10.46%; worst 5yr -46.8%; neg 5yr windows 33%
+Momentum/MR: rent gap 0.12 income gap -0.055 blended 0.032
+  capozza_panel_a0.33_b0.25_g0.52: yr1 +0.83%, yr2 +2.80%, yr5 +3.13%, yr10 +2.51% ->  {1: 206714, 3: 219885, 5: 234585, 7: 248138, 10: 267903}
+  capozza_repeat_sales_a0.55_b0.15_g0.52: yr1 -0.34%, yr2 +2.02%, yr5 +4.13%, yr10 +2.74% ->  {1: 204299, 3: 215678, 5: 233988, 7: 252415, 10: 276201}
+  local_ar1_0.644_gallin_0.169: yr1 -1.05%, yr2 +1.36%, yr5 +4.51%, yr10 +2.62% ->  {1: 202849, 3: 212111, 5: 231255, 7: 251655, 10: 275829}
+  mean path values: {1: 204614, 3: 215868, 5: 233271, 7: 250729, 10: 273284}
+Monte Carlo (crash regime on):
+  yr 1: {'p5': 171066, 'p25': 189980, 'p50': 204574, 'p75': 220041, 'p95': 245312}
+  yr 3: {'p5': 142745, 'p25': 180248, 'p50': 214121, 'p75': 253099, 'p95': 324883}
+  yr 5: {'p5': 122702, 'p25': 173614, 'p50': 225303, 'p75': 291902, 'p95': 425173}
+  yr 7: {'p5': 105252, 'p25': 166772, 'p50': 236497, 'p75': 332178, 'p95': 537412}
+  yr 10: {'p5': 92252, 'p25': 155153, 'p50': 244345, 'p75': 383485, 'p95': 714809}
+  stats: {'share_negative_5yr': 0.403, 'share_negative_10yr': 0.396, 'share_max_drawdown_ge_40pct': 0.25, 'share_max_drawdown_ge_25pct': 0.467, 'share_paths_with_crash_regime': 0.18, 'mean_annual_log_return_10yr': 0.019, 'p5_1yr_change': -0.166, 'p95_1yr_change': 0.197}
+  no-crash stats: {'share_negative_5yr': 0.365, 'share_negative_10yr': 0.32, 'share_max_drawdown_ge_40pct': 0.177, 'share_max_drawdown_ge_25pct': 0.395, 'share_paths_with_crash_regime': 0.0, 'mean_annual_log_return_10yr': 0.028, 'p5_1yr_change': -0.167, 'p95_1yr_change': 0.193} | stress beta 1.8 yr5: {'p5': 113896, 'p25': 167462, 'p50': 225358, 'p75': 304838, 'p95': 470476}
+  scenario bear_2008_replay: {1: 202829, 3: 173265, 5: 136067, 7: 105638, 10: 136610}
+  scenario bear_moderate_mc_p10: {1: 177984, 3: 155552, 5: 139073, 7: 123802, 10: 111022}
+  scenario base: {1: 204614, 3: 215868, 5: 233271, 7: 250729, 10: 273284}
+  scenario bull: {1: 209100, 3: 243894, 5: 271454, 7: 293605, 10: 325525}
+
+=== C. CASH FLOW at list ===
+  P&I $1,039/mo; cash in $85,688; NOI $10,672; CF $-1,791/yr (-149/mo); cap 5.34%; CoC -2.09%; lender DSCR 1.42; NOI cov 0.86
+  bear_2008_replay: IRR5 nan% IRR10 nan% EM10 -0.41
+  bear_moderate_mc_p10: IRR5 nan% IRR10 nan% EM10 -0.54
+  base: IRR5 -1.68% IRR10 3.69% EM10 1.47
+  bull: IRR5 6.79% IRR10 8.18% EM10 2.22
+  S8 at list: CF -577 IRR10 4.99%
+  flip at list: {'price': 200000, 'arv': 290000, 'renovation': 50000, 'contingency': 10000, 'buy_closing': 4000, 'holding_6mo': 3250, 'financing_or_opportunity_cost': 9250, 'selling_costs_10pct': 29000, 'all_in_cost': 276500, 'profit': -15500, 'roi_on_cost': 0, 'mao_70_rule': 153000, 'mao_75_rule': 167500}
+  MC IRR at list: {'p5': -1.0, 'p25': -0.151, 'p50': 0.012, 'p75': 0.101, 'p95': 0.201, 'share_irr_below_0': 0.47, 'share_irr_above_12': 0.199, 'share_equity_wiped_out': 0.215}
+
+=== D. PRICE TO BUY ===
+  cap_ge_7.4_arbor: 154045
+  cap_ge_6.5_mid: 171199
+  coc_ge_6pct: 127712
+  coc_ge_8pct: 115082
+  irr10_base_ge_12pct: 149149
+  irr10_base_ge_10pct: 161036
+  bear_2008_replay_equity_multiple_ge_1: 118788
+  bear_mc_p10_equity_multiple_ge_1: 111514
+  noi_coverage_ge_1.0: 177084
+  noi_coverage_ge_1.2: 152724
+  cash_flow_breakeven: 177084
+  binding_return_hurdles: 149149
+  binding_return_hurdle: irr10_base_ge_12pct
+  binding_all_hurdles: 118788
+  binding_all_hurdle: bear_2008_replay_equity_multiple_ge_1
+  clean inspection: {'cap_ge_7.4_arbor': 154045, 'cap_ge_6.5_mid': 171199, 'coc_ge_6pct': 133969, 'coc_ge_8pct': 122939, 'irr10_base_ge_12pct': 159600, 'irr10_base_ge_10pct': 170668, 'bear_2008_replay_equity_multiple_ge_1': 133074, 'bear_mc_p10_equity_multiple_ge_1': 125800, 'noi_coverage_ge_1.0': 177084, 'noi_coverage_ge_1.2': 152724, 'cash_flow_breakeven': 177084, 'binding_return_hurdles': 152724, 'binding_all_hurdles': 133074}
+  DSCR 6.75: {'cap_ge_7.4_arbor': 154045, 'cap_ge_6.5_mid': 171199, 'coc_ge_6pct': 134584, 'coc_ge_8pct': 121295, 'irr10_base_ge_12pct': 155884, 'irr10_base_ge_10pct': 168148, 'bear_2008_replay_equity_multiple_ge_1': 123378, 'bear_mc_p10_equity_multiple_ge_1': 115823, 'noi_coverage_ge_1.0': 186489, 'noi_coverage_ge_1.2': 161134, 'cash_flow_breakeven': 186489, 'binding_return_hurdles': 154045, 'binding_all_hurdles': 123378}
+  80% LTV 7.00: {'cap_ge_7.4_arbor': 154045, 'cap_ge_6.5_mid': 171199, 'coc_ge_6pct': 130992, 'coc_ge_8pct': 119446, 'irr10_base_ge_12pct': 156551, 'irr10_base_ge_10pct': 167847, 'bear_2008_replay_equity_multiple_ge_1': 119705, 'bear_mc_p10_equity_multiple_ge_1': 112375, 'noi_coverage_ge_1.0': 173629, 'noi_coverage_ge_1.2': 149642, 'cash_flow_breakeven': 173629, 'binding_return_hurdles': 149642, 'binding_all_hurdles': 119705}
+  rent_minus_10: return-hurdles 134963 (noi_coverage_ge_1.2); cap7.4 136130; cap6.5 151289; coc6 110931; irr12 138743; noicov1.2 134963; bear2008 109845; bearp10 102158
+  rent_plus_10: return-hurdles 159555 (irr10_base_ge_12pct); cap7.4 171960; cap6.5 191109; coc6 144493; irr12 159555; noicov1.2 170485; bear2008 127731; bearp10 120870
+  rate_minus_1pt: return-hurdles 154045 (cap_ge_7.4_arbor); cap7.4 154045; cap6.5 171199; coc6 136265; irr12 155475; noicov1.2 165954; bear2008 124143; bearp10 116541
+  rate_plus_1pt: return-hurdles 141045 (noi_coverage_ge_1.2); cap7.4 154045; cap6.5 171199; coc6 119896; irr12 143202; noicov1.2 141045; bear2008 113830; bearp10 106860
+  exit cap ->  {'0.06': (130415, 130415), '0.065': (125455, 125455), '0.07': (121144, 121144), '0.075': (117361, 117361), '0.08': (114015, 114015)}
+  MAX PRICE 149000.0 | clean 153000.0 | all-hurdles 119000.0 | opening offer 145000
+  at max: bear_2008_replay: CoC 2.05% IRR5 -19.70% IRR10 -9.04% EM10 0.38
+  at max: bear_moderate_mc_p10: CoC 2.05% IRR5 -17.74% IRR10 -15.27% EM10 0.23
+  at max: base: CoC 3.11% IRR5 14.47% IRR10 12.03% EM10 2.83
+  at max: bull: CoC 3.73% IRR5 21.10% IRR10 15.68% EM10 3.75
+  MC IRR at max: {'p5': -1.0, 'p25': 0.022, 'p50': 0.103, 'p75': 0.17, 'p95': 0.257, 'share_irr_below_0': 0.203, 'share_irr_above_12': 0.435, 'share_equity_wiped_out': 0.014}
+  price ladder:
+   $200,000 (+0.0%): cash $85,688 CF -149/mo cap 5.34% CoC -2.1% DSCR 1.42 NOIcov 0.86 IRR5 -1.7% IRR10 3.7% EM10 1.47 bull10 8.2% bear08 EM -0.41 bearP10 EM -0.54 flip290 -15,500 flip280 -24,500
+   $190,000 (-5.0%): cash $82,728 CF -84/mo cap 5.70% CoC -1.2% DSCR 1.48 NOIcov 0.91 IRR5 1.6% IRR10 5.3% EM10 1.70 bull10 9.6% bear08 EM -0.28 bearP10 EM -0.41 flip290 -4,850 flip280 -13,850
+   $185,000 (-7.5%): cash $81,248 CF -52/mo cap 5.90% CoC -0.8% DSCR 1.52 NOIcov 0.95 IRR5 3.1% IRR10 6.1% EM10 1.82 bull10 10.3% bear08 EM -0.20 bearP10 EM -0.34 flip290 +474 flip280 -8,526
+   $172,500 (-13.7%): cash $77,549 CF +30/mo cap 6.44% CoC +0.5% DSCR 1.62 NOIcov 1.03 IRR5 7.1% IRR10 8.1% EM10 2.14 bull10 12.1% bear08 EM -0.02 bearP10 EM -0.15 flip290 +13,785 flip280 +4,785
+   $158,000 (-21.0%): cash $73,258 CF +124/mo cap 7.18% CoC +2.0% DSCR 1.75 NOIcov 1.15 IRR5 11.6% IRR10 10.5% EM10 2.55 bull10 14.3% bear08 EM 0.22 bearP10 EM 0.08 flip290 +29,227 flip280 +20,227
+   $153,000 (-23.5%): cash $71,778 CF +157/mo cap 7.46% CoC +2.6% DSCR 1.80 NOIcov 1.20 IRR5 13.2% IRR10 11.3% EM10 2.70 bull10 15.1% bear08 EM 0.31 bearP10 EM 0.16 flip290 +34,551 flip280 +25,551
+   $149,000 (-25.5%): cash $70,595 CF +183/mo cap 7.70% CoC +3.1% DSCR 1.84 NOIcov 1.24 IRR5 14.5% IRR10 12.0% EM10 2.83 bull10 15.7% bear08 EM 0.38 bearP10 EM 0.23 flip290 +38,811 flip280 +29,811
+   $145,000 (-27.5%): cash $69,411 CF +209/mo cap 7.96% CoC +3.6% DSCR 1.89 NOIcov 1.28 IRR5 15.7% IRR10 12.7% EM10 2.96 bull10 16.3% bear08 EM 0.46 bearP10 EM 0.31 flip290 +43,070 flip280 +34,070
+   $119,000 (-40.5%): cash $61,717 CF +378/mo cap 10.05% CoC +7.4% DSCR 2.24 NOIcov 1.61 IRR5 24.2% IRR10 17.4% EM10 3.94 bull10 20.8% bear08 EM 1.00 bearP10 EM 0.83 flip290 +70,758 flip280 +61,758
+  gain tables (purchase at list / max / open):
+   purchase_at_list           bear_2008_replay       {1: (202829, 2829, -13397, 197689), 3: (173265, -26735, -40597, 160423), 5: (136067, -63933, -74818, 119679), 7: (105638, -94362, -102813, 88265), 10: (136610, -63390, -74319, 105684)}
+   purchase_at_list           bear_moderate_mc_p10   {1: (177984, -22016, -36255, 173474), 3: (155552, -44448, -56892, 144024), 5: (139073, -60927, -72053, 122322), 7: (123802, -76198, -86103, 103441), 10: (111022, -88978, -97860, 85888)}
+   purchase_at_list           base                   {1: (204614, 4614, -11755, 199429), 3: (215868, 15868, -1402, 199869), 5: (233271, 33271, 14610, 205175), 7: (250729, 50729, 30671, 209495), 10: (273284, 73284, 51421, 211417)}
+   purchase_at_list           bull                   {1: (209100, 9100, -7628, 203801), 3: (243894, 43894, 24383, 225818), 5: (271454, 71454, 49738, 238759), 7: (293605, 93605, 70117, 245319), 10: (325525, 125525, 99483, 251832)}
+   purchase_at_max_price      bear_2008_replay       {1: (202829, 53829, 37603, 197689), 3: (173265, 24265, 10403, 160423), 5: (136067, -12933, -23818, 119679), 7: (105638, -43362, -51813, 88265), 10: (136610, -12390, -23319, 105684)}
+   purchase_at_max_price      bear_moderate_mc_p10   {1: (177984, 28984, 14745, 173474), 3: (155552, 6552, -5892, 144024), 5: (139073, -9927, -21053, 122322), 7: (123802, -25198, -35103, 103441), 10: (111022, -37978, -46860, 85888)}
+   purchase_at_max_price      base                   {1: (204614, 55614, 39245, 199429), 3: (215868, 66868, 49598, 199869), 5: (233271, 84271, 65610, 205175), 7: (250729, 101729, 81671, 209495), 10: (273284, 124284, 102421, 211417)}
+   purchase_at_max_price      bull                   {1: (209100, 60100, 43372, 203801), 3: (243894, 94894, 75383, 225818), 5: (271454, 122454, 100738, 238759), 7: (293605, 144605, 121117, 245319), 10: (325525, 176525, 150483, 251832)}
+   purchase_at_opening_offer  bear_2008_replay       {1: (202829, 57829, 41603, 197689), 3: (173265, 28265, 14403, 160423), 5: (136067, -8933, -19818, 119679), 7: (105638, -39362, -47813, 88265), 10: (136610, -8390, -19319, 105684)}
+   purchase_at_opening_offer  bear_moderate_mc_p10   {1: (177984, 32984, 18745, 173474), 3: (155552, 10552, -1892, 144024), 5: (139073, -5927, -17053, 122322), 7: (123802, -21198, -31103, 103441), 10: (111022, -33978, -42860, 85888)}
+   purchase_at_opening_offer  base                   {1: (204614, 59614, 43245, 199429), 3: (215868, 70868, 53598, 199869), 5: (233271, 88271, 69610, 205175), 7: (250729, 105729, 85671, 209495), 10: (273284, 128284, 106421, 211417)}
+   purchase_at_opening_offer  bull                   {1: (209100, 64100, 47372, 203801), 3: (243894, 98894, 79383, 225818), 5: (271454, 126454, 104738, 238759), 7: (293605, 148605, 125117, 245319), 10: (325525, 180525, 154483, 251832)}
+  MC real percentiles: {1: {'p5': 166731, 'p25': 185166, 'p50': 199390, 'p75': 214465, 'p95': 239096}, 3: {'p5': 132165, 'p25': 166889, 'p50': 198252, 'p75': 234341, 'p95': 300805}, 5: {'p5': 107924, 'p25': 152703, 'p50': 198167, 'p75': 256744, 'p95': 373963}, 7: {'p5': 87942, 'p25': 139345, 'p50': 197604, 'p75': 277549, 'p95': 449031}, 10: {'p5': 71368, 'p25': 120029, 'p50': 189030, 'p75': 296671, 'p95': 552989}}
+  repeat-sales trend: {1: (211652, 190634, 234987, 206288), 3: (225610, 188229, 270415, 208889), 5: (240489, 190339, 303851, 211523), 7: (256349, 194382, 338069, 214190), 10: (282121, 202675, 392710, 218254)}
+
+=== E. VALUE-ADD ===
+   1. After-the-fact permits / electrician letter for panel + addi cost $1,750 lift $12,500 ROI +614% rentyld 0% [financeability: removes lender-overlay r]
+   2. Interior paint (~2,100 sf, incl. wallpaper removal)          cost $6,000 lift $16,794 ROI +180% rentyld 8% [core refresh]
+   3. LVP in ~1,170 sf of carpeted rooms                           cost $5,250 lift $14,394 ROI +174% rentyld 9% [core refresh]
+   4. Haul-out, deep clean, hardware, smoke/CO, blinds             cost $3,000 lift $7,197 ROI +140% rentyld 15% [core refresh]
+   5. Bath touch-ups x3 (regrout, vanity, lights, GFCI)            cost $1,850 lift $4,798 ROI +159% rentyld 8% [core refresh]
+   6. Curb appeal (pressure wash, front/garage doors, landscaping) cost $4,000 lift $4,798 ROI +20% rentyld 4% [core refresh]
+   7. Kitchen refresh (reface/paint cabinets, counters, sink, appl cost $15,000 lift $15,533 ROI +4% rentyld 6% [retail flip tier]
+   8. Two original baths: new tile surrounds, floors, vanities     cost $11,500 lift $12,081 ROI +5% rentyld 5% [retail flip tier]
+   9. Lighting package, interior doors/trim paint, mid-grade LVP u cost $4,500 lift $3,452 ROI -23% rentyld 3% [retail flip tier]
+  10. Attic insulation top-up + air/duct sealing (net of rebates)  cost $1,850 lift $1,250 ROI -32% rentyld 5% [defensive / utility allowance help for v]
+  11. Primary bath full refresh (7'10" x 5'1")                     cost $4,750 lift $3,452 ROI -27% rentyld 3% [retail flip tier]
+  12. Electric water heater (if >10 yrs)                           cost $1,350 lift $1,000 ROI -26% rentyld 0% [defensive]
+  13. HVAC replacement as heat pump (if end of life), net of $1,50 cost $7,250 lift $4,000 ROI -45% rentyld 2% [defensive: value lift limited, lowers tu]
+  14. High-end kitchen (stone, custom cabinets)                    cost $47,500 lift $18,566 ROI -61% rentyld 2% [OVER-IMPROVEMENT vs the $10-20K refresh:]
+  15. Primary suite / bath addition                                cost $57,500 lift $16,000 ROI -72% rentyld 1% [OVER-IMPROVEMENT: 22-30% cost recovery; ]
+  16. Wood privacy fence replacing chain-link                      cost $5,750 lift $1,000 ROI -83% rentyld 3% [amenity; low ROI]
+  17. Sewer camera scope + lateral repair if needed                cost $2,700 lift $0 ROI -100% rentyld 0% [risk mitigation (expected loss avoided ~]
+  18. Detached garage -> rental apartment/ADU                      cost $35,000 lift $0 ROI -100% rentyld 0% [NOT PERMITTED: ADU conditional use only ]
+  19. Paint the brick exterior                                     cost $6,000 lift $-1,500 ROI -125% rentyld 0% [NOT recommended (permanent, high-mainten]
+
+JSON written: /tmp/claude-0/-home-user-GameSim/5bfe0ab3-48c3-50bc-a339-6dfe509a3a76/scratchpad/valuation_outputs.json
